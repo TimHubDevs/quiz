@@ -3,807 +3,805 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-<title>Перевірка знань · 7 клас · Математика</title>
+<title>Контрольна робота · 9 клас · Геометричні перетворення</title>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  /* ── Змінні ── */
-  :root {
-    --bg: #0f0f1a;
-    --card: #1a1a2e;
-    --card2: #16213e;
-    --accent: #7c5cfc;
-    --accent2: #a78bfa;
-    --green: #10b981;
-    --red: #ef4444;
-    --yellow: #f59e0b;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --border: rgba(124,92,252,0.2);
-    --radius: 20px;
-  }
-
-  /* ── Скидання ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    min-height: 100vh;
-    font-family: 'Manrope', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    overscroll-behavior: none;
-  }
-
-  /* ── Фон ── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,92,252,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 90%, rgba(167,139,250,0.12) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  /* ── Обгортка ── */
-  #app {
-    position: relative; z-index: 1;
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px 16px;
-  }
-
-  /* ── Картка ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 36px 28px;
-    width: 100%; max-width: 520px;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,92,252,0.1);
-    animation: slideUp .4s cubic-bezier(.16,1,.3,1) both;
-  }
-  @keyframes slideUp {
-    from { opacity:0; transform: translateY(24px); }
-    to   { opacity:1; transform: translateY(0); }
-  }
-
-  /* ── Бейдж ── */
-  .badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(124,92,252,0.15);
-    border: 1px solid rgba(124,92,252,0.3);
-    color: var(--accent2);
-    border-radius: 100px;
-    padding: 4px 14px;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 10px;
-    letter-spacing: .04em;
-    margin-bottom: 16px;
-  }
-
-  /* ── Заголовки ── */
-  h1 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(22px, 5vw, 30px);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 6px;
-    background: linear-gradient(135deg, #fff 30%, var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(18px,4vw,24px);
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
-
-  /* ── Поля вводу ── */
-  .input-group { margin-bottom: 14px; }
-  .input-group label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
-  .input-group input {
-    width: 100%;
-    padding: 13px 16px;
-    background: rgba(255,255,255,0.05);
-    border: 1.5px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    color: var(--text);
-    font-size: 16px;
-    font-family: 'Manrope', sans-serif;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .input-group input:focus { border-color: var(--accent); }
-  .input-group input::placeholder { color: rgba(255,255,255,0.25); }
-
-  /* ── Правила ── */
-  .rule-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 22px;
-  }
-  .rule-title { font-weight: 700; font-size: 13px; margin-bottom: 10px; color: var(--accent2); }
-  .rules { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-  .rules li { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
-
-  /* ── Кнопки ── */
-  .btn {
-    width: 100%;
-    padding: 15px;
-    border: none; border-radius: 14px;
-    font-size: 15px; font-weight: 700;
-    font-family: 'Manrope', sans-serif;
-    cursor: pointer;
-    transition: transform .15s, box-shadow .15s, opacity .15s;
-    margin-top: 8px;
-    letter-spacing: .02em;
-  }
-  .btn:active { transform: scale(0.97); }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(124,92,252,0.35);
-  }
-  .btn-primary:hover { box-shadow: 0 12px 32px rgba(124,92,252,0.5); transform: translateY(-1px); }
-  .btn-ghost { background: rgba(255,255,255,0.06); color: var(--muted); }
-  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
-  .btn-danger { background: rgba(239,68,68,0.15); color: var(--red); }
-  .btn:disabled { opacity: .35; cursor: not-allowed; transform: none !important; }
-
-  /* ── Помилка ── */
-  .error { color: var(--red); font-size: 13px; margin-top: -8px; margin-bottom: 10px; }
-
-  /* ── Header тесту ── */
-  .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-  .quiz-progress { font-size: 13px; color: var(--muted); font-family: 'Unbounded', sans-serif; }
-  .timer { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent2); transition: color .3s; }
-  .timer.urgent { color: var(--red); animation: pulse .8s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-
-  .viol-badge {
-    background: rgba(239,68,68,0.15);
-    color: var(--red);
-    border: 1px solid rgba(239,68,68,0.3);
-    border-radius: 100px;
-    padding: 3px 10px;
-    font-size: 12px; font-weight: 700;
-  }
-
-  /* ── Прогрес-бар ── */
-  .bar-bg { height: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; margin-bottom: 24px; overflow: hidden; }
-  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 100px; transition: width .4s ease; }
-
-  /* ── Питання ── */
-  .student-tag { font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'Unbounded', sans-serif; margin-bottom: 14px; }
-  .question { font-size: clamp(17px,4vw,21px); font-weight: 700; line-height: 1.5; margin-bottom: 20px; }
-
-  /* ── Варіанти ── */
-  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
-  .option {
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px 16px;
-    background: rgba(255,255,255,0.04);
-    border: 1.5px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    font-size: 15px; font-weight: 500;
-    color: var(--text);
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    font-family: 'Manrope', sans-serif;
-    transition: all .2s;
-  }
-  .option:hover { background: rgba(124,92,252,0.1); border-color: rgba(124,92,252,0.3); transform: translateX(3px); }
-  .option:active { transform: scale(0.98); }
-  .option.selected { background: rgba(124,92,252,0.15); border-color: var(--accent); }
-  .option.correct  { background: rgba(16,185,129,0.15); border-color: var(--green); }
-  .option.wrong    { background: rgba(239,68,68,0.15);  border-color: var(--red); }
-  .option-letter {
-    min-width: 30px; height: 30px;
-    background: rgba(124,92,252,0.2);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Unbounded', sans-serif; font-size: 11px;
-    color: var(--accent2); font-weight: 700;
-    flex-shrink: 0;
-  }
-  .option.selected .option-letter { background: var(--accent); color: #fff; }
-  .option.correct  .option-letter { background: var(--green); color: #fff; }
-  .option.wrong    .option-letter { background: var(--red);   color: #fff; }
-
-  /* ── Підказка ── */
-  .hint {
-    background: rgba(124,92,252,0.1);
-    border: 1px solid rgba(124,92,252,0.2);
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-size: 13px;
-    color: var(--accent2);
-    margin-top: 10px;
-    animation: slideUp .3s ease;
-  }
-
-  /* ── Toast ── */
-  #toast {
-    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-    background: #1e1b4b;
-    border: 1px solid rgba(124,92,252,0.4);
-    color: #fff;
-    border-radius: 14px;
-    padding: 14px 20px;
-    z-index: 9999;
-    text-align: center;
-    font-size: 14px; font-weight: 600;
-    min-width: 260px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    display: none;
-    animation: toastIn .3s ease;
-  }
-  @keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(-10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
-  #toast.show { display: block; }
-  #toast .toast-sub { font-size: 11px; color: var(--accent2); margin-top: 4px; }
-
-  /* ── Результат ── */
-  .result-icon { font-size: 56px; text-align: center; margin-bottom: 10px; }
-  .score-big {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(40px,10vw,60px);
-    font-weight: 900;
-    text-align: center;
-    margin: 8px 0 4px;
-    line-height: 1;
-  }
-  .grade-label { font-weight: 700; font-size: 16px; text-align: center; margin-bottom: 20px; }
-
-  /* ── Звіт ── */
-  .report-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .report-title { font-weight: 700; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
-  .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-  .report-item { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; text-align: center; }
-  .report-val { font-family: 'Unbounded', sans-serif; font-size: 22px; font-weight: 900; display: block; }
-  .report-lbl { font-size: 10px; color: var(--muted); margin-top: 3px; display: block; }
-  .report-status { font-size: 13px; color: var(--muted); text-align: center; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .time-spent { font-size: 12px; color: var(--muted); text-align: center; margin-bottom: 8px; }
-
-  /* ── Статус відправки ── */
-  .send-status { text-align: center; font-size: 13px; font-weight: 600; margin-top: 10px; padding: 10px; border-radius: 10px; }
-  .send-status.sending { color: var(--muted); }
-  .send-status.ok  { color: var(--green); background: rgba(16,185,129,0.1); }
-  .send-status.fail { color: var(--yellow); background: rgba(245,158,11,0.1); }
-
-  /* ── Панель вчителя ── */
-  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 20px; }
-  .mini-stat { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 10px 6px; text-align: center; }
-  .mini-stat-val { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 900; }
-  .mini-stat-lbl { font-size: 9px; color: var(--muted); margin-top: 3px; }
-  .result-row {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-left: 4px solid var(--green);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-  }
-  .result-row.warn  { border-left-color: var(--yellow); }
-  .result-row.fail  { border-left-color: var(--red); }
-  .rr-top { display: flex; justify-content: space-between; align-items: flex-start; }
-  .rr-name { font-weight: 700; font-size: 15px; }
-  .rr-time { font-size: 11px; color: var(--muted); margin-top: 3px; }
-  .rr-score { font-family: 'Unbounded', sans-serif; font-size: 17px; font-weight: 900; }
-  .rr-grade { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
-  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-  .tag { border-radius: 100px; padding: 2px 10px; font-size: 11px; font-weight: 700; }
-  .tag-ok     { background: rgba(16,185,129,0.15); color: var(--green); }
-  .tag-warn   { background: rgba(245,158,11,0.15); color: var(--yellow); }
-  .tag-danger { background: rgba(239,68,68,0.15);  color: var(--red); }
-  .empty { text-align: center; color: var(--muted); padding: 40px 0; font-size: 15px; }
-  .tb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-
-  .copied-btn { background: rgba(16,185,129,0.15) !important; color: var(--green) !important; }
+:root{--bg:#0f0f1a;--card:#1a1a2e;--accent:#7c5cfc;--accent2:#a78bfa;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(124,92,252,.2);--r:20px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(124,92,252,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 90%,rgba(167,139,250,.12) 0%,transparent 60%);pointer-events:none}
+#app{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px 14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:30px 22px;width:100%;max-width:540px;box-shadow:0 24px 64px rgba(0,0,0,.5);animation:slideUp .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.badge{display:inline-flex;align-items:center;background:rgba(124,92,252,.15);border:1px solid rgba(124,92,252,.3);color:var(--accent2);border-radius:100px;padding:4px 13px;font-family:'Unbounded',sans-serif;font-size:10px;letter-spacing:.04em;margin-bottom:12px}
+h1{font-family:'Unbounded',sans-serif;font-size:clamp(20px,5vw,28px);font-weight:900;line-height:1.1;margin-bottom:4px;background:linear-gradient(135deg,#fff 30%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-family:'Unbounded',sans-serif;font-size:clamp(16px,4vw,21px);font-weight:700;margin-bottom:6px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+.ig{margin-bottom:11px}
+.ig label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.ig input{width:100%;padding:11px 13px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;color:var(--text);font-size:16px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s}
+.ig input:focus{border-color:var(--accent)}
+.ig input::placeholder{color:rgba(255,255,255,.22)}
+.rbox{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:13px;margin-bottom:18px}
+.rtitle{font-weight:700;font-size:11px;margin-bottom:7px;color:var(--accent2)}
+.rules{list-style:none;display:flex;flex-direction:column;gap:5px}
+.rules li{font-size:12px;color:rgba(255,255,255,.7);line-height:1.5}
+.btn{width:100%;padding:13px;border:none;border-radius:13px;font-size:14px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;transition:transform .15s,box-shadow .15s;margin-top:5px;letter-spacing:.02em}
+.btn:active{transform:scale(.97)}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 24px rgba(124,92,252,.35)}
+.btn-p:hover{box-shadow:0 12px 32px rgba(124,92,252,.5);transform:translateY(-1px)}
+.btn-g{background:rgba(255,255,255,.06);color:var(--muted)}
+.btn-g:hover{background:rgba(255,255,255,.1)}
+.btn-d{background:rgba(239,68,68,.15);color:var(--red)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important}
+.err{color:var(--red);font-size:12px;margin-top:-5px;margin-bottom:7px}
+.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.qprog{font-size:11px;color:var(--muted);font-family:'Unbounded',sans-serif}
+.timer{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:700;color:var(--accent2)}
+.timer.urg{color:var(--red);animation:pulse .8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.vbadge{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3);border-radius:100px;padding:2px 7px;font-size:10px;font-weight:700}
+.bar{height:4px;background:rgba(255,255,255,.08);border-radius:100px;margin-bottom:14px;overflow:hidden}
+.barf{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:100px;transition:width .4s}
+.ltag{display:inline-block;border-radius:100px;padding:2px 9px;font-size:9px;font-weight:700}
+.l1{background:rgba(16,185,129,.15);color:#10b981}
+.l2{background:rgba(245,158,11,.15);color:#f59e0b}
+.l3{background:rgba(239,68,68,.15);color:#ef4444}
+.stag{font-size:10px;color:rgba(255,255,255,.28);font-family:'Unbounded',sans-serif}
+.qtext{font-size:clamp(14px,3.5vw,17px);font-weight:600;line-height:1.65;margin-bottom:12px}
+.opts{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.opt{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:11px;font-size:13px;font-weight:500;color:var(--text);cursor:pointer;text-align:left;width:100%;font-family:'Manrope',sans-serif;transition:all .2s;line-height:1.5}
+.opt:hover{background:rgba(124,92,252,.1);border-color:rgba(124,92,252,.3);transform:translateX(2px)}
+.opt.sel{background:rgba(124,92,252,.15);border-color:var(--accent)}
+.opt.ok{background:rgba(16,185,129,.15);border-color:var(--green)}
+.opt.no{background:rgba(239,68,68,.15);border-color:var(--red)}
+.ol{min-width:24px;height:24px;background:rgba(124,92,252,.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:9px;color:var(--accent2);font-weight:700;flex-shrink:0;margin-top:1px}
+.opt.sel .ol{background:var(--accent);color:#fff}
+.opt.ok .ol{background:var(--green);color:#fff}
+.opt.no .ol{background:var(--red);color:#fff}
+.hint{background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.2);border-radius:9px;padding:9px 11px;font-size:12px;color:var(--accent2);margin-top:7px;line-height:1.6}
+#toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#1e1b4b;border:1px solid rgba(124,92,252,.4);color:#fff;border-radius:13px;padding:11px 16px;z-index:9999;text-align:center;font-size:12px;font-weight:600;min-width:230px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none;animation:toastIn .3s ease}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+#toast.show{display:block}
+.tsub{font-size:9px;color:var(--accent2);margin-top:2px}
+.ricon{font-size:48px;text-align:center;margin-bottom:7px}
+.rbig{font-family:'Unbounded',sans-serif;font-size:clamp(34px,8vw,50px);font-weight:900;text-align:center;margin:5px 0 3px;line-height:1}
+.rlbl{font-weight:700;font-size:14px;text-align:center;margin-bottom:14px}
+.repbox{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:13px;margin:12px 0}
+.reptitle{font-weight:700;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.repgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px}
+.repitem{background:rgba(255,255,255,.04);border-radius:9px;padding:9px;text-align:center}
+.repval{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:900;display:block}
+.replbl{font-size:9px;color:var(--muted);margin-top:2px;display:block}
+.repst{font-size:11px;color:var(--muted);text-align:center;padding-top:7px;border-top:1px solid rgba(255,255,255,.06)}
+.tspent{font-size:11px;color:var(--muted);text-align:center;margin-bottom:5px}
+.sstatus{text-align:center;font-size:12px;font-weight:600;margin-top:7px;padding:7px;border-radius:9px}
+.sstatus.sending{color:var(--muted)}
+.sstatus.ok{color:var(--green);background:rgba(16,185,129,.1)}
+.sstatus.fail{color:var(--yellow);background:rgba(245,158,11,.1)}
+.srow{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:16px}
+.ms{background:rgba(255,255,255,.04);border-radius:9px;padding:7px 3px;text-align:center}
+.msv{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900}
+.msl{font-size:8px;color:var(--muted);margin-top:2px}
+.rrow{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--green);border-radius:11px;padding:11px 13px;margin-bottom:7px}
+.rrow.warn{border-left-color:var(--yellow)}
+.rrow.fail{border-left-color:var(--red)}
+.rrtop{display:flex;justify-content:space-between;align-items:flex-start}
+.rrn{font-weight:700;font-size:13px}
+.rrt{font-size:9px;color:var(--muted);margin-top:2px}
+.rrs{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900}
+.rrg{font-size:9px;color:var(--muted);text-align:right;margin-top:2px}
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:7px}
+.tag{border-radius:100px;padding:2px 7px;font-size:9px;font-weight:700}
+.tok{background:rgba(16,185,129,.15);color:var(--green)}
+.twarn{background:rgba(245,158,11,.15);color:var(--yellow)}
+.tdng{background:rgba(239,68,68,.15);color:var(--red)}
+.empty{text-align:center;color:var(--muted);padding:34px 0;font-size:13px}
+.tbh{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.cpbtn{background:rgba(16,185,129,.15)!important;color:var(--green)!important}
+svg text{-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
-<div id="toast"><span id="toast-msg"></span><div class="toast-sub" id="toast-sub"></div></div>
+<div id="toast"><span id="tm"></span><div class="tsub" id="ts"></div></div>
 <div id="app"></div>
-
 <script>
-// ══════════════════════════════════════════════════════
-// ⚙️  НАЛАШТУВАННЯ — змінюй тут
-// ══════════════════════════════════════════════════════
-const CONFIG = {
-  subject:    "Математика",
-  grade:      "7 клас · ІІ семестр",
-  timeLimit:  5 * 60,          // секунди
-  maxViol:    3,
-  webhookUrl: "https://script.google.com/macros/s/AKfycbzMUQjuFYo1MteznR1HkKQQco0ml51GJBOneng13j7a1Gbbf2QCYMpv8w5UA1bzCLgU4Q/exec",
-  teacherPassword: "teacher2025",
+// ══════════════════════════════════════════
+// ⚙️ НАЛАШТУВАННЯ
+// ══════════════════════════════════════════
+const CFG={
+  subject:'Геометрія · Геометричні перетворення',
+  grade:'9 клас',
+  timeLimit:45*60,
+  maxViol:10,
+  webhook:'https://script.google.com/macros/s/AKfycbxwoLUFjoQeBOUB2k0hp7u64Leq2VaX5Iml9IfunjzqmaokLEEYJp8cNS13JCe5yQfweQ/exec',
+  pass:'teacher2025',
+  pick:[4,5,3], // easy, medium, hard → разом 12
 };
 
-const QUESTIONS = [
-  {
-    q: "Розв'яжи рівняння: 3x − 7 = 11",
-    opts: ["x = 6","x = 4","x = 18/3","x = 3"],
-    correct: 0,
-    hint: "Переноси −7 у праву частину та ділиш на 3",
-  },
-  {
-    q: "Яке значення лінійної функції y = 2x + 5 при x = −3?",
-    opts: ["y = −1","y = 11","y = 1","y = −11"],
-    correct: 0,
-    hint: "Підстав x = −3: y = 2·(−3) + 5 = −6 + 5 = −1",
-  },
-  {
-    q: "Спрости вираз: (2a²b) · (3ab³)",
-    opts: ["6a³b⁴","5a³b⁴","6a²b⁴","6a³b³"],
-    correct: 0,
-    hint: "Множиш коефіцієнти і додаєш показники: 2·3=6, a²·a=a³, b·b³=b⁴",
-  },
-];
-
-// ══════════════════════════════════════════════════════
-// 🛠  Утиліти
-// ══════════════════════════════════════════════════════
-const $ = id => document.getElementById(id);
-const app = $("app");
-let state = {};
-
-function shuffle(arr) { return [...arr].sort(()=>Math.random()-.5); }
-
-function nowStr() { return new Date().toLocaleString("uk-UA"); }
-
-function gradeInfo(pct) {
-  if (pct===100) return { label:"12", color:"#a78bfa" };
-  if (pct>=66)   return { label:"9–10", color:"#10b981" };
-  if (pct>=33)   return { label:"6–7", color:"#f59e0b" };
-  return { label:"4–5", color:"#ef4444" };
+// ══════════════════════════════════════════
+// 🎨 SVG ПОБУДОВА
+// ══════════════════════════════════════════
+function mksvg(inner,w=220,h=220){
+  return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:8px auto;border-radius:9px;background:rgba(0,0,0,.28)">${inner}</svg>`;
+}
+function grid(cx,cy,sc,rng){
+  let s='';
+  for(let i=-rng;i<=rng;i++){
+    s+=`<line x1="${cx+i*sc}" y1="${cy-rng*sc}" x2="${cx+i*sc}" y2="${cy+rng*sc}" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>`;
+    s+=`<line x1="${cx-rng*sc}" y1="${cy+i*sc}" x2="${cx+rng*sc}" y2="${cy+i*sc}" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>`;
+  }return s;
+}
+function axes(cx,cy,sc,rng){
+  const r=rng*sc;
+  return `<line x1="${cx-r}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/>
+<line x1="${cx}" y1="${cy-r}" x2="${cx}" y2="${cy+r}" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/>
+<polygon points="${cx+r},${cy} ${cx+r-7},${cy-3.5} ${cx+r-7},${cy+3.5}" fill="rgba(255,255,255,.42)"/>
+<polygon points="${cx},${cy-r} ${cx-3.5},${cy-r+7} ${cx+3.5},${cy-r+7}" fill="rgba(255,255,255,.42)"/>
+<text x="${cx+r+2}" y="${cy+11}" fill="rgba(255,255,255,.4)" font-size="11" font-family="Manrope">x</text>
+<text x="${cx+4}" y="${cy-r+5}" fill="rgba(255,255,255,.4)" font-size="11" font-family="Manrope">y</text>`;
+}
+function ticks(cx,cy,sc,rng){
+  let s='';
+  for(let i=-rng+1;i<=rng-1;i++){
+    if(i===0)continue;
+    s+=`<text x="${cx+i*sc-4}" y="${cy+13}" fill="rgba(255,255,255,.2)" font-size="8" font-family="Manrope">${i}</text>`;
+    s+=`<text x="${cx-13}" y="${cy-i*sc+4}" fill="rgba(255,255,255,.2)" font-size="8" font-family="Manrope">${i}</text>`;
+  }return s;
+}
+function cp(cx,cy,sc,rng,extra){
+  return mksvg(grid(cx,cy,sc,rng)+axes(cx,cy,sc,rng)+ticks(cx,cy,sc,rng)+extra);
+}
+function dot(cx,cy,sc,x,y,col,lbl,lp){
+  const px=cx+x*sc,py=cy-y*sc;
+  const off={tr:[7,-6],tl:[-34,-6],br:[7,13],bl:[-34,13],t:[-4,-10],b:[-4,14]};
+  const[ox,oy]=off[lp||'tr'];
+  return `<circle cx="${px}" cy="${py}" r="5" fill="${col}"/><text x="${px+ox}" y="${py+oy}" fill="${col}" font-size="11" font-family="Manrope" font-weight="bold">${lbl}</text>`;
+}
+function seg(cx,cy,sc,x1,y1,x2,y2,col,dash){
+  const d=dash?'stroke-dasharray="5,3"':'';
+  return `<line x1="${cx+x1*sc}" y1="${cy-y1*sc}" x2="${cx+x2*sc}" y2="${cy-y2*sc}" stroke="${col}" stroke-width="1.5" ${d}/>`;
+}
+function tri(cx,cy,sc,pts,str,fil){
+  const ps=pts.map(([x,y])=>`${cx+x*sc},${cy-y*sc}`).join(' ');
+  return `<polygon points="${ps}" stroke="${str}" stroke-width="2" fill="${fil}"/>`;
+}
+function rect2(cx,cy,sc,x,y,w,h,str,fil){
+  return `<rect x="${cx+x*sc}" y="${cy-y*sc-h*sc}" width="${w*sc}" height="${h*sc}" stroke="${str}" stroke-width="2" fill="${fil}"/>`;
+}
+function label(cx,cy,sc,x,y,txt,col){
+  return `<text x="${cx+x*sc}" y="${cy-y*sc}" fill="${col||'rgba(255,255,255,.65)'}" font-size="12" font-family="Manrope" font-weight="600" text-anchor="middle">${txt}</text>`;
 }
 
-function showToast(msg, sub="", dur=3000) {
-  $("toast-msg").textContent = msg;
-  $("toast-sub").textContent = sub;
-  const t = $("toast");
-  t.classList.add("show");
-  clearTimeout(t._timer);
-  t._timer = setTimeout(()=>t.classList.remove("show"), dur);
+// ══════════════════════════════════════════
+// 📐 PRE-BUILT SVGs
+// ══════════════════════════════════════════
+const CX=110,CY=110,SC=18;
+
+// E2: A(3,2)→A'(-3,-2) відносно O
+const S_E2=cp(CX,CY,SC,5,
+  seg(CX,CY,SC,-3,-2,3,2,'rgba(255,255,255,.13)',true)+
+  dot(CX,CY,SC,0,0,'#f59e0b','O','br')+
+  dot(CX,CY,SC,3,2,'#a78bfa','A(3;2)','tr')+
+  dot(CX,CY,SC,-3,-2,'#10b981','A\'(?)','bl')
+);
+
+// E5: B(4,-3) відносно Ox
+const S_E5=cp(CX,CY,SC,5,
+  seg(CX,CY,SC,4,-3,4,3,'rgba(255,255,255,.13)',true)+
+  dot(CX,CY,SC,4,-3,'#a78bfa','B(4;−3)','tr')+
+  dot(CX,CY,SC,4,3,'#10b981','B\'(?)','br')
+);
+
+// M1: трикутник, симетрія відносно Oy
+const SC2=16;
+const S_M1=cp(CX,120,SC2,6,
+  tri(CX,120,SC2,[[0,0],[4,0],[0,3]],'#a78bfa','rgba(124,92,252,.15)')+
+  tri(CX,120,SC2,[[0,0],[-4,0],[0,3]],'#10b981','rgba(16,185,129,.15)')+
+  dot(CX,120,SC2,0,0,'rgba(255,255,255,.45)','A','br')+
+  dot(CX,120,SC2,4,0,'#a78bfa','B(4;0)','tr')+
+  dot(CX,120,SC2,0,3,'#a78bfa','C(0;3)','tl')+
+  dot(CX,120,SC2,-4,0,'#10b981','B\'(?)','tl')
+);
+
+// M3: M(2,5) поворот 90° CW → M'(5,-2)
+const SC3=15;
+const S_M3=cp(CX,CY,SC3,6,
+  seg(CX,CY,SC3,0,0,2,5,'rgba(167,139,250,.3)')+
+  seg(CX,CY,SC3,0,0,5,-2,'rgba(16,185,129,.3)')+
+  `<path d="M ${CX+SC3*2} ${CY} A ${SC3*2} ${SC3*2} 0 0 0 ${CX} ${CY-SC3*2}" stroke="rgba(245,158,11,.4)" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>` +
+  dot(CX,CY,SC3,0,0,'#f59e0b','O','bl')+
+  dot(CX,CY,SC3,2,5,'#a78bfa','M(2;5)','tr')+
+  dot(CX,CY,SC3,5,-2,'#10b981','M\'(?)','br')
+);
+
+// M6: симетрія y=x, P(3,1)→P'(1,3)
+const S_M6=cp(CX,CY,SC,5,
+  `<line x1="${CX-5*SC}" y1="${CY+5*SC}" x2="${CX+5*SC}" y2="${CY-5*SC}" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/>` +
+  `<text x="${CX+2.8*SC}" y="${CY-3.2*SC}" fill="#f59e0b" font-size="10" font-family="Manrope">y=x</text>` +
+  seg(CX,CY,SC,3,1,1,3,'rgba(255,255,255,.13)',true)+
+  dot(CX,CY,SC,3,1,'#a78bfa','P(3;1)','tr')+
+  dot(CX,CY,SC,1,3,'#10b981','P\'(?)','tl')
+);
+
+// H1: A(1,2)→Ox→A'(1,-2)→(1,-1)→A''(2,-3)
+const S_H1=cp(CX,CY,SC,5,
+  seg(CX,CY,SC,1,2,1,-2,'rgba(245,158,11,.5)',true)+
+  seg(CX,CY,SC,1,-2,2,-3,'rgba(16,185,129,.5)',true)+
+  dot(CX,CY,SC,1,2,'#a78bfa','A(1;2)','tr')+
+  dot(CX,CY,SC,1,-2,'#f59e0b','A\'(1;−2)','tr')+
+  dot(CX,CY,SC,2,-3,'#10b981','A\'\'(?)','br')
+);
+
+// H3: два подібних трикутники
+const S_H3=mksvg(
+  `<polygon points="20,115 86,115 20,58" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/>` +
+  `<text x="53" y="130" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">6</text>` +
+  `<text x="6" y="90" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">8</text>` +
+  `<text x="58" y="80" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">10</text>` +
+  `<polygon points="125,115 224,115 125,26" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,.15)"/>` +
+  `<text x="175" y="130" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">9</text>` +
+  `<text x="109" y="73" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">x</text>` +
+  `<text x="183" y="66" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">15</text>`
+,244,140);
+
+// H4: A(2,3) поворот 90° CCW навколо C(1,1)→A'(-1,2)
+const S_H4=cp(CX,CY,SC,5,
+  `<circle cx="${CX+SC}" cy="${CY-SC}" r="${Math.round(SC*Math.sqrt(2)*2)}" stroke="rgba(245,158,11,.12)" stroke-width="1" fill="none" stroke-dasharray="4,3"/>` +
+  seg(CX,CY,SC,1,1,2,3,'rgba(167,139,250,.4)')+
+  seg(CX,CY,SC,1,1,-1,2,'rgba(16,185,129,.4)')+
+  dot(CX,CY,SC,1,1,'#f59e0b','C(1;1)','br')+
+  dot(CX,CY,SC,2,3,'#a78bfa','A(2;3)','tr')+
+  dot(CX,CY,SC,-1,2,'#10b981','A\'(?)','tl')
+);
+
+// H7: квадрат, повороти
+const S_H7=mksvg(
+  `<circle cx="110" cy="110" r="52" stroke="rgba(255,255,255,.07)" fill="none" stroke-dasharray="4,3"/>` +
+  `<rect x="72" y="72" width="76" height="76" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/>` +
+  `<circle cx="110" cy="110" r="3" fill="#f59e0b"/>` +
+  `<text x="116" y="115" fill="#f59e0b" font-size="10" font-family="Manrope">O</text>` +
+  `<line x1="72" y1="110" x2="148" y2="110" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3,2"/>` +
+  `<line x1="110" y1="72" x2="110" y2="148" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3,2"/>` +
+  `<path d="M 110 60 A 50 50 0 0 1 160 110" stroke="#10b981" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>` +
+  `<text x="152" y="74" fill="#10b981" font-size="10" font-family="Manrope">?°</text>`
+);
+
+// E9: паралельне перенесення на вектор, C(1,1)→C'(3,4)
+const S_E9=cp(CX,CY,SC,5,
+  `<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs>` +
+  `<line x1="${CX+SC}" y1="${CY-SC}" x2="${CX+3*SC-2}" y2="${CY-4*SC+2}" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr)"/>` +
+  dot(CX,CY,SC,1,1,'#a78bfa','C(1;1)','bl')+
+  dot(CX,CY,SC,3,4,'#10b981','C\'(3;4)','tr')
+);
+
+// M4: паралельне перенесення A(1,2)→A'(-2,6)
+const S_M4=cp(CX,CY,SC,5,
+  `<defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs>` +
+  `<line x1="${CX+SC}" y1="${CY-2*SC}" x2="${CX-2*SC+2}" y2="${CY-6*SC+2}" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr2)"/>` +
+  dot(CX,CY,SC,1,2,'#a78bfa','A(1;2)','tr')+
+  dot(CX,CY,SC,-2,6,'#10b981','A\'(?)','tl')
+);
+
+// M8: поворот 180° A(3,-2)→A'(-3,2)
+const S_M8=cp(CX,CY,SC,5,
+  seg(CX,CY,SC,-3,2,3,-2,'rgba(255,255,255,.13)',true)+
+  dot(CX,CY,SC,0,0,'#f59e0b','O','br')+
+  dot(CX,CY,SC,3,-2,'#a78bfa','A(3;−2)','tr')+
+  dot(CX,CY,SC,-3,2,'#10b981','A\'(?)','tl')
+);
+
+// H6: подібні прямокутники
+const S_H6=mksvg(
+  `<rect x="20" y="80" width="60" height="40" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/>` +
+  `<text x="50" y="110" fill="rgba(255,255,255,.7)" font-size="11" font-family="Manrope" text-anchor="middle">S₁=50</text>` +
+  `<text x="50" y="75" fill="rgba(255,255,255,.55)" font-size="10" font-family="Manrope" text-anchor="middle">ш=5</text>` +
+  `<rect x="100" y="50" width="120" height="80" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,.15)"/>` +
+  `<text x="160" y="97" fill="rgba(255,255,255,.7)" font-size="11" font-family="Manrope" text-anchor="middle">S₂=200</text>` +
+  `<text x="160" y="45" fill="rgba(255,255,255,.55)" font-size="10" font-family="Manrope" text-anchor="middle">ш=?</text>`
+,240,150);
+
+// ══════════════════════════════════════════
+// 📚 БАНК ПИТАНЬ (28 питань)
+// ══════════════════════════════════════════
+const POOL={
+easy:[
+{q:'Яка властивість є спільною для ВСІХ геометричних рухів?',svg:null,
+opts:['Зберігають відстані між точками і форму фігури','Змінюють площу фігури вдвічі','Змінюють кути фігури','Змінюють форму, але зберігають площу'],
+correct:0,hint:'Геометричний рух — перетворення, що зберігає відстані між будь-якими двома точками. Форма і розміри фігури не змінюються.'},
+
+{q:'Знайди координати A\', симетричної до A(3; 2) відносно початку координат O(0; 0).',svg:S_E2,
+opts:['A\'(−3; −2)','A\'(3; −2)','A\'(−3; 2)','A\'(2; 3)'],
+correct:0,hint:'Симетрія відносно O: (x;y)→(−x;−y). Тому A(3;2)→A\'(−3;−2).'},
+
+{q:'При повороті фігури на 360° навколо будь-якої точки:',svg:null,
+opts:['Фігура повертається у вихідне положення','Фігура дзеркально відображається','Площа фігури подвоюється','Фігура зміщується на вектор'],
+correct:0,hint:'360° — повний оберт. Кожна точка повертається на своє початкове місце.'},
+
+{q:'Коефіцієнт подібності k = 3. Сторона більшого трикутника 6 см. Яка відповідна сторона меншого?',svg:null,
+opts:['2 см','18 см','9 см','3 см'],
+correct:0,hint:'k = більша/менша = 3. Менша = 6 ÷ 3 = 2 см.'},
+
+{q:'Знайди B\', симетричну до B(4; −3) відносно осі Ox.',svg:S_E5,
+opts:['B\'(4; 3)','B\'(−4; −3)','B\'(−4; 3)','B\'(3; 4)'],
+correct:0,hint:'Симетрія відносно Ox: y змінює знак, x залишається. B(4;−3)→B\'(4;3).'},
+
+{q:'Яке перетворення переміщує кожну точку фігури на однаковий вектор без обертання?',svg:null,
+opts:['Паралельне перенесення','Поворот','Симетрія відносно точки','Перетворення подібності'],
+correct:0,hint:'Паралельне перенесення зміщує всі точки на однаковий вектор без зміни напрямку фігури.'},
+
+{q:'Якщо коефіцієнт подібності двох фігур k, то відношення їх площ дорівнює:',svg:null,
+opts:['k²','k','2k','√k'],
+correct:0,hint:'Площа — двовимірна величина. При подібності з k лінійні розміри × k, площа × k².'},
+
+{q:'Центральна симетрія відносно точки O рівносильна повороту навколо O на кут:',svg:null,
+opts:['180°','90°','270°','360°'],
+correct:0,hint:'Центральна симетрія: O є серединою AA\'. Це рівнозначно повороту на 180°.'},
+
+{q:'При паралельному перенесенні на вектор (2; 3) точка C(1; 1) переходить в:',svg:S_E9,
+opts:['C\'(3; 4)','C\'(−1; −2)','C\'(2; 3)','C\'(1; 4)'],
+correct:0,hint:'(x;y)→(x+a;y+b). C(1;1)→C\'(1+2;1+3)=C\'(3;4).'},
+
+{q:'Дві фігури рівні, якщо одну можна отримати з іншої за допомогою:',svg:null,
+opts:['Геометричного руху (переміщення)','Розтягування з k≠1','Зміни масштабу','Деформації'],
+correct:0,hint:'Рівні фігури збігаються при накладанні, яке виконується рухом: перенесенням, поворотом або симетрією.'}
+],
+
+medium:[
+{q:'Трикутник ABC: A(0;0), B(4;0), C(0;3) відображається відносно осі Oy. Знайди B\'.',svg:S_M1,
+opts:['B\'(−4; 0)','B\'(4; 0)','B\'(0; 4)','B\'(0; −4)'],
+correct:0,hint:'Oy: x змінює знак, y залишається. B(4;0)→B\'(−4;0). A і C лежать на Oy — не змінюються.'},
+
+{q:'Площа трикутника 16 см², k = 3. Знайди площу подібного трикутника.',svg:null,
+opts:['144 см²','48 см²','9 см²','576 см²'],
+correct:0,hint:'S₂ = S₁·k² = 16·9 = 144 см².'},
+
+{q:'Точка M(2; 5) повертається на 90° за годинниковою стрілкою навколо O(0;0). Знайди M\'.',svg:S_M3,
+opts:['M\'(5; −2)','M\'(−5; 2)','M\'(−2; −5)','M\'(2; −5)'],
+correct:0,hint:'Поворот 90° за год.: (x;y)→(y;−x). M(2;5)→M\'(5;−2).'},
+
+{q:'При паралельному перенесенні на вектор (−3; 4) точка A(1; 2) переходить в A\'.',svg:S_M4,
+opts:['A\'(−2; 6)','A\'(4; −2)','A\'(−1; 6)','A\'(2; −2)'],
+correct:0,hint:'A\'(1+(−3); 2+4) = A\'(−2;6).'},
+
+{q:'Периметр фігури 24 см, k = 2,5. Знайди периметр подібної фігури.',svg:null,
+opts:['60 см','9,6 см','26,5 см','48 см'],
+correct:0,hint:'Периметри ~ k. P₂ = 24·2,5 = 60 см.'},
+
+{q:'A(2;4) перейшла в A\'(−2;−4) при симетрії відносно деякої точки O. Знайди O.',svg:null,
+opts:['O(0; 0)','O(2; 2)','O(1; 2)','O(−1; −1)'],
+correct:0,hint:'O — середина AA\': x=(2+(−2))/2=0, y=(4+(−4))/2=0. O(0;0).'},
+
+{q:'Знайди P\', симетричну до P(3; 1) відносно прямої y = x.',svg:S_M6,
+opts:['P\'(1; 3)','P\'(−1; −3)','P\'(3; −1)','P\'(−3; 1)'],
+correct:0,hint:'Симетрія відносно y=x: координати міняються місцями. P(3;1)→P\'(1;3).'},
+
+{q:'При повороті на 180° навколо O(0;0) точка A(3; −2) переходить в:',svg:S_M8,
+opts:['A\'(−3; 2)','A\'(3; 2)','A\'(−2; 3)','A\'(2; −3)'],
+correct:0,hint:'180°=(−x;−y). A(3;−2)→A\'(−3;2).'},
+
+{q:'Площі двох подібних трикутників 25:49. Знайди коефіцієнт подібності.',svg:null,
+opts:['5/7','25/49','7/5','√5'],
+correct:0,hint:'k²=25/49 → k=5/7 ≈ 0,71.'},
+
+{q:'Подібні трикутники мають відповідні сторони 5 см і 15 см. Коефіцієнт подібності (від більшого до меншого):',svg:null,
+opts:['1/3','3','1/5','10'],
+correct:0,hint:'k = менша/більша = 5/15 = 1/3.'}
+],
+
+hard:[
+{q:'A(1;2): спочатку симетрія відносно Ox (→A\'), потім перенесення на (1;−1) (→A\'\'). Знайди A\'\'.',svg:S_H1,
+opts:['A\'\'(2; −3)','A\'\'(0; −1)','A\'\'(2; −1)','A\'\'(−1; 2)'],
+correct:0,hint:'Крок 1: Ox→A\'(1;−2). Крок 2: (1;−1)→A\'\'(2;−3).'},
+
+{q:'Площа подібного трикутника в 4 рази більша за оригінал. Периметр оригіналу 18 см. Знайди периметр подібного.',svg:null,
+opts:['36 см','72 см','9 см','54 см'],
+correct:0,hint:'k²=4→k=2. Периметри~k: P₂=18·2=36 см.'},
+
+{q:'Два подібних трикутники. Сторони меншого: 6,8,10. Відповідна до 6 сторона більшого — 9. Знайди x (відповідну до 8).',svg:S_H3,
+opts:['12','5,3','6','16'],
+correct:0,hint:'k=9/6=1,5. x=8·1,5=12. Третя: 10·1,5=15 ✓'},
+
+{q:'A(2;3) повертається на 90° проти годинникової стрілки навколо C(1;1). Знайди A\'.',svg:S_H4,
+opts:['A\'(−1; 2)','A\'(3; 0)','A\'(0; 3)','A\'(2; −1)'],
+correct:0,hint:'1) A−C=(1;2). 2) 90° проти год.: (x;y)→(−y;x)→(−2;1). 3) +C: (−1;2).'},
+
+{q:'Два подібних прямокутники мають площі 50 см² і 200 см². Ширина меншого 5 см. Знайди ширину більшого.',svg:S_H6,
+opts:['10 см','20 см','40 см','8 см'],
+correct:0,hint:'k²=200/50=4→k=2. Ширина=5·2=10 см.'},
+
+{q:'Знайди вектор паралельного перенесення, якщо A(−2;5) перейшла в A\'(3;1).',svg:null,
+opts:['(5; −4)','(−5; 4)','(1; 6)','(−1; −4)'],
+correct:0,hint:'Вектор = A\'−A = (3−(−2);1−5) = (5;−4).'},
+
+{q:'При якому найменшому куті повороту (крім 0°) правильний шестикутник суміщається сам з собою?',svg:null,
+opts:['60°','90°','120°','45°'],
+correct:0,hint:'Шестикутник: 360°/6=60°. Найменший кут — 60°.'},
+
+{q:'При якому куті повороту навколо центра квадрат суміщається сам з собою (всі варіанти, крім 0° і 360°)?',svg:S_H7,
+opts:['90°, 180°, 270°','45°, 135°, 225°','60°, 120°, 240°','Тільки 180°'],
+correct:0,hint:'Квадрат: 360°/4=90°. Суміщається при 90°, 180°, 270°.'}
+]};
+
+// ══════════════════════════════════════════
+// 🎲 ВИБІР ПИТАНЬ
+// ══════════════════════════════════════════
+function shuffle(a){return[...a].sort(()=>Math.random()-.5)}
+function selectQ(){
+  const[ne,nm,nh]=CFG.pick;
+  return shuffle([
+    ...shuffle(POOL.easy).slice(0,ne),
+    ...shuffle(POOL.medium).slice(0,nm),
+    ...shuffle(POOL.hard).slice(0,nh),
+  ]).map(q=>({...q,opts:shuffle(q.opts.map((o,i)=>({t:o,ok:i===q.correct})))}));
 }
 
-async function sendToSheets(data) {
-  try {
-    await fetch(CONFIG.webhookUrl, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(data),
-    });
-    return true;
-  } catch(e) { return false; }
+// ══════════════════════════════════════════
+// 🛠 УТИЛІТИ
+// ══════════════════════════════════════════
+const $=id=>document.getElementById(id);
+const app=$('app');
+let S={};
+function nowStr(){return new Date().toLocaleString('uk-UA')}
+function gradeInfo(p){
+  if(p>=92)return{l:'12',c:'#a78bfa'};
+  if(p>=75)return{l:'10–11',c:'#10b981'};
+  if(p>=58)return{l:'7–9',c:'#22d3ee'};
+  if(p>=42)return{l:'5–6',c:'#f59e0b'};
+  return{l:'1–4',c:'#ef4444'};
 }
-
-// ══════════════════════════════════════════════════════
-// 🔒  Антишахрай
-// ══════════════════════════════════════════════════════
-let cheatListeners = [];
-function setupAntiCheat() {
-  const add = (target, ev, fn) => { target.addEventListener(ev,fn); cheatListeners.push({target,ev,fn}); };
-
-  // Видимість (блокування екрану / перехід у фон)
-  add(document, "visibilitychange", ()=>{
-    if(document.hidden && state.phase==="quiz") addViolation("tabSwitch","🚨 Вихід з тесту зафіксовано!");
+function toast(msg,sub='',dur=3000){
+  $('tm').textContent=msg;$('ts').textContent=sub;
+  const t=$('toast');t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),dur);
+}
+async function sendToSheets(data){
+  return new Promise(res=>{
+    try{
+      const p=new URLSearchParams({data:JSON.stringify(data)});
+      const img=new Image();
+      img.onload=()=>res(true);img.onerror=()=>res(true);
+      img.src=CFG.webhook+'?'+p.toString();
+      setTimeout(()=>res(true),8000);
+    }catch{res(false)}
   });
-  // Втрата фокусу (перехід в іншу програму)
-  add(window, "blur", ()=>{
-    if(state.phase==="quiz") addViolation("blur","🚨 Перемикання програми зафіксовано!");
+}
+
+// ══════════════════════════════════════════
+// 🔒 АНТИШАХРАЙ
+// ══════════════════════════════════════════
+let _L=[];
+function addL(t,e,fn){t.addEventListener(e,fn);_L.push({t,e,fn})}
+function removeL(){_L.forEach(({t,e,fn})=>t.removeEventListener(e,fn));_L=[]}
+
+function setupAC(){
+  // Видимість вкладки (блокування екрану / фон)
+  addL(document,'visibilitychange',()=>{
+    if(document.hidden&&S.phase==='quiz')viol('tab','🚨 Вихід з тесту зафіксовано!')
   });
+  // Втрата фокусу
+  addL(window,'blur',()=>{if(S.phase==='quiz')viol('blur','🚨 Перемикання програми зафіксовано!')});
   // Повноекранний режим
-  add(document,"fullscreenchange", onFsChange);
-  add(document,"webkitfullscreenchange", onFsChange);
-  // Кнопка "Назад"
-  history.pushState(null,"",location.href);
-  add(window,"popstate",()=>{
-    history.pushState(null,"",location.href);
-    if(state.phase==="quiz") addViolation("blur","🚨 Спроба навігації зафіксована!");
+  addL(document,'fullscreenchange',onFsChg);
+  addL(document,'webkitfullscreenchange',onFsChg);
+  // Кнопка назад
+  history.pushState(null,'',location.href);
+  addL(window,'popstate',()=>{
+    history.pushState(null,'',location.href);
+    if(S.phase==='quiz')viol('nav','🚨 Кнопка "Назад" заблокована!');
   });
-  // Клавіші (десктоп)
-  add(document,"keydown", e=>{
-    if(state.phase!=="quiz") return;
-    if((e.ctrlKey||e.metaKey)&&"cvuspa".includes(e.key.toLowerCase())) e.preventDefault();
-    if(e.key==="PrintScreen") { e.preventDefault(); showToast("🚫 Скріншот заблоковано"); }
+  // Клавіші (скріншоти, копіювання)
+  addL(document,'keydown',e=>{
+    if(S.phase!=='quiz')return;
+    if((e.ctrlKey||e.metaKey)&&'cvuspa'.includes(e.key.toLowerCase()))e.preventDefault();
+    if(e.key==='PrintScreen'){e.preventDefault();viol('screenshot','🚨 Спроба скріншоту зафіксована!')}
+    // Mac screenshot shortcuts
+    if(e.metaKey&&e.shiftKey&&['3','4','5','s'].includes(e.key)){e.preventDefault();viol('screenshot','🚨 Спроба скріншоту зафіксована!')}
   });
-  // Контекстне меню (довгий тап на телефоні)
-  add(document,"contextmenu", e=>e.preventDefault());
-}
-
-function removeAntiCheat() {
-  cheatListeners.forEach(({target,ev,fn})=>target.removeEventListener(ev,fn));
-  cheatListeners=[];
-}
-
-function onFsChange() {
-  const isFs = !!(document.fullscreenElement||document.webkitFullscreenElement);
-  if(!isFs && state.phase==="quiz") {
-    addViolation("fullscreen","🚨 Вихід з повноекранного режиму!");
-    setTimeout(requestFs,500);
+  // Контекстне меню (довгий тап / ПКМ)
+  addL(document,'contextmenu',e=>e.preventDefault());
+  // Виділення тексту
+  document.body.style.userSelect='none';
+  document.body.style.webkitUserSelect='none';
+  // Screen capture API (якщо підтримується)
+  if(navigator.mediaDevices&&navigator.mediaDevices.getDisplayMedia){
+    const origGDM=navigator.mediaDevices.getDisplayMedia.bind(navigator.mediaDevices);
+    navigator.mediaDevices.getDisplayMedia=async(...a)=>{
+      viol('screenshot','🚨 Спроба захоплення екрану зафіксована!');
+      throw new Error('Заблоковано');
+    };
   }
 }
 
-function requestFs() {
+function onFsChg(){
+  const isFs=!!(document.fullscreenElement||document.webkitFullscreenElement);
+  if(!isFs&&S.phase==='quiz'){viol('fs','🚨 Вихід з повноекранного режиму!');setTimeout(reqFs,600)}
+}
+function reqFs(){
   const el=document.documentElement;
-  try {
-    if(el.requestFullscreen) el.requestFullscreen();
-    else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-  } catch(_){}
+  try{if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen()}catch{}
 }
 
-function addViolation(type, msg) {
-  if(state.phase!=="quiz") return;
-  state.violations[type] = (state.violations[type]||0)+1;
-  state.violations.total++;
-  const left = CONFIG.maxViol - state.violations.total;
-  showToast(msg, left>0 ? `Залишилось попереджень: ${left}` : "Тест буде завершено!");
-  renderQuiz();
-  if(state.violations.total >= CONFIG.maxViol) finishQuiz(true);
+function viol(type,msg){
+  if(S.phase!=='quiz')return;
+  S.v[type]=(S.v[type]||0)+1;S.v.total++;
+  const left=CFG.maxViol-S.v.total;
+  toast(msg,left>0?`Попереджень залишилось: ${left}`:`Тест буде завершено!`);
+  renderQ();
+  if(S.v.total>=CFG.maxViol)finish(true);
 }
 
-// ══════════════════════════════════════════════════════
-// 📋  СТОРІНКИ
-// ══════════════════════════════════════════════════════
-
-/* ── Intro ── */
-function renderIntro() {
-  state = { phase:"intro" };
-  app.innerHTML = `
+// ══════════════════════════════════════════
+// 🏠 INTRO
+// ══════════════════════════════════════════
+function renderIntro(){
+  S={phase:'intro'};
+  const tot=CFG.pick.reduce((a,b)=>a+b,0);
+  const mins=Math.floor(CFG.timeLimit/60);
+  app.innerHTML=`
   <div class="card">
-    <div class="badge">✦ ${CONFIG.grade}</div>
-    <h1>Перевірка<br>знань</h1>
-    <p class="sub">${CONFIG.subject} · ${QUESTIONS.length} питань · ${Math.floor(CONFIG.timeLimit/60)} хвилин</p>
-
-    <div class="input-group">
-      <label>Прізвище</label>
-      <input id="inp-surname" type="text" placeholder="Наприклад: Шевченко" autocomplete="off"/>
-    </div>
-    <div class="input-group">
-      <label>Ім'я</label>
-      <input id="inp-name" type="text" placeholder="Наприклад: Тарас" autocomplete="off"/>
-    </div>
-    <p class="error" id="name-err" style="display:none"></p>
-
-    <div class="rule-box">
-      <div class="rule-title">📋 Правила тесту</div>
+    <div class="badge">✦ ${CFG.grade}</div>
+    <h1>Контрольна<br>робота</h1>
+    <p class="sub">${CFG.subject} · ${tot} питань · ${mins} хвилин</p>
+    <div class="ig"><label>Прізвище</label><input id="is" type="text" placeholder="Шевченко" autocomplete="off"/></div>
+    <div class="ig"><label>Ім'я</label><input id="in" type="text" placeholder="Тарас" autocomplete="off"/></div>
+    <p class="err" id="er" style="display:none">⚠️ Введи прізвище та ім'я!</p>
+    <div class="rbox">
+      <div class="rtitle">📋 Правила проведення</div>
       <ul class="rules">
-        <li>⏱ Таймер починається одразу після старту</li>
+        <li>⏱ Таймер запускається одразу (${mins} хв)</li>
         <li>🔒 Тест відкриється на весь екран</li>
-        <li>👁 ${CONFIG.maxViol} виходи = автоматичне завершення</li>
-        <li>📵 Не перемикайся на інші програми</li>
-        <li>🚫 Копіювання та довгий тап заблоковані</li>
+        <li>👁 Вихід з тесту фіксується (${CFG.maxViol} порушень = автозавершення)</li>
+        <li>🔀 У кожного учня свій набір питань</li>
+        <li>📵 Перемикання програм і скріншоти фіксуються</li>
         <li>↩️ Повернутись до питання неможливо</li>
       </ul>
     </div>
-
-    <button class="btn btn-primary" onclick="startQuiz()">Почати тест →</button>
-    <button class="btn btn-ghost" style="margin-top:6px;font-size:12px" onclick="renderTeacherLogin()">🔐 Я вчитель</button>
+    <button class="btn btn-p" onclick="startQuiz()">Розпочати контрольну →</button>
+    <button class="btn btn-g" style="margin-top:5px;font-size:11px" onclick="renderTLogin()">🔐 Я вчитель — переглянути результати</button>
   </div>`;
-
-  $("inp-surname").addEventListener("keydown",e=>e.key==="Enter"&&$("inp-name").focus());
-  $("inp-name").addEventListener("keydown",e=>e.key==="Enter"&&startQuiz());
+  $('is').addEventListener('keydown',e=>e.key==='Enter'&&$('in').focus());
+  $('in').addEventListener('keydown',e=>e.key==='Enter'&&startQuiz());
 }
 
-function startQuiz() {
-  const name = $("inp-name").value.trim();
-  const surname = $("inp-surname").value.trim();
-  if(!name||!surname) {
-    const err = $("name-err");
-    err.textContent = "Введи прізвище та ім'я!";
-    err.style.display = "block";
-    return;
-  }
-  state = {
-    phase: "quiz",
-    studentName: `${surname} ${name}`,
-    questions: shuffle(QUESTIONS).map(q=>{
-      const opts = shuffle(q.opts.map((o,i)=>({text:o, correct:i===q.correct})));
-      return { ...q, opts };
-    }),
-    current: 0,
-    score: 0,
-    selected: null,
-    confirmed: false,
-    violations: { tabSwitch:0, blur:0, fullscreen:0, total:0 },
-    startTime: Date.now(),
-    timerInterval: null,
-    timeLeft: CONFIG.timeLimit,
-    done: false,
-  };
-  setupAntiCheat();
-  requestFs();
-  startTimer();
-  renderQuiz();
+function startQuiz(){
+  const n=$('in').value.trim(),sn=$('is').value.trim();
+  if(!n||!sn){$('er').style.display='block';return}
+  S={phase:'quiz',name:`${sn} ${n}`,questions:selectQ(),cur:0,score:0,sel:null,conf:false,
+    v:{total:0},start:Date.now(),tLeft:CFG.timeLimit,tInt:null,done:false};
+  setupAC();reqFs();startTimer();renderQ();
 }
 
-/* ── Тест ── */
-function startTimer() {
-  clearInterval(state.timerInterval);
-  state.timerInterval = setInterval(()=>{
-    if(state.phase!=="quiz") { clearInterval(state.timerInterval); return; }
-    state.timeLeft--;
-    updateTimerUI();
-    if(state.timeLeft<=0) { clearInterval(state.timerInterval); finishQuiz(false); }
-  }, 1000);
-}
-
-function updateTimerUI() {
-  const el = $("timer");
-  if(!el) return;
-  const m = String(Math.floor(state.timeLeft/60)).padStart(2,"0");
-  const s = String(state.timeLeft%60).padStart(2,"0");
-  el.textContent = `⏱ ${m}:${s}`;
-  el.className = "timer" + (state.timeLeft<=60?" urgent":"");
-}
-
-function renderQuiz() {
-  if(!state.questions) return;
-  const q = state.questions[state.current];
-  const pct = Math.round((state.current/state.questions.length)*100);
-  const vt = state.violations.total;
-  const m = String(Math.floor(state.timeLeft/60)).padStart(2,"0");
-  const s = String(state.timeLeft%60).padStart(2,"0");
-
-  app.innerHTML = `
-  <div class="card">
-    <div class="quiz-header">
-      <span class="quiz-progress">${state.current+1} / ${state.questions.length}</span>
-      <div style="display:flex;gap:10px;align-items:center">
-        ${vt>0?`<span class="viol-badge">⚠️ ${vt}/${CONFIG.maxViol}</span>`:""}
-        <span class="timer${state.timeLeft<=60?" urgent":""}" id="timer">⏱ ${m}:${s}</span>
-      </div>
-    </div>
-    <div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div>
-    <div class="student-tag">👤 ${state.studentName}</div>
-    <p class="question">${q.q}</p>
-    <div class="options" id="opts">
-      ${q.opts.map((o,i)=>{
-        let cls = "option";
-        if(state.confirmed){
-          if(o.correct) cls+=" correct";
-          else if(state.selected===i) cls+=" wrong";
-        } else if(state.selected===i) cls+=" selected";
-        return `<button class="${cls}" onclick="selectOpt(${i})" ${state.confirmed?"disabled":""}>
-          <span class="option-letter">${String.fromCharCode(65+i)}</span>${o.text}
-        </button>`;
-      }).join("")}
-    </div>
-    <button class="btn btn-primary" id="confirm-btn" onclick="confirmAnswer()" ${state.selected===null||state.confirmed?"disabled":""}>
-      ${state.confirmed?"✓ Зараховано":"Підтвердити →"}
-    </button>
-    ${state.confirmed?`<div class="hint">💡 ${q.hint}</div>`:""}
-  </div>`;
-}
-
-function selectOpt(i) {
-  if(state.confirmed) return;
-  state.selected = i;
-  renderQuiz();
-}
-
-function confirmAnswer() {
-  if(state.selected===null||state.confirmed) return;
-  const q = state.questions[state.current];
-  const correct = q.opts[state.selected].correct;
-  if(correct) state.score++;
-  state.confirmed = true;
-  renderQuiz();
-  setTimeout(()=>{
-    if(state.current+1>=state.questions.length) finishQuiz(false);
-    else {
-      state.current++;
-      state.selected=null;
-      state.confirmed=false;
-      renderQuiz();
+// ══════════════════════════════════════════
+// ⏱ ТАЙМЕР
+// ══════════════════════════════════════════
+function startTimer(){
+  clearInterval(S.tInt);
+  S.tInt=setInterval(()=>{
+    if(S.phase!=='quiz'){clearInterval(S.tInt);return}
+    S.tLeft--;
+    const el=$('timer');
+    if(el){
+      const m=String(Math.floor(S.tLeft/60)).padStart(2,'0');
+      const s=String(S.tLeft%60).padStart(2,'0');
+      el.textContent=`⏱ ${m}:${s}`;
+      el.className='timer'+(S.tLeft<=120?' urg':'');
     }
-  }, 900);
+    if(S.tLeft<=0){clearInterval(S.tInt);finish(false)}
+  },1000);
 }
 
-/* ── Завершення ── */
-async function finishQuiz(terminated) {
-  if(state.done) return;
-  state.done = true;
-  state.phase = "result";
-  clearInterval(state.timerInterval);
-  removeAntiCheat();
-
-  const elapsed = Math.round((Date.now()-state.startTime)/1000);
-  const mm = String(Math.floor(elapsed/60)).padStart(2,"0");
-  const ss = String(elapsed%60).padStart(2,"0");
-  const pct = Math.round((state.score/state.questions.length)*100);
-  const g = gradeInfo(pct);
-
-  const resultData = {
-    name:       state.studentName,
-    score:      `${state.score}/${state.questions.length}`,
-    percent:    pct,
-    grade:      g.label,
-    violations: state.violations.total,
-    terminated: terminated,
-    timeSpent:  `${mm}:${ss}`,
-    timestamp:  nowStr(),
-  };
-
-  renderResult(resultData, terminated, g, "sending");
-  const ok = await sendToSheets(resultData);
-  renderResult(resultData, terminated, g, ok?"ok":"fail");
+// ══════════════════════════════════════════
+// 📝 РЕНДЕР ПИТАННЯ
+// ══════════════════════════════════════════
+function getLevel(q){
+  if(POOL.easy.find(x=>x.q===q.q))return'easy';
+  if(POOL.medium.find(x=>x.q===q.q))return'medium';
+  return'hard';
 }
+const lvlCls={easy:'l1',medium:'l2',hard:'l3'};
+const lvlLbl={easy:'Базовий','medium':'Середній','hard':'Достатній'};
 
-/* ── Результат ── */
-function renderResult(data, terminated, g, sendStatus) {
-  const vt = data.violations||0;
-  const icon = terminated?"🚫":data.percent===100?"🏆":data.percent>=66?"🎉":"📖";
-  const statusMap = {
-    sending:{ text:"⏳ Відправляємо результат...", cls:"sending" },
-    ok:     { text:"✅ Результат записано в Google Таблицю!", cls:"ok" },
-    fail:   { text:"⚠️ Не вдалось відправити. Попроси вчителя переглянути особисто.", cls:"fail" },
-  };
-  const st = statusMap[sendStatus];
-
-  app.innerHTML = `
+function renderQ(){
+  if(!S.questions)return;
+  const q=S.questions[S.cur];
+  const pct=Math.round(S.cur/S.questions.length*100);
+  const vt=S.v.total;
+  const m=String(Math.floor(S.tLeft/60)).padStart(2,'0');
+  const sc=String(S.tLeft%60).padStart(2,'0');
+  const lv=getLevel(q);
+  app.innerHTML=`
   <div class="card">
-    <div class="result-icon">${icon}</div>
-    <h2 style="text-align:center">${terminated?"Тест завершено достроково":"Результат"}</h2>
-    ${terminated?`<div class="error" style="text-align:center;margin:8px 0;font-size:14px">Тест завершено через ${CONFIG.maxViol} порушення правил</div>`:""}
-    <div class="score-big" style="color:${g.color}">${data.score}</div>
-    <div class="grade-label" style="color:${g.color}">Орієнтовна оцінка: ${g.label}</div>
-    <div class="bar-bg"><div class="bar-fill" style="width:${data.percent}%;background:${terminated?'var(--red)':g.color}"></div></div>
-
-    <div class="report-box">
-      <div class="report-title">📊 Звіт про проходження</div>
-      <div class="report-grid">
-        <div class="report-item"><span class="report-val">${(data.violations||0)>0?data.violations:"0"}</span><span class="report-lbl" style="color:${vt>0?"var(--red)":"var(--muted)"}">Всього порушень</span></div>
-        <div class="report-item"><span class="report-val" style="color:${g.color}">${data.percent}%</span><span class="report-lbl">Результат</span></div>
-      </div>
-      <div class="time-spent">⏱ Витрачено часу: ${data.timeSpent}</div>
-      <div class="report-status">
-        ${terminated?"🔴 Завершено через порушення":vt===0?"🟢 Порушень не виявлено":`🟡 Виявлено ${vt} підозрілих дій`}
+    <div class="qhead">
+      <span class="qprog">${S.cur+1} / ${S.questions.length}</span>
+      <div style="display:flex;gap:7px;align-items:center">
+        ${vt>0?`<span class="vbadge">⚠️ ${vt}/${CFG.maxViol}</span>`:''}
+        <span class="timer${S.tLeft<=120?' urg':''}" id="timer">⏱ ${m}:${sc}</span>
       </div>
     </div>
-
-    <div class="send-status ${st.cls}" id="send-status">${st.text}</div>
-    <button class="btn btn-ghost" style="margin-top:14px" onclick="renderIntro()">← На початок</button>
+    <div class="bar"><div class="barf" style="width:${pct}%"></div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px">
+      <span class="stag">👤 ${S.name}</span>
+      <span class="ltag ${lvlCls[lv]}">${lvlLbl[lv]} рівень</span>
+    </div>
+    <p class="qtext">${q.q}</p>
+    ${q.svg||''}
+    <div class="opts">
+      ${q.opts.map((o,i)=>{
+        let cl='opt';
+        if(S.conf){if(o.ok)cl+=' ok';else if(S.sel===i)cl+=' no';}
+        else if(S.sel===i)cl+=' sel';
+        return`<button class="${cl}" onclick="selOpt(${i})" ${S.conf?'disabled':''}>
+          <span class="ol">${String.fromCharCode(65+i)}</span><span>${o.t}</span>
+        </button>`;
+      }).join('')}
+    </div>
+    <button class="btn btn-p" onclick="confirm()" ${S.sel===null||S.conf?'disabled':''}>
+      ${S.conf?'✓ Зараховано — переходимо далі...':'Підтвердити відповідь →'}
+    </button>
+    ${S.conf?`<div class="hint">💡 ${q.hint}</div>`:''}
   </div>`;
 }
 
-/* ── Вхід вчителя ── */
-function renderTeacherLogin() {
-  app.innerHTML = `
+function selOpt(i){if(S.conf)return;S.sel=i;renderQ()}
+
+function confirm(){
+  if(S.sel===null||S.conf)return;
+  if(S.questions[S.cur].opts[S.sel].ok)S.score++;
+  S.conf=true;renderQ();
+  setTimeout(()=>{
+    if(S.cur+1>=S.questions.length)finish(false);
+    else{S.cur++;S.sel=null;S.conf=false;renderQ()}
+  },1400);
+}
+
+// ══════════════════════════════════════════
+// 🏁 ЗАВЕРШЕННЯ
+// ══════════════════════════════════════════
+async function finish(terminated){
+  if(S.done)return;S.done=true;S.phase='result';
+  clearInterval(S.tInt);removeL();
+  const el=Math.round((Date.now()-S.start)/1000);
+  const mm=String(Math.floor(el/60)).padStart(2,'0'),ss=String(el%60).padStart(2,'0');
+  const pct=Math.round(S.score/S.questions.length*100);
+  const g=gradeInfo(pct);
+  const data={name:S.name,score:`${S.score}/${S.questions.length}`,percent:pct,grade:g.l,violations:S.v.total,terminated,timeSpent:`${mm}:${ss}`,timestamp:nowStr()};
+  try{const ex=JSON.parse(localStorage.getItem('kr9-results')||'[]');ex.push(data);localStorage.setItem('kr9-results',JSON.stringify(ex))}catch{}
+  renderResult(data,terminated,g,'sending');
+  const ok=await sendToSheets(data);
+  renderResult(data,terminated,g,ok?'ok':'fail');
+}
+
+// ══════════════════════════════════════════
+// 🏆 РЕЗУЛЬТАТ
+// ══════════════════════════════════════════
+function renderResult(data,terminated,g,ss){
+  const vt=data.violations||0;
+  const icon=terminated?'🚫':data.percent>=92?'🏆':data.percent>=75?'🎉':data.percent>=42?'📖':'💪';
+  const stM={sending:{t:'⏳ Відправляємо результат...',c:'sending'},ok:{t:'✅ Результат записано в Google Таблицю!',c:'ok'},fail:{t:'⚠️ Збережено локально. Перевір інтернет.',c:'fail'}};
+  const st=stM[ss];
+  const tot=S.questions?S.questions.length:CFG.pick.reduce((a,b)=>a+b,0);
+  app.innerHTML=`
+  <div class="card">
+    <div class="ricon">${icon}</div>
+    <h2 style="text-align:center">${terminated?'Тест завершено достроково':'Контрольна завершена'}</h2>
+    ${terminated?`<p class="err" style="text-align:center;margin:5px 0">Завершено через ${CFG.maxViol} порушень правил</p>`:''}
+    <div class="rbig" style="color:${g.c}">${data.score}<span style="font-size:.4em;opacity:.55"> / ${tot}</span></div>
+    <div class="rlbl" style="color:${g.c}">Орієнтовна оцінка: ${g.l}</div>
+    <div class="bar"><div class="barf" style="width:${data.percent}%;background:${terminated?'var(--red)':g.c}"></div></div>
+    <div class="repbox">
+      <div class="reptitle">📊 Звіт про проходження</div>
+      <div class="repgrid">
+        <div class="repitem"><span class="repval" style="color:${g.c}">${data.percent}%</span><span class="replbl">Результат</span></div>
+        <div class="repitem"><span class="repval" style="color:${vt>0?'var(--red)':'var(--green)'}">${vt}</span><span class="replbl">Порушень зафіксовано</span></div>
+      </div>
+      <div class="tspent">⏱ Витрачено часу: ${data.timeSpent}</div>
+      <div class="repst">${terminated?'🔴 Завершено через порушення':vt===0?'🟢 Порушень не виявлено':`🟡 Виявлено ${vt} підозрілих дій`}</div>
+    </div>
+    <div class="sstatus ${st.c}">${st.t}</div>
+    <button class="btn btn-g" style="margin-top:10px;font-size:12px" onclick="renderIntro()">← На початок</button>
+  </div>`;
+}
+
+// ══════════════════════════════════════════
+// 🔐 ВХІД ВЧИТЕЛЯ
+// ══════════════════════════════════════════
+function renderTLogin(){
+  app.innerHTML=`
   <div class="card">
     <div class="badge">🔐 Панель вчителя</div>
     <h2>Вхід</h2>
-    <p class="sub">Введи пароль для перегляду результатів</p>
-    <div class="input-group">
-      <label>Пароль</label>
-      <input id="t-pass" type="password" placeholder="••••••••" autocomplete="off"/>
-    </div>
-    <p class="error" id="t-err" style="display:none">Невірний пароль</p>
-    <button class="btn btn-primary" onclick="checkTeacherPass()">Увійти →</button>
-    <button class="btn btn-ghost" style="margin-top:8px" onclick="renderIntro()">← Назад</button>
+    <p class="sub">Введи пароль для перегляду результатів класу</p>
+    <div class="ig"><label>Пароль</label><input id="tp" type="password" placeholder="••••••••" autocomplete="off"/></div>
+    <p class="err" id="te" style="display:none">Невірний пароль</p>
+    <button class="btn btn-p" onclick="checkPass()">Увійти →</button>
+    <button class="btn btn-g" style="margin-top:5px" onclick="renderIntro()">← Назад</button>
   </div>`;
-  $("t-pass").addEventListener("keydown",e=>e.key==="Enter"&&checkTeacherPass());
+  $('tp').addEventListener('keydown',e=>e.key==='Enter'&&checkPass());
 }
+function checkPass(){if($('tp').value===CFG.pass)renderTeacher();else $('te').style.display='block'}
 
-function checkTeacherPass() {
-  if($("t-pass").value===CONFIG.teacherPassword) renderTeacherPanel();
-  else { $("t-err").style.display="block"; }
-}
+// ══════════════════════════════════════════
+// 📊 ПАНЕЛЬ ВЧИТЕЛЯ (читає з Google Sheets)
+// ══════════════════════════════════════════
+async function renderTeacher(){
+  app.innerHTML=`<div class="card" style="text-align:center;padding:50px 20px">
+    <div style="font-size:36px;margin-bottom:12px">⏳</div>
+    <p style="color:var(--muted);font-size:13px">Завантажуємо результати з Google Sheets...</p>
+  </div>`;
 
-/* ── Панель вчителя ── */
-async function renderTeacherPanel() {
-  app.innerHTML = `<div class="card"><div class="empty">⏳ Завантаження...</div></div>`;
-  let results = [];
-  try {
-    const raw = localStorage.getItem("quiz-results");
-    results = raw ? JSON.parse(raw) : [];
-  } catch(_) {}
+  let res=[],source='sheets';
+  try{
+    const resp=await fetch(CFG.webhook+'?action=list');
+    const json=await resp.json();
+    if(json.success&&Array.isArray(json.results))res=json.results;
+  }catch{
+    // Резервний варіант — localStorage
+    source='local';
+    try{res=JSON.parse(localStorage.getItem('kr9-results')||'[]')}catch{}
+  }
 
-  const total = results.length;
-  const avg   = total ? Math.round(results.reduce((s,r)=>s+r.percent,0)/total) : 0;
-  const terms = results.filter(r=>r.terminated).length;
-  const viols = results.filter(r=>r.violations>0).length;
-  const sorted = [...results].sort((a,b)=>b.percent-a.percent);
+  const tot=res.length,avg=tot?Math.round(res.reduce((s,r)=>s+r.percent,0)/tot):0;
+  const terms=res.filter(r=>r.terminated).length,viols=res.filter(r=>r.violations>0).length;
+  const sorted=[...res].sort((a,b)=>b.percent-a.percent);
+  const srcLabel=source==='sheets'
+    ?`<span style="color:var(--green);font-size:10px">🟢 Дані з Google Sheets</span>`
+    :`<span style="color:var(--yellow);font-size:10px">🟡 Дані з локального сховища</span>`;
 
-  app.innerHTML = `
-  <div class="card" style="max-width:600px">
-    <div class="tb-header">
-      <div>
-        <div class="badge">🔐 Панель вчителя</div>
-        <h2 style="margin-top:8px">Результати класу</h2>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-ghost" style="width:auto;padding:8px 12px;font-size:18px;margin-top:0" title="Оновити" onclick="renderTeacherPanel()">🔄</button>
-        <button class="btn btn-ghost" style="width:auto;padding:8px 14px;font-size:13px;margin-top:0" onclick="renderIntro()">← Вийти</button>
+  app.innerHTML=`
+  <div class="card" style="max-width:580px">
+    <div class="tbh">
+      <div><div class="badge">🔐 Вчитель</div><h2 style="margin-top:5px">Результати класу</h2>${srcLabel}</div>
+      <div style="display:flex;gap:5px">
+        <button class="btn btn-g" style="width:auto;padding:7px 9px;font-size:15px;margin-top:0" onclick="renderTeacher()">🔄</button>
+        <button class="btn btn-g" style="width:auto;padding:7px 11px;font-size:11px;margin-top:0" onclick="renderIntro()">← Вийти</button>
       </div>
     </div>
-
-    ${total>0?`
-    <div class="stats-row">
-      <div class="mini-stat"><div class="mini-stat-val">${total}</div><div class="mini-stat-lbl">Здали тест</div></div>
-      <div class="mini-stat"><div class="mini-stat-val">${avg}%</div><div class="mini-stat-lbl">Середній %</div></div>
-      <div class="mini-stat"><div class="mini-stat-val">${terms}</div><div class="mini-stat-lbl">Дострокових</div></div>
-      <div class="mini-stat"><div class="mini-stat-val">${viols}</div><div class="mini-stat-lbl">З порушеннями</div></div>
-    </div>`:""}
-
-    ${total===0
-      ? `<div class="empty">📭 Поки немає жодного результату</div>`
-      : sorted.map(r=>{
-          const g = gradeInfo(r.percent);
-          const rowCls = r.terminated?"fail":r.violations>0?"warn":"";
-          return `<div class="result-row ${rowCls}">
-            <div class="rr-top">
-              <div><div class="rr-name">${r.name}</div><div class="rr-time">${r.timestamp||""}</div></div>
-              <div><div class="rr-score" style="color:${g.color}">${r.score} (${r.percent}%)</div><div class="rr-grade">Оцінка ~${r.grade}</div></div>
-            </div>
-            <div class="tags">
-              ${r.terminated?`<span class="tag tag-danger">🚫 Дострокове завершення</span>`:""}
-              ${r.violations>0&&!r.terminated?`<span class="tag tag-warn">⚠️ ${r.violations} порушень</span>`:""}
-              ${r.violations===0?`<span class="tag tag-ok">✅ Без порушень</span>`:""}
-              ${r.timeSpent?`<span class="tag" style="background:rgba(255,255,255,0.06);color:var(--muted)">⏱ ${r.timeSpent}</span>`:""}
-            </div>
-          </div>`;
-        }).join("")
-    }
-
-    ${total>0?`
-    <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
-      <button class="btn btn-primary" id="copy-btn" onclick="copyForSheets()">📋 Скопіювати для Google Sheets</button>
-      <button class="btn btn-danger" onclick="clearResults()">🗑 Очистити всі результати</button>
-    </div>`:""}
+    ${tot>0?`<div class="srow">
+      <div class="ms"><div class="msv">${tot}</div><div class="msl">Здали</div></div>
+      <div class="ms"><div class="msv">${avg}%</div><div class="msl">Середній %</div></div>
+      <div class="ms"><div class="msv">${terms}</div><div class="msl">Дострокових</div></div>
+      <div class="ms"><div class="msv">${viols}</div><div class="msl">З порушеннями</div></div>
+    </div>`:''}
+    ${tot===0
+      ?`<div class="empty">📭 Поки немає результатів</div>`
+      :sorted.map(r=>{
+        const g=gradeInfo(r.percent);
+        return`<div class="rrow ${r.terminated?'fail':r.violations>0?'warn':''}">
+          <div class="rrtop">
+            <div><div class="rrn">${r.name}</div><div class="rrt">${r.timestamp||''}</div></div>
+            <div><div class="rrs" style="color:${g.c}">${r.score} (${r.percent}%)</div><div class="rrg">~${g.l}</div></div>
+          </div>
+          <div class="tags">
+            ${r.terminated?`<span class="tag tdng">🚫 Дострокове</span>`:''}
+            ${r.violations>0&&!r.terminated?`<span class="tag twarn">⚠️ ${r.violations} порушень</span>`:''}
+            ${r.violations===0?`<span class="tag tok">✅ Чисто</span>`:''}
+            ${r.timeSpent?`<span class="tag" style="background:rgba(255,255,255,.05);color:var(--muted)">⏱ ${r.timeSpent}</span>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+    ${tot>0?`<div style="display:flex;flex-direction:column;gap:5px;margin-top:12px">
+      <button class="btn btn-p" id="cbtn" onclick="copySheets()">📋 Скопіювати для Google Sheets</button>
+    </div>`:''}
   </div>`;
+  // зберігаємо res глобально для copySheets
+  window._teacherRes=res;
 }
 
-function copyForSheets() {
-  let results = [];
-  try { results = JSON.parse(localStorage.getItem("quiz-results")||"[]"); } catch(_){}
-  const header = "Прізвище та ім'я\tБал\t%\tОцінка\tПорушень\tДострокове\tЧас виконання\tДата";
-  const rows = [...results]
-    .sort((a,b)=>a.name.localeCompare(b.name))
-    .map(r=>`${r.name}\t${r.score}\t${r.percent}%\t${r.grade}\t${r.violations}\t${r.terminated?"Так":"Ні"}\t${r.timeSpent||""}\t${r.timestamp||""}`)
-    .join("\n");
-  navigator.clipboard.writeText(header+"\n"+rows).then(()=>{
-    const btn = $("copy-btn");
-    if(btn){ btn.textContent="✅ Скопійовано! Вставляй у Google Sheets"; btn.classList.add("copied-btn"); }
-  }).catch(()=>alert("Не вдалось скопіювати"));
+function copySheets(){
+  const res=window._teacherRes||[];
+  const h="Прізвище та ім'я\tБал\t%\tОцінка\tПорушень\tДострокове\tЧас\tДата";
+  const rows=[...res].sort((a,b)=>a.name.localeCompare(b.name))
+    .map(r=>`${r.name}\t${r.score}\t${r.percent}%\t${r.grade}\t${r.violations}\t${r.terminated?'Так':'Ні'}\t${r.timeSpent||''}\t${r.timestamp||''}`)
+    .join('\n');
+  navigator.clipboard.writeText(h+'\n'+rows).then(()=>{
+    const b=$('cbtn');if(b){b.textContent='✅ Скопійовано!';b.classList.add('cpbtn')}
+  }).catch(()=>alert('Не вдалось скопіювати — спробуй на ПК'));
 }
 
-function clearResults() {
-  if(!confirm("Видалити всі результати?")) return;
-  localStorage.removeItem("quiz-results");
-  renderTeacherPanel();
-}
-
-// ── Збереження результатів локально (резервна копія)
-const _origSend = sendToSheets;
-window.sendToSheets = async function(data) {
-  // Зберігаємо локально як резервну копію
-  try {
-    const existing = JSON.parse(localStorage.getItem("quiz-results")||"[]");
-    existing.push(data);
-    localStorage.setItem("quiz-results", JSON.stringify(existing));
-  } catch(_){}
-  return _origSend(data);
-};
-
-// ══════════════════════════════════════════════════════
-// 🚀  Старт
-// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+// 🚀 СТАРТ
+// ══════════════════════════════════════════
 renderIntro();
 </script>
 </body>
