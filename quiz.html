@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title>Перевірка знань · 7 клас · Математика</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  /* ── Змінні ── */
+  :root {
+    --bg: #0f0f1a;
+    --card: #1a1a2e;
+    --card2: #16213e;
+    --accent: #7c5cfc;
+    --accent2: #a78bfa;
+    --green: #10b981;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: rgba(124,92,252,0.2);
+    --radius: 20px;
+  }
+
+  /* ── Скидання ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+
+  /* ── Фон ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,92,252,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 90%, rgba(167,139,250,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ── Обгортка ── */
+  #app {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px 16px;
+  }
+
+  /* ── Картка ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    width: 100%; max-width: 520px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,92,252,0.1);
+    animation: slideUp .4s cubic-bezier(.16,1,.3,1) both;
+  }
+  @keyframes slideUp {
+    from { opacity:0; transform: translateY(24px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ── Бейдж ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(124,92,252,0.15);
+    border: 1px solid rgba(124,92,252,0.3);
+    color: var(--accent2);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    letter-spacing: .04em;
+    margin-bottom: 16px;
+  }
+
+  /* ── Заголовки ── */
+  h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(18px,4vw,24px);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+  /* ── Поля вводу ── */
+  .input-group { margin-bottom: 14px; }
+  .input-group label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .input-group input {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .input-group input:focus { border-color: var(--accent); }
+  .input-group input::placeholder { color: rgba(255,255,255,0.25); }
+
+  /* ── Правила ── */
+  .rule-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 22px;
+  }
+  .rule-title { font-weight: 700; font-size: 13px; margin-bottom: 10px; color: var(--accent2); }
+  .rules { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .rules li { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  /* ── Кнопки ── */
+  .btn {
+    width: 100%;
+    padding: 15px;
+    border: none; border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s, opacity .15s;
+    margin-top: 8px;
+    letter-spacing: .02em;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(124,92,252,0.35);
+  }
+  .btn-primary:hover { box-shadow: 0 12px 32px rgba(124,92,252,0.5); transform: translateY(-1px); }
+  .btn-ghost { background: rgba(255,255,255,0.06); color: var(--muted); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+  .btn-danger { background: rgba(239,68,68,0.15); color: var(--red); }
+  .btn:disabled { opacity: .35; cursor: not-allowed; transform: none !important; }
+
+  /* ── Помилка ── */
+  .error { color: var(--red); font-size: 13px; margin-top: -8px; margin-bottom: 10px; }
+
+  /* ── Header тесту ── */
+  .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .quiz-progress { font-size: 13px; color: var(--muted); font-family: 'Unbounded', sans-serif; }
+  .timer { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent2); transition: color .3s; }
+  .timer.urgent { color: var(--red); animation: pulse .8s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  .viol-badge {
+    background: rgba(239,68,68,0.15);
+    color: var(--red);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 12px; font-weight: 700;
+  }
+
+  /* ── Прогрес-бар ── */
+  .bar-bg { height: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; margin-bottom: 24px; overflow: hidden; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 100px; transition: width .4s ease; }
+
+  /* ── Питання ── */
+  .student-tag { font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'Unbounded', sans-serif; margin-bottom: 14px; }
+  .question { font-size: clamp(17px,4vw,21px); font-weight: 700; line-height: 1.5; margin-bottom: 20px; }
+
+  /* ── Варіанти ── */
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+  .option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    font-size: 15px; font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    font-family: 'Manrope', sans-serif;
+    transition: all .2s;
+  }
+  .option:hover { background: rgba(124,92,252,0.1); border-color: rgba(124,92,252,0.3); transform: translateX(3px); }
+  .option:active { transform: scale(0.98); }
+  .option.selected { background: rgba(124,92,252,0.15); border-color: var(--accent); }
+  .option.correct  { background: rgba(16,185,129,0.15); border-color: var(--green); }
+  .option.wrong    { background: rgba(239,68,68,0.15);  border-color: var(--red); }
+  .option-letter {
+    min-width: 30px; height: 30px;
+    background: rgba(124,92,252,0.2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Unbounded', sans-serif; font-size: 11px;
+    color: var(--accent2); font-weight: 700;
+    flex-shrink: 0;
+  }
+  .option.selected .option-letter { background: var(--accent); color: #fff; }
+  .option.correct  .option-letter { background: var(--green); color: #fff; }
+  .option.wrong    .option-letter { background: var(--red);   color: #fff; }
+
+  /* ── Підказка ── */
+  .hint {
+    background: rgba(124,92,252,0.1);
+    border: 1px solid rgba(124,92,252,0.2);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--accent2);
+    margin-top: 10px;
+    animation: slideUp .3s ease;
+  }
+
+  /* ── Toast ── */
+  #toast {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    background: #1e1b4b;
+    border: 1px solid rgba(124,92,252,0.4);
+    color: #fff;
+    border-radius: 14px;
+    padding: 14px 20px;
+    z-index: 9999;
+    text-align: center;
+    font-size: 14px; font-weight: 600;
+    min-width: 260px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: none;
+    animation: toastIn .3s ease;
+  }
+  @keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(-10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+  #toast.show { display: block; }
+  #toast .toast-sub { font-size: 11px; color: var(--accent2); margin-top: 4px; }
+
+  /* ── Результат ── */
+  .result-icon { font-size: 56px; text-align: center; margin-bottom: 10px; }
+  .score-big {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(40px,10vw,60px);
+    font-weight: 900;
+    text-align: center;
+    margin: 8px 0 4px;
+    line-height: 1;
+  }
+  .grade-label { font-weight: 700; font-size: 16px; text-align: center; margin-bottom: 20px; }
+
+  /* ── Звіт ── */
+  .report-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .report-title { font-weight: 700; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+  .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+  .report-item { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; text-align: center; }
+  .report-val { font-family: 'Unbounded', sans-serif; font-size: 22px; font-weight: 900; display: block; }
+  .report-lbl { font-size: 10px; color: var(--muted); margin-top: 3px; display: block; }
+  .report-status { font-size: 13px; color: var(--muted); text-align: center; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .time-spent { font-size: 12px; color: var(--muted); text-align: center; margin-bottom: 8px; }
+
+  /* ── Статус відправки ── */
+  .send-status { text-align: center; font-size: 13px; font-weight: 600; margin-top: 10px; padding: 10px; border-radius: 10px; }
+  .send-status.sending { color: var(--muted); }
+  .send-status.ok  { color: var(--green); background: rgba(16,185,129,0.1); }
+  .send-status.fail { color: var(--yellow); background: rgba(245,158,11,0.1); }
+
+  /* ── Панель вчителя ── */
+  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 20px; }
+  .mini-stat { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 10px 6px; text-align: center; }
+  .mini-stat-val { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 900; }
+  .mini-stat-lbl { font-size: 9px; color: var(--muted); margin-top: 3px; }
+  .result-row {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 4px solid var(--green);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .result-row.warn  { border-left-color: var(--yellow); }
+  .result-row.fail  { border-left-color: var(--red); }
+  .rr-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .rr-name { font-weight: 700; font-size: 15px; }
+  .rr-time { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .rr-score { font-family: 'Unbounded', sans-serif; font-size: 17px; font-weight: 900; }
+  .rr-grade { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .tag { border-radius: 100px; padding: 2px 10px; font-size: 11px; font-weight: 700; }
+  .tag-ok     { background: rgba(16,185,129,0.15); color: var(--green); }
+  .tag-warn   { background: rgba(245,158,11,0.15); color: var(--yellow); }
+  .tag-danger { background: rgba(239,68,68,0.15);  color: var(--red); }
+  .empty { text-align: center; color: var(--muted); padding: 40px 0; font-size: 15px; }
+  .tb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+
+  .copied-btn { background: rgba(16,185,129,0.15) !important; color: var(--green) !important; }
+</style>
+</head>
+<body>
+<div id="toast"><span id="toast-msg"></span><div class="toast-sub" id="toast-sub"></div></div>
+<div id="app"></div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// ⚙️  НАЛАШТУВАННЯ — змінюй тут
+// ══════════════════════════════════════════════════════
+const CONFIG = {
+  subject:    "Математика",
+  grade:      "7 клас · ІІ семестр",
+  timeLimit:  5 * 60,          // секунди
+  maxViol:    3,
+  webhookUrl: "https://script.google.com/macros/s/AKfycbzMUQjuFYo1MteznR1HkKQQco0ml51GJBOneng13j7a1Gbbf2QCYMpv8w5UA1bzCLgU4Q/exec",
+  teacherPassword: "teacher2025",
+};
+
+const QUESTIONS = [
+  {
+    q: "Розв'яжи рівняння: 3x − 7 = 11",
+    opts: ["x = 6","x = 4","x = 18/3","x = 3"],
+    correct: 0,
+    hint: "Переноси −7 у праву частину та ділиш на 3",
+  },
+  {
+    q: "Яке значення лінійної функції y = 2x + 5 при x = −3?",
+    opts: ["y = −1","y = 11","y = 1","y = −11"],
+    correct: 0,
+    hint: "Підстав x = −3: y = 2·(−3) + 5 = −6 + 5 = −1",
+  },
+  {
+    q: "Спрости вираз: (2a²b) · (3ab³)",
+    opts: ["6a³b⁴","5a³b⁴","6a²b⁴","6a³b³"],
+    correct: 0,
+    hint: "Множиш коефіцієнти і додаєш показники: 2·3=6, a²·a=a³, b·b³=b⁴",
+  },
+];
+
+// ══════════════════════════════════════════════════════
+// 🛠  Утиліти
+// ══════════════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+const app = $("app");
+let state = {};
+
+function shuffle(arr) { return [...arr].sort(()=>Math.random()-.5); }
+
+function nowStr() { return new Date().toLocaleString("uk-UA"); }
+
+function gradeInfo(pct) {
+  if (pct===100) return { label:"12", color:"#a78bfa" };
+  if (pct>=66)   return { label:"9–10", color:"#10b981" };
+  if (pct>=33)   return { label:"6–7", color:"#f59e0b" };
+  return { label:"4–5", color:"#ef4444" };
+}
+
+function showToast(msg, sub="", dur=3000) {
+  $("toast-msg").textContent = msg;
+  $("toast-sub").textContent = sub;
+  const t = $("toast");
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove("show"), dur);
+}
+
+async function sendToSheets(data) {
+  try {
+    await fetch(CONFIG.webhookUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(data),
+    });
+    return true;
+  } catch(e) { return false; }
+}
+
+// ══════════════════════════════════════════════════════
+// 🔒  Антишахрай
+// ══════════════════════════════════════════════════════
+let cheatListeners = [];
+function setupAntiCheat() {
+  const add = (target, ev, fn) => { target.addEventListener(ev,fn); cheatListeners.push({target,ev,fn}); };
+
+  // Видимість (блокування екрану / перехід у фон)
+  add(document, "visibilitychange", ()=>{
+    if(document.hidden && state.phase==="quiz") addViolation("tabSwitch","🚨 Вихід з тесту зафіксовано!");
+  });
+  // Втрата фокусу (перехід в іншу програму)
+  add(window, "blur", ()=>{
+    if(state.phase==="quiz") addViolation("blur","🚨 Перемикання програми зафіксовано!");
+  });
+  // Повноекранний режим
+  add(document,"fullscreenchange", onFsChange);
+  add(document,"webkitfullscreenchange", onFsChange);
+  // Кнопка "Назад"
+  history.pushState(null,"",location.href);
+  add(window,"popstate",()=>{
+    history.pushState(null,"",location.href);
+    if(state.phase==="quiz") addViolation("blur","🚨 Спроба навігації зафіксована!");
+  });
+  // Клавіші (десктоп)
+  add(document,"keydown", e=>{
+    if(state.phase!=="quiz") return;
+    if((e.ctrlKey||e.metaKey)&&"cvuspa".includes(e.key.toLowerCase())) e.preventDefault();
+    if(e.key==="PrintScreen") { e.preventDefault(); showToast("🚫 Скріншот заблоковано"); }
+  });
+  // Контекстне меню (довгий тап на телефоні)
+  add(document,"contextmenu", e=>e.preventDefault());
+}
+
+function removeAntiCheat() {
+  cheatListeners.forEach(({target,ev,fn})=>target.removeEventListener(ev,fn));
+  cheatListeners=[];
+}
+
+function onFsChange() {
+  const isFs = !!(document.fullscreenElement||document.webkitFullscreenElement);
+  if(!isFs && state.phase==="quiz") {
+    addViolation("fullscreen","🚨 Вихід з повноекранного режиму!");
+    setTimeout(requestFs,500);
+  }
+}
+
+function requestFs() {
+  const el=document.documentElement;
+  try {
+    if(el.requestFullscreen) el.requestFullscreen();
+    else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  } catch(_){}
+}
+
+function addViolation(type, msg) {
+  if(state.phase!=="quiz") return;
+  state.violations[type] = (state.violations[type]||0)+1;
+  state.violations.total++;
+  const left = CONFIG.maxViol - state.violations.total;
+  showToast(msg, left>0 ? `Залишилось попереджень: ${left}` : "Тест буде завершено!");
+  renderQuiz();
+  if(state.violations.total >= CONFIG.maxViol) finishQuiz(true);
+}
+
+// ══════════════════════════════════════════════════════
+// 📋  СТОРІНКИ
+// ══════════════════════════════════════════════════════
+
+/* ── Intro ── */
+function renderIntro() {
+  state = { phase:"intro" };
+  app.innerHTML = `
+  <div class="card">
+    <div class="badge">✦ ${CONFIG.grade}</div>
+    <h1>Перевірка<br>знань</h1>
+    <p class="sub">${CONFIG.subject} · ${QUESTIONS.length} питань · ${Math.floor(CONFIG.timeLimit/60)} хвилин</p>
+
+    <div class="input-group">
+      <label>Прізвище</label>
+      <input id="inp-surname" type="text" placeholder="Наприклад: Шевченко" autocomplete="off"/>
+    </div>
+    <div class="input-group">
+      <label>Ім'я</label>
+      <input id="inp-name" type="text" placeholder="Наприклад: Тарас" autocomplete="off"/>
+    </div>
+    <p class="error" id="name-err" style="display:none"></p>
+
+    <div class="rule-box">
+      <div class="rule-title">📋 Правила тесту</div>
+      <ul class="rules">
+        <li>⏱ Таймер починається одразу після старту</li>
+        <li>🔒 Тест відкриється на весь екран</li>
+        <li>👁 ${CONFIG.maxViol} виходи = автоматичне завершення</li>
+        <li>📵 Не перемикайся на інші програми</li>
+        <li>🚫 Копіювання та довгий тап заблоковані</li>
+        <li>↩️ Повернутись до питання неможливо</li>
+      </ul>
+    </div>
+
+    <button class="btn btn-primary" onclick="startQuiz()">Почати тест →</button>
+    <button class="btn btn-ghost" style="margin-top:6px;font-size:12px" onclick="renderTeacherLogin()">🔐 Я вчитель</button>
+  </div>`;
+
+  $("inp-surname").addEventListener("keydown",e=>e.key==="Enter"&&$("inp-name").focus());
+  $("inp-name").addEventListener("keydown",e=>e.key==="Enter"&&startQuiz());
+}
+
+function startQuiz() {
+  const name = $("inp-name").value.trim();
+  const surname = $("inp-surname").value.trim();
+  if(!name||!surname) {
+    const err = $("name-err");
+    err.textContent = "Введи прізвище та ім'я!";
+    err.style.display = "block";
+    return;
+  }
+  state = {
+    phase: "quiz",
+    studentName: `${surname} ${name}`,
+    questions: shuffle(QUESTIONS).map(q=>{
+      const opts = shuffle(q.opts.map((o,i)=>({text:o, correct:i===q.correct})));
+      return { ...q, opts };
+    }),
+    current: 0,
+    score: 0,
+    selected: null,
+    confirmed: false,
+    violations: { tabSwitch:0, blur:0, fullscreen:0, total:0 },
+    startTime: Date.now(),
+    timerInterval: null,
+    timeLeft: CONFIG.timeLimit,
+    done: false,
+  };
+  setupAntiCheat();
+  requestFs();
+  startTimer();
+  renderQuiz();
+}
+
+/* ── Тест ── */
+function startTimer() {
+  clearInterval(state.timerInterval);
+  state.timerInterval = setInterval(()=>{
+    if(state.phase!=="quiz") { clearInterval(state.timerInterval); return; }
+    state.timeLeft--;
+    updateTimerUI();
+    if(state.timeLeft<=0) { clearInterval(state.timerInterval); finishQuiz(false); }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const el = $("timer");
+  if(!el) return;
+  const m = String(Math.floor(state.timeLeft/60)).padStart(2,"0");
+  const s = String(state.timeLeft%60).padStart(2,"0");
+  el.textContent = `⏱ ${m}:${s}`;
+  el.className = "timer" + (state.timeLeft<=60?" urgent":"");
+}
+
+function renderQuiz() {
+  if(!state.questions) return;
+  const q = state.questions[state.current];
+  const pct = Math.round((state.current/state.questions.length)*100);
+  const vt = state.violations.total;
+  const m = String(Math.floor(state.timeLeft/60)).padStart(2,"0");
+  const s = String(state.timeLeft%60).padStart(2,"0");
+
+  app.innerHTML = `
+  <div class="card">
+    <div class="quiz-header">
+      <span class="quiz-progress">${state.current+1} / ${state.questions.length}</span>
+      <div style="display:flex;gap:10px;align-items:center">
+        ${vt>0?`<span class="viol-badge">⚠️ ${vt}/${CONFIG.maxViol}</span>`:""}
+        <span class="timer${state.timeLeft<=60?" urgent":""}" id="timer">⏱ ${m}:${s}</span>
+      </div>
+    </div>
+    <div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div>
+    <div class="student-tag">👤 ${state.studentName}</div>
+    <p class="question">${q.q}</p>
+    <div class="options" id="opts">
+      ${q.opts.map((o,i)=>{
+        let cls = "option";
+        if(state.confirmed){
+          if(o.correct) cls+=" correct";
+          else if(state.selected===i) cls+=" wrong";
+        } else if(state.selected===i) cls+=" selected";
+        return `<button class="${cls}" onclick="selectOpt(${i})" ${state.confirmed?"disabled":""}>
+          <span class="option-letter">${String.fromCharCode(65+i)}</span>${o.text}
+        </button>`;
+      }).join("")}
+    </div>
+    <button class="btn btn-primary" id="confirm-btn" onclick="confirmAnswer()" ${state.selected===null||state.confirmed?"disabled":""}>
+      ${state.confirmed?"✓ Зараховано":"Підтвердити →"}
+    </button>
+    ${state.confirmed?`<div class="hint">💡 ${q.hint}</div>`:""}
+  </div>`;
+}
+
+function selectOpt(i) {
+  if(state.confirmed) return;
+  state.selected = i;
+  renderQuiz();
+}
+
+function confirmAnswer() {
+  if(state.selected===null||state.confirmed) return;
+  const q = state.questions[state.current];
+  const correct = q.opts[state.selected].correct;
+  if(correct) state.score++;
+  state.confirmed = true;
+  renderQuiz();
+  setTimeout(()=>{
+    if(state.current+1>=state.questions.length) finishQuiz(false);
+    else {
+      state.current++;
+      state.selected=null;
+      state.confirmed=false;
+      renderQuiz();
+    }
+  }, 900);
+}
+
+/* ── Завершення ── */
+async function finishQuiz(terminated) {
+  if(state.done) return;
+  state.done = true;
+  state.phase = "result";
+  clearInterval(state.timerInterval);
+  removeAntiCheat();
+
+  const elapsed = Math.round((Date.now()-state.startTime)/1000);
+  const mm = String(Math.floor(elapsed/60)).padStart(2,"0");
+  const ss = String(elapsed%60).padStart(2,"0");
+  const pct = Math.round((state.score/state.questions.length)*100);
+  const g = gradeInfo(pct);
+
+  const resultData = {
+    name:       state.studentName,
+    score:      `${state.score}/${state.questions.length}`,
+    percent:    pct,
+    grade:      g.label,
+    violations: state.violations.total,
+    terminated: terminated,
+    timeSpent:  `${mm}:${ss}`,
+    timestamp:  nowStr(),
+  };
+
+  renderResult(resultData, terminated, g, "sending");
+  const ok = await sendToSheets(resultData);
+  renderResult(resultData, terminated, g, ok?"ok":"fail");
+}
+
+/* ── Результат ── */
+function renderResult(data, terminated, g, sendStatus) {
+  const vt = data.violations||0;
+  const icon = terminated?"🚫":data.percent===100?"🏆":data.percent>=66?"🎉":"📖";
+  const statusMap = {
+    sending:{ text:"⏳ Відправляємо результат...", cls:"sending" },
+    ok:     { text:"✅ Результат записано в Google Таблицю!", cls:"ok" },
+    fail:   { text:"⚠️ Не вдалось відправити. Попроси вчителя переглянути особисто.", cls:"fail" },
+  };
+  const st = statusMap[sendStatus];
+
+  app.innerHTML = `
+  <div class="card">
+    <div class="result-icon">${icon}</div>
+    <h2 style="text-align:center">${terminated?"Тест завершено достроково":"Результат"}</h2>
+    ${terminated?`<div class="error" style="text-align:center;margin:8px 0;font-size:14px">Тест завершено через ${CONFIG.maxViol} порушення правил</div>`:""}
+    <div class="score-big" style="color:${g.color}">${data.score}</div>
+    <div class="grade-label" style="color:${g.color}">Орієнтовна оцінка: ${g.label}</div>
+    <div class="bar-bg"><div class="bar-fill" style="width:${data.percent}%;background:${terminated?'var(--red)':g.color}"></div></div>
+
+    <div class="report-box">
+      <div class="report-title">📊 Звіт про проходження</div>
+      <div class="report-grid">
+        <div class="report-item"><span class="report-val">${(data.violations||0)>0?data.violations:"0"}</span><span class="report-lbl" style="color:${vt>0?"var(--red)":"var(--muted)"}">Всього порушень</span></div>
+        <div class="report-item"><span class="report-val" style="color:${g.color}">${data.percent}%</span><span class="report-lbl">Результат</span></div>
+      </div>
+      <div class="time-spent">⏱ Витрачено часу: ${data.timeSpent}</div>
+      <div class="report-status">
+        ${terminated?"🔴 Завершено через порушення":vt===0?"🟢 Порушень не виявлено":`🟡 Виявлено ${vt} підозрілих дій`}
+      </div>
+    </div>
+
+    <div class="send-status ${st.cls}" id="send-status">${st.text}</div>
+    <button class="btn btn-ghost" style="margin-top:14px" onclick="renderIntro()">← На початок</button>
+  </div>`;
+}
+
+/* ── Вхід вчителя ── */
+function renderTeacherLogin() {
+  app.innerHTML = `
+  <div class="card">
+    <div class="badge">🔐 Панель вчителя</div>
+    <h2>Вхід</h2>
+    <p class="sub">Введи пароль для перегляду результатів</p>
+    <div class="input-group">
+      <label>Пароль</label>
+      <input id="t-pass" type="password" placeholder="••••••••" autocomplete="off"/>
+    </div>
+    <p class="error" id="t-err" style="display:none">Невірний пароль</p>
+    <button class="btn btn-primary" onclick="checkTeacherPass()">Увійти →</button>
+    <button class="btn btn-ghost" style="margin-top:8px" onclick="renderIntro()">← Назад</button>
+  </div>`;
+  $("t-pass").addEventListener("keydown",e=>e.key==="Enter"&&checkTeacherPass());
+}
+
+function checkTeacherPass() {
+  if($("t-pass").value===CONFIG.teacherPassword) renderTeacherPanel();
+  else { $("t-err").style.display="block"; }
+}
+
+/* ── Панель вчителя ── */
+async function renderTeacherPanel() {
+  app.innerHTML = `<div class="card"><div class="empty">⏳ Завантаження...</div></div>`;
+  let results = [];
+  try {
+    const raw = localStorage.getItem("quiz-results");
+    results = raw ? JSON.parse(raw) : [];
+  } catch(_) {}
+
+  const total = results.length;
+  const avg   = total ? Math.round(results.reduce((s,r)=>s+r.percent,0)/total) : 0;
+  const terms = results.filter(r=>r.terminated).length;
+  const viols = results.filter(r=>r.violations>0).length;
+  const sorted = [...results].sort((a,b)=>b.percent-a.percent);
+
+  app.innerHTML = `
+  <div class="card" style="max-width:600px">
+    <div class="tb-header">
+      <div>
+        <div class="badge">🔐 Панель вчителя</div>
+        <h2 style="margin-top:8px">Результати класу</h2>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost" style="width:auto;padding:8px 12px;font-size:18px;margin-top:0" title="Оновити" onclick="renderTeacherPanel()">🔄</button>
+        <button class="btn btn-ghost" style="width:auto;padding:8px 14px;font-size:13px;margin-top:0" onclick="renderIntro()">← Вийти</button>
+      </div>
+    </div>
+
+    ${total>0?`
+    <div class="stats-row">
+      <div class="mini-stat"><div class="mini-stat-val">${total}</div><div class="mini-stat-lbl">Здали тест</div></div>
+      <div class="mini-stat"><div class="mini-stat-val">${avg}%</div><div class="mini-stat-lbl">Середній %</div></div>
+      <div class="mini-stat"><div class="mini-stat-val">${terms}</div><div class="mini-stat-lbl">Дострокових</div></div>
+      <div class="mini-stat"><div class="mini-stat-val">${viols}</div><div class="mini-stat-lbl">З порушеннями</div></div>
+    </div>`:""}
+
+    ${total===0
+      ? `<div class="empty">📭 Поки немає жодного результату</div>`
+      : sorted.map(r=>{
+          const g = gradeInfo(r.percent);
+          const rowCls = r.terminated?"fail":r.violations>0?"warn":"";
+          return `<div class="result-row ${rowCls}">
+            <div class="rr-top">
+              <div><div class="rr-name">${r.name}</div><div class="rr-time">${r.timestamp||""}</div></div>
+              <div><div class="rr-score" style="color:${g.color}">${r.score} (${r.percent}%)</div><div class="rr-grade">Оцінка ~${r.grade}</div></div>
+            </div>
+            <div class="tags">
+              ${r.terminated?`<span class="tag tag-danger">🚫 Дострокове завершення</span>`:""}
+              ${r.violations>0&&!r.terminated?`<span class="tag tag-warn">⚠️ ${r.violations} порушень</span>`:""}
+              ${r.violations===0?`<span class="tag tag-ok">✅ Без порушень</span>`:""}
+              ${r.timeSpent?`<span class="tag" style="background:rgba(255,255,255,0.06);color:var(--muted)">⏱ ${r.timeSpent}</span>`:""}
+            </div>
+          </div>`;
+        }).join("")
+    }
+
+    ${total>0?`
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
+      <button class="btn btn-primary" id="copy-btn" onclick="copyForSheets()">📋 Скопіювати для Google Sheets</button>
+      <button class="btn btn-danger" onclick="clearResults()">🗑 Очистити всі результати</button>
+    </div>`:""}
+  </div>`;
+}
+
+function copyForSheets() {
+  let results = [];
+  try { results = JSON.parse(localStorage.getItem("quiz-results")||"[]"); } catch(_){}
+  const header = "Прізвище та ім'я\tБал\t%\tОцінка\tПорушень\tДострокове\tЧас виконання\tДата";
+  const rows = [...results]
+    .sort((a,b)=>a.name.localeCompare(b.name))
+    .map(r=>`${r.name}\t${r.score}\t${r.percent}%\t${r.grade}\t${r.violations}\t${r.terminated?"Так":"Ні"}\t${r.timeSpent||""}\t${r.timestamp||""}`)
+    .join("\n");
+  navigator.clipboard.writeText(header+"\n"+rows).then(()=>{
+    const btn = $("copy-btn");
+    if(btn){ btn.textContent="✅ Скопійовано! Вставляй у Google Sheets"; btn.classList.add("copied-btn"); }
+  }).catch(()=>alert("Не вдалось скопіювати"));
+}
+
+function clearResults() {
+  if(!confirm("Видалити всі результати?")) return;
+  localStorage.removeItem("quiz-results");
+  renderTeacherPanel();
+}
+
+// ── Збереження результатів локально (резервна копія)
+const _origSend = sendToSheets;
+window.sendToSheets = async function(data) {
+  // Зберігаємо локально як резервну копію
+  try {
+    const existing = JSON.parse(localStorage.getItem("quiz-results")||"[]");
+    existing.push(data);
+    localStorage.setItem("quiz-results", JSON.stringify(existing));
+  } catch(_){}
+  return _origSend(data);
+};
+
+// ══════════════════════════════════════════════════════
+// 🚀  Старт
+// ══════════════════════════════════════════════════════
+renderIntro();
+</script>
+</body>
+</html>
