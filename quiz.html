@@ -3,54 +3,54 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-<title>Контрольні роботи · 9 клас</title>
+<title>Перевірка знань · 7 та 9 клас</title>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0f0f1a;--card:#1a1a2e;--accent:#7c5cfc;--a2:#a78bfa;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;--cyan:#22d3ee;--text:#f1f5f9;--muted:#94a3b8;--bdr:rgba(124,92,252,.2);--r:20px}
+:root{--bg:#0f0f1a;--card:#1a1a2e;--accent:#7c5cfc;--a2:#a78bfa;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;--cyan:#06b6d4;--text:#f1f5f9;--muted:#94a3b8;--bdr:rgba(124,92,252,.2);--r:20px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100vh;font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
-body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(124,92,252,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 90%,rgba(16,185,129,.1) 0%,transparent 60%);pointer-events:none}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(124,92,252,.16) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 90%,rgba(6,182,212,.1) 0%,transparent 60%);pointer-events:none}
 #app{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px 14px}
 .card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:28px 22px;width:100%;max-width:560px;box-shadow:0 24px 64px rgba(0,0,0,.5);animation:su .4s cubic-bezier(.16,1,.3,1) both}
-@keyframes su{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes su{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .badge{display:inline-flex;align-items:center;background:rgba(124,92,252,.15);border:1px solid rgba(124,92,252,.3);color:var(--a2);border-radius:100px;padding:4px 13px;font-family:'Unbounded',sans-serif;font-size:10px;letter-spacing:.04em;margin-bottom:11px}
+.badge.c7{background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.3);color:var(--cyan)}
+.badge.c9a{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:var(--green)}
 h1{font-family:'Unbounded',sans-serif;font-size:clamp(20px,5vw,28px);font-weight:900;line-height:1.1;margin-bottom:4px;background:linear-gradient(135deg,#fff 30%,var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h2{font-family:'Unbounded',sans-serif;font-size:clamp(15px,4vw,20px);font-weight:700;margin-bottom:5px}
 .sub{color:var(--muted);font-size:13px;margin-bottom:16px}
-
-/* ── Вибір тесту ── */
-.test-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.test-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 14px;cursor:pointer;text-align:center;transition:all .2s;font-family:'Manrope',sans-serif;color:var(--text)}
-.test-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
-.test-card.geo:hover,.test-card.geo:focus{border-color:var(--accent);background:rgba(124,92,252,.12)}
-.test-card.alg:hover,.test-card.alg:focus{border-color:var(--green);background:rgba(16,185,129,.1)}
-.tc-icon{font-size:32px;margin-bottom:8px}
-.tc-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;margin-bottom:4px}
-.tc-sub{font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.4}
-.tc-info{font-size:9px;color:rgba(255,255,255,.3);font-family:'Unbounded',sans-serif}
-
+/* ── Вибір класу/предмету ── */
+.sel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.sel-card{border-radius:16px;padding:20px 14px;cursor:pointer;text-align:center;font-family:'Manrope',sans-serif;color:var(--text);transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08)}
+.sel-card:active{transform:scale(.95)!important}
+.sel-card.g7{--clr:#06b6d4}.sel-card.g7:hover{border-color:var(--cyan);background:rgba(6,182,212,.1);transform:translateY(-4px);box-shadow:0 16px 40px rgba(6,182,212,.2)}
+.sel-card.gg{--clr:#7c5cfc}.sel-card.gg:hover{border-color:var(--accent);background:rgba(124,92,252,.12);transform:translateY(-4px);box-shadow:0 16px 40px rgba(124,92,252,.25)}
+.sel-card.ga{--clr:#10b981}.sel-card.ga:hover{border-color:var(--green);background:rgba(16,185,129,.1);transform:translateY(-4px);box-shadow:0 16px 40px rgba(16,185,129,.2)}
+.sel-icon{font-size:36px;margin-bottom:10px;display:block}
+.sel-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;margin-bottom:4px}
+.sel-sub{font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.45}
+.sel-info{font-size:9px;font-family:'Unbounded',sans-serif;color:rgba(255,255,255,.25)}
+.sel-card:hover .sel-info{color:var(--clr)}
 /* ── Форма ── */
-.ig{margin-bottom:10px}
-.ig label{display:block;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.ig{margin-bottom:10px}.ig label{display:block;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .ig input{width:100%;padding:11px 13px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;color:var(--text);font-size:16px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s}
-.ig input:focus{border-color:var(--accent)}
-.ig input::placeholder{color:rgba(255,255,255,.2)}
-.rbox{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-bottom:16px}
+.ig input:focus{border-color:var(--accent)}.ig input::placeholder{color:rgba(255,255,255,.2)}
+.rbox{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-bottom:14px}
 .rtitle{font-weight:700;font-size:11px;margin-bottom:6px;color:var(--a2)}
 .rules{list-style:none;display:flex;flex-direction:column;gap:5px}
 .rules li{font-size:11px;color:rgba(255,255,255,.65);line-height:1.5}
-
 /* ── Кнопки ── */
 .btn{width:100%;padding:13px;border:none;border-radius:12px;font-size:13px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;transition:transform .15s,box-shadow .15s;margin-top:5px;letter-spacing:.02em}
 .btn:active{transform:scale(.97)}
 .btn-p{background:linear-gradient(135deg,var(--accent),var(--a2));color:#fff;box-shadow:0 8px 24px rgba(124,92,252,.35)}
 .btn-p:hover{box-shadow:0 12px 32px rgba(124,92,252,.5);transform:translateY(-1px)}
-.btn-alg{background:linear-gradient(135deg,#059669,var(--green));color:#fff;box-shadow:0 8px 24px rgba(16,185,129,.3)}
-.btn-g{background:rgba(255,255,255,.06);color:var(--muted)}
-.btn-g:hover{background:rgba(255,255,255,.1)}
+.btn-c{background:linear-gradient(135deg,#0891b2,var(--cyan));color:#fff;box-shadow:0 8px 24px rgba(6,182,212,.3)}
+.btn-c:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(6,182,212,.45)}
+.btn-a{background:linear-gradient(135deg,#059669,var(--green));color:#fff;box-shadow:0 8px 24px rgba(16,185,129,.3)}
+.btn-a:hover{transform:translateY(-1px)}
+.btn-g{background:rgba(255,255,255,.06);color:var(--muted)}.btn-g:hover{background:rgba(255,255,255,.1)}
 .btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important}
 .err{color:var(--red);font-size:11px;margin-top:-4px;margin-bottom:6px}
-
 /* ── Тест ── */
 .qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
 .qprog{font-size:11px;color:var(--muted);font-family:'Unbounded',sans-serif}
@@ -61,33 +61,28 @@ h2{font-family:'Unbounded',sans-serif;font-size:clamp(15px,4vw,20px);font-weight
 .bar{height:4px;background:rgba(255,255,255,.08);border-radius:100px;margin-bottom:12px;overflow:hidden}
 .barf{height:100%;background:linear-gradient(90deg,var(--accent),var(--a2));border-radius:100px;transition:width .4s}
 .ltag{display:inline-block;border-radius:100px;padding:2px 8px;font-size:9px;font-weight:700}
-.l1{background:rgba(16,185,129,.15);color:#10b981}
-.l2{background:rgba(245,158,11,.15);color:#f59e0b}
-.l3{background:rgba(239,68,68,.15);color:#ef4444}
+.l1{background:rgba(16,185,129,.15);color:#10b981}.l2{background:rgba(245,158,11,.15);color:#f59e0b}.l3{background:rgba(239,68,68,.15);color:#ef4444}
 .stag{font-size:9px;color:rgba(255,255,255,.25);font-family:'Unbounded',sans-serif}
 .qtext{font-size:clamp(14px,3.5vw,17px);font-weight:600;line-height:1.65;margin-bottom:11px}
 .opts{display:flex;flex-direction:column;gap:7px;margin-bottom:11px}
-/* ✅ Bug fix: тільки color transition, без transform — немає стрибка */
 .opt{display:flex;align-items:flex-start;gap:9px;padding:13px 12px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:11px;font-size:13px;font-weight:500;color:var(--text);cursor:pointer;text-align:left;width:100%;font-family:'Manrope',sans-serif;line-height:1.5;transition:background .15s,border-color .15s}
 .opt:hover:not([disabled]):not(.sel){background:rgba(124,92,252,.08);border-color:rgba(124,92,252,.25)}
 .opt.sel{background:rgba(124,92,252,.15);border-color:var(--accent)}
-.opt.ok{background:rgba(16,185,129,.15);border-color:var(--green)}
-.opt.no{background:rgba(239,68,68,.15);border-color:var(--red)}
+.opt.ok{background:rgba(16,185,129,.15);border-color:var(--green);animation:okFlash .4s ease}
+.opt.no{background:rgba(239,68,68,.15);border-color:var(--red);animation:noShake .4s ease}
+@keyframes okFlash{0%{background:rgba(16,185,129,.4)}100%{background:rgba(16,185,129,.15)}}
+@keyframes noShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 .ol{min-width:24px;height:24px;background:rgba(124,92,252,.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:9px;color:var(--a2);font-weight:700;flex-shrink:0;margin-top:1px;transition:background .15s,color .15s}
-.opt.sel .ol{background:var(--accent);color:#fff}
-.opt.ok  .ol{background:var(--green);color:#fff}
-.opt.no  .ol{background:var(--red);color:#fff}
+.opt.sel .ol{background:var(--accent);color:#fff}.opt.ok .ol{background:var(--green);color:#fff}.opt.no .ol{background:var(--red);color:#fff}
 .hint{background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.2);border-radius:9px;padding:9px 11px;font-size:12px;color:var(--a2);margin-top:7px;line-height:1.6;animation:su .25s ease}
-
 /* ── Toast ── */
 #toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#1e1b4b;border:1px solid rgba(124,92,252,.4);color:#fff;border-radius:12px;padding:11px 16px;z-index:9999;text-align:center;font-size:12px;font-weight:600;min-width:230px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none;animation:toastIn .3s ease}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-#toast.show{display:block}
-.tsub{font-size:9px;color:var(--a2);margin-top:2px}
-
+#toast.show{display:block}.tsub{font-size:9px;color:var(--a2);margin-top:2px}
 /* ── Результат ── */
-.ricon{font-size:48px;text-align:center;margin-bottom:6px}
-.rbig{font-family:'Unbounded',sans-serif;font-size:clamp(34px,8vw,50px);font-weight:900;text-align:center;margin:5px 0 3px;line-height:1}
+.ricon{font-size:52px;text-align:center;margin-bottom:6px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.rbig{font-family:'Unbounded',sans-serif;font-size:clamp(34px,8vw,52px);font-weight:900;text-align:center;margin:5px 0 3px;line-height:1}
 .rlbl{font-weight:700;font-size:14px;text-align:center;margin-bottom:12px}
 .repbox{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;margin:11px 0}
 .reptitle{font-weight:700;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px}
@@ -98,251 +93,321 @@ h2{font-family:'Unbounded',sans-serif;font-size:clamp(15px,4vw,20px);font-weight
 .repst{font-size:11px;color:var(--muted);text-align:center;padding-top:7px;border-top:1px solid rgba(255,255,255,.06)}
 .tspent{font-size:11px;color:var(--muted);text-align:center;margin-bottom:5px}
 .sstatus{text-align:center;font-size:11px;font-weight:600;margin-top:7px;padding:7px;border-radius:9px}
-.sstatus.sending{color:var(--muted)}
-.sstatus.ok{color:var(--green);background:rgba(16,185,129,.1)}
-.sstatus.fail{color:var(--yellow);background:rgba(245,158,11,.1)}
-
-/* ── Вчитель ── */
-.tab-row{display:flex;gap:6px;margin-bottom:14px}
-.tab{flex:1;padding:9px;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.04);color:var(--muted);font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
-.tab.active.geo{border-color:var(--accent);background:rgba(124,92,252,.15);color:var(--a2)}
-.tab.active.alg{border-color:var(--green);background:rgba(16,185,129,.1);color:var(--green)}
-.srow{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:14px}
+.sstatus.sending{color:var(--muted)}.sstatus.ok{color:var(--green);background:rgba(16,185,129,.1)}.sstatus.fail{color:var(--yellow);background:rgba(245,158,11,.1)}
+/* ── Вчитель / Таби ── */
+.tab-row{display:flex;gap:5px;margin-bottom:13px}
+.tab{flex:1;padding:8px 4px;border:1.5px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(255,255,255,.04);color:var(--muted);font-family:'Manrope',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.tab.active.t7{border-color:var(--cyan);background:rgba(6,182,212,.12);color:var(--cyan)}
+.tab.active.tg{border-color:var(--accent);background:rgba(124,92,252,.15);color:var(--a2)}
+.tab.active.ta{border-color:var(--green);background:rgba(16,185,129,.1);color:var(--green)}
+.srow{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:13px}
 .ms{background:rgba(255,255,255,.04);border-radius:9px;padding:7px 3px;text-align:center}
-.msv{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900}
-.msl{font-size:8px;color:var(--muted);margin-top:2px}
-.rrow{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--green);border-radius:11px;padding:10px 12px;margin-bottom:6px}
-.rrow.warn{border-left-color:var(--yellow)}
-.rrow.fail{border-left-color:var(--red)}
+.msv{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900}.msl{font-size:8px;color:var(--muted);margin-top:2px}
+.rrow{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--green);border-radius:11px;padding:10px 12px;margin-bottom:6px;animation:su .3s ease}
+.rrow.warn{border-left-color:var(--yellow)}.rrow.fail{border-left-color:var(--red)}
 .rrtop{display:flex;justify-content:space-between;align-items:flex-start}
-.rrn{font-weight:700;font-size:13px}
-.rrt{font-size:9px;color:var(--muted);margin-top:2px}
+.rrn{font-weight:700;font-size:13px}.rrt{font-size:9px;color:var(--muted);margin-top:2px}
 .rrs{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900}
 .rrg{font-size:9px;color:var(--muted);text-align:right;margin-top:2px}
 .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .tag{border-radius:100px;padding:2px 7px;font-size:9px;font-weight:700}
-.tok{background:rgba(16,185,129,.15);color:var(--green)}
-.twarn{background:rgba(245,158,11,.15);color:var(--yellow)}
-.tdng{background:rgba(239,68,68,.15);color:var(--red)}
+.tok{background:rgba(16,185,129,.15);color:var(--green)}.twarn{background:rgba(245,158,11,.15);color:var(--yellow)}.tdng{background:rgba(239,68,68,.15);color:var(--red)}
 .empty{text-align:center;color:var(--muted);padding:30px 0;font-size:13px}
-.tbh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.tbh{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
+/* ── Конфеті ── */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:10000;overflow:hidden}
+.cf{position:absolute;top:-10px;width:8px;height:8px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
 svg text{-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
 <div id="toast"><span id="tm"></span><div class="tsub" id="ts"></div></div>
+<div id="confetti"></div>
 <div id="app"></div>
 <script>
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // ⚙️ КОНФІГУРАЦІЯ
-// ════════════════════════════════════════════
-const WEBHOOK = 'https://script.google.com/macros/s/AKfycby_IG60ogTeu85CAq4H1xyLFOd5Mg6tSkc0_zl8-C6x05fF7-m8moBoGs_Odc2pDRwE4A/exec';
-const TEACHER_PASS = 'teacher2025';
-const MAX_VIOL = 10;
-const TIME_LIMIT = 45 * 60;
+// ══════════════════════════════════════════════
+const WEBHOOK='https://script.google.com/macros/s/AKfycbzMUQjuFYo1MteznR1HkKQQco0ml51GJBOneng13j7a1Gbbf2QCYMpv8w5UA1bzCLgU4Q/exec';
+const TEACHER_PASS='teacher2025';
+const MAX_VIOL=10;
+const TIME_LIMIT=45*60;
 
-const TEST_CFG = {
-  geo: { key:'geo', icon:'📐', title:'Геометрія', titleFull:'Контрольна з Геометрії',
-         subject:'Геометрія', topic:'Геометричні перетворення', color:'var(--accent)', pick:[4,5,3] },
-  alg: { key:'alg', icon:'🎲', title:'Алгебра',   titleFull:'Контрольна з Алгебри',
-         subject:'Алгебра',   topic:'Комбінаторика, ймовірність, статистика', color:'var(--green)', pick:[3,5,4] },
+const TEST_CFG={
+  math7:{key:'math7',grade:'7 клас',icon:'📚',title:'Семестрова з математики',subject:'Математика',topic:'Всі теми за рік',color:'var(--cyan)',btnCls:'btn-c',pick:[6,10,8],storKey:'kr7-math'},
+  geo:  {key:'geo',  grade:'9 клас',icon:'📐',title:'Контрольна з геометрії', subject:'Геометрія', topic:'Геометричні перетворення',color:'var(--accent)',btnCls:'btn-p',pick:[4,5,3],storKey:'kr9-geo'},
+  alg:  {key:'alg',  grade:'9 клас',icon:'🎲',title:'Контрольна з алгебри',  subject:'Алгебра',   topic:'Комбінаторика і ймовірність',color:'var(--green)',btnCls:'btn-a',pick:[3,5,4],storKey:'kr9-alg'},
 };
 
-// ════════════════════════════════════════════
-// 🎨 SVG BUILDER
-// ════════════════════════════════════════════
-function mksvg(inner,w=220,h=200){
-  return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:8px auto;border-radius:9px;background:rgba(0,0,0,.28)">${inner}</svg>`;
-}
-function grd(cx,cy,sc,rng){let s='';for(let i=-rng;i<=rng;i++){s+=`<line x1="${cx+i*sc}" y1="${cy-rng*sc}" x2="${cx+i*sc}" y2="${cy+rng*sc}" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>`;s+=`<line x1="${cx-rng*sc}" y1="${cy+i*sc}" x2="${cx+rng*sc}" y2="${cy+i*sc}" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>`;} return s;}
+// ══════════════════════════════════════════════
+// 🎨 SVG ХЕЛПЕРИ
+// ══════════════════════════════════════════════
+function mksvg(inner,w=220,h=200){return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:8px auto;border-radius:9px;background:rgba(0,0,0,.28)">${inner}</svg>`;}
+function grd(cx,cy,sc,rng){let s='';for(let i=-rng;i<=rng;i++){s+=`<line x1="${cx+i*sc}" y1="${cy-rng*sc}" x2="${cx+i*sc}" y2="${cy+rng*sc}" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>`;s+=`<line x1="${cx-rng*sc}" y1="${cy+i*sc}" x2="${cx+rng*sc}" y2="${cy+i*sc}" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>`;}return s;}
 function axs(cx,cy,sc,rng){const r=rng*sc;return `<line x1="${cx-r}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/><line x1="${cx}" y1="${cy-r}" x2="${cx}" y2="${cy+r}" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/><polygon points="${cx+r},${cy} ${cx+r-7},${cy-3.5} ${cx+r-7},${cy+3.5}" fill="rgba(255,255,255,.42)"/><polygon points="${cx},${cy-r} ${cx-3.5},${cy-r+7} ${cx+3.5},${cy-r+7}" fill="rgba(255,255,255,.42)"/><text x="${cx+r+2}" y="${cy+11}" fill="rgba(255,255,255,.4)" font-size="11" font-family="Manrope">x</text><text x="${cx+4}" y="${cy-r+5}" fill="rgba(255,255,255,.4)" font-size="11" font-family="Manrope">y</text>`;}
-function tks(cx,cy,sc,rng){let s='';for(let i=-rng+1;i<=rng-1;i++){if(i===0)continue;s+=`<text x="${cx+i*sc-4}" y="${cy+13}" fill="rgba(255,255,255,.2)" font-size="8" font-family="Manrope">${i}</text>`;s+=`<text x="${cx-13}" y="${cy-i*sc+4}" fill="rgba(255,255,255,.2)" font-size="8" font-family="Manrope">${i}</text>`;}return s;}
+function tks(cx,cy,sc,rng){let s='';for(let i=-rng+1;i<=rng-1;i++){if(!i)continue;s+=`<text x="${cx+i*sc-4}" y="${cy+13}" fill="rgba(255,255,255,.2)" font-size="8" font-family="Manrope">${i}</text>`;s+=`<text x="${cx-13}" y="${cy-i*sc+4}" fill="rgba(255,255,255,.2)" font-size="8" font-family="Manrope">${i}</text>`;}return s;}
 function cp(cx,cy,sc,rng,extra){return mksvg(grd(cx,cy,sc,rng)+axs(cx,cy,sc,rng)+tks(cx,cy,sc,rng)+extra,220,220);}
 function dot(cx,cy,sc,x,y,col,lbl,lp){const px=cx+x*sc,py=cy-y*sc;const off={tr:[7,-6],tl:[-34,-6],br:[7,13],bl:[-34,13]};const[ox,oy]=off[lp||'tr'];return `<circle cx="${px}" cy="${py}" r="5" fill="${col}"/><text x="${px+ox}" y="${py+oy}" fill="${col}" font-size="11" font-family="Manrope" font-weight="bold">${lbl}</text>`;}
 function seg(cx,cy,sc,x1,y1,x2,y2,col,dash){const d=dash?'stroke-dasharray="5,3"':'';return `<line x1="${cx+x1*sc}" y1="${cy-y1*sc}" x2="${cx+x2*sc}" y2="${cy-y2*sc}" stroke="${col}" stroke-width="1.5" ${d}/>`;}
 function tri(cx,cy,sc,pts,str,fil){return `<polygon points="${pts.map(([x,y])=>`${cx+x*sc},${cy-y*sc}`).join(' ')}" stroke="${str}" stroke-width="2" fill="${fil}"/>`;}
 
-// ════════════════════════════════════════════
-// 📐 SVG ДЛЯ ГЕОМЕТРІЇ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// 📐 SVG ДЛЯ ГЕОМЕТРІЇ 9 КЛ
+// ══════════════════════════════════════════════
 const CX=110,CY=110,SC=18;
-const GEO_E2 = cp(CX,CY,SC,5,seg(CX,CY,SC,-3,-2,3,2,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,0,0,'#f59e0b','O','br')+dot(CX,CY,SC,3,2,'#a78bfa','A(3;2)','tr')+dot(CX,CY,SC,-3,-2,'#10b981','A\'(?)','bl'));
-const GEO_E5 = cp(CX,CY,SC,5,seg(CX,CY,SC,4,-3,4,3,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,4,-3,'#a78bfa','B(4;−3)','tr')+dot(CX,CY,SC,4,3,'#10b981','B\'(?)','br'));
-const GEO_E9 = cp(CX,CY,SC,5,`<defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs><line x1="${CX+SC}" y1="${CY-SC}" x2="${CX+3*SC-2}" y2="${CY-4*SC+2}" stroke="#10b981" stroke-width="1.5" marker-end="url(#a1)"/>`+dot(CX,CY,SC,1,1,'#a78bfa','C(1;1)','bl')+dot(CX,CY,SC,3,4,'#10b981','C\'(3;4)','tr'));
-const GEO_M1 = (()=>{const sc2=16,cy2=120;return mksvg(grd(CX,cy2,sc2,6)+axs(CX,cy2,sc2,6)+tks(CX,cy2,sc2,6)+tri(CX,cy2,sc2,[[0,0],[4,0],[0,3]],'#a78bfa','rgba(124,92,252,.15)')+tri(CX,cy2,sc2,[[0,0],[-4,0],[0,3]],'#10b981','rgba(16,185,129,.15)')+dot(CX,cy2,sc2,0,0,'rgba(255,255,255,.4)','A','br')+dot(CX,cy2,sc2,4,0,'#a78bfa','B(4;0)','tr')+dot(CX,cy2,sc2,0,3,'#a78bfa','C(0;3)','tl')+dot(CX,cy2,sc2,-4,0,'#10b981','B\'(?)','tl'),220,220);})();
-const GEO_M3 = (()=>{const sc3=15;return mksvg(grd(CX,CY,sc3,6)+axs(CX,CY,sc3,6)+tks(CX,CY,sc3,6)+seg(CX,CY,sc3,0,0,2,5,'rgba(167,139,250,.3)')+seg(CX,CY,sc3,0,0,5,-2,'rgba(16,185,129,.3)')+`<path d="M ${CX+sc3*2} ${CY} A ${sc3*2} ${sc3*2} 0 0 0 ${CX} ${CY-sc3*2}" stroke="rgba(245,158,11,.4)" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>`+dot(CX,CY,sc3,0,0,'#f59e0b','O','bl')+dot(CX,CY,sc3,2,5,'#a78bfa','M(2;5)','tr')+dot(CX,CY,sc3,5,-2,'#10b981','M\'(?)','br'),220,220);})();
-const GEO_M4 = cp(CX,CY,SC,5,`<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs><line x1="${CX+SC}" y1="${CY-2*SC}" x2="${CX-2*SC+2}" y2="${CY-5*SC+2}" stroke="#10b981" stroke-width="1.5" marker-end="url(#a2)"/>`+dot(CX,CY,SC,1,2,'#a78bfa','A(1;2)','tr')+dot(CX,CY,SC,-2,6,'#10b981','A\'(?)','tl'));
-const GEO_M6 = cp(CX,CY,SC,5,`<line x1="${CX-5*SC}" y1="${CY+5*SC}" x2="${CX+5*SC}" y2="${CY-5*SC}" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/><text x="${CX+2.8*SC}" y="${CY-3.2*SC}" fill="#f59e0b" font-size="10" font-family="Manrope">y=x</text>`+seg(CX,CY,SC,3,1,1,3,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,3,1,'#a78bfa','P(3;1)','tr')+dot(CX,CY,SC,1,3,'#10b981','P\'(?)','tl'));
-const GEO_M8 = cp(CX,CY,SC,5,seg(CX,CY,SC,-3,2,3,-2,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,0,0,'#f59e0b','O','br')+dot(CX,CY,SC,3,-2,'#a78bfa','A(3;−2)','tr')+dot(CX,CY,SC,-3,2,'#10b981','A\'(?)','tl'));
-const GEO_H1 = cp(CX,CY,SC,5,seg(CX,CY,SC,1,2,1,-2,'rgba(245,158,11,.5)',true)+seg(CX,CY,SC,1,-2,2,-3,'rgba(16,185,129,.5)',true)+dot(CX,CY,SC,1,2,'#a78bfa','A(1;2)','tr')+dot(CX,CY,SC,1,-2,'#f59e0b','A\'','tr')+dot(CX,CY,SC,2,-3,'#10b981','A\'\'(?)','br'));
-const GEO_H3 = mksvg(`<polygon points="20,115 86,115 20,58" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/><text x="53" y="130" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">6</text><text x="6" y="90" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">8</text><text x="58" y="80" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">10</text><polygon points="125,115 224,115 125,26" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,.15)"/><text x="175" y="130" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">9</text><text x="109" y="73" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">x</text><text x="183" y="66" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">15</text>`,244,140);
-const GEO_H4 = cp(CX,CY,SC,5,`<circle cx="${CX+SC}" cy="${CY-SC}" r="${Math.round(SC*Math.sqrt(2)*2)}" stroke="rgba(245,158,11,.12)" stroke-width="1" fill="none" stroke-dasharray="4,3"/>`+seg(CX,CY,SC,1,1,2,3,'rgba(167,139,250,.4)')+seg(CX,CY,SC,1,1,-1,2,'rgba(16,185,129,.4)')+dot(CX,CY,SC,1,1,'#f59e0b','C(1;1)','br')+dot(CX,CY,SC,2,3,'#a78bfa','A(2;3)','tr')+dot(CX,CY,SC,-1,2,'#10b981','A\'(?)','tl'));
-const GEO_H6 = mksvg(`<rect x="20" y="70" width="60" height="40" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/><text x="50" y="100" fill="rgba(255,255,255,.7)" font-size="10" font-family="Manrope" text-anchor="middle">S₁=50</text><text x="50" y="65" fill="rgba(255,255,255,.5)" font-size="9" font-family="Manrope" text-anchor="middle">ш=5</text><rect x="100" y="45" width="120" height="80" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,.15)"/><text x="160" y="90" fill="rgba(255,255,255,.7)" font-size="10" font-family="Manrope" text-anchor="middle">S₂=200</text><text x="160" y="40" fill="rgba(255,255,255,.5)" font-size="9" font-family="Manrope" text-anchor="middle">ш=?</text>`,240,145);
-const GEO_H7 = mksvg(`<circle cx="110" cy="110" r="52" stroke="rgba(255,255,255,.07)" fill="none" stroke-dasharray="4,3"/><rect x="72" y="72" width="76" height="76" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/><circle cx="110" cy="110" r="3" fill="#f59e0b"/><text x="116" y="115" fill="#f59e0b" font-size="10" font-family="Manrope">O</text><line x1="72" y1="110" x2="148" y2="110" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3,2"/><line x1="110" y1="72" x2="110" y2="148" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3,2"/><path d="M 110 60 A 50 50 0 0 1 160 110" stroke="#10b981" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/><text x="152" y="74" fill="#10b981" font-size="10" font-family="Manrope">?°</text>`,220,220);
+const GEO_E2=cp(CX,CY,SC,5,seg(CX,CY,SC,-3,-2,3,2,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,0,0,'#f59e0b','O','br')+dot(CX,CY,SC,3,2,'#a78bfa','A(3;2)','tr')+dot(CX,CY,SC,-3,-2,'#10b981','A\'(?)','bl'));
+const GEO_E5=cp(CX,CY,SC,5,seg(CX,CY,SC,4,-3,4,3,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,4,-3,'#a78bfa','B(4;−3)','tr')+dot(CX,CY,SC,4,3,'#10b981','B\'(?)','br'));
+const GEO_E9=cp(CX,CY,SC,5,`<defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs><line x1="${CX+SC}" y1="${CY-SC}" x2="${CX+3*SC-2}" y2="${CY-4*SC+2}" stroke="#10b981" stroke-width="1.5" marker-end="url(#a1)"/>`+dot(CX,CY,SC,1,1,'#a78bfa','C(1;1)','bl')+dot(CX,CY,SC,3,4,'#10b981','C\'(3;4)','tr'));
+const GEO_M1=(()=>{const sc2=16,cy2=120;return mksvg(grd(CX,cy2,sc2,6)+axs(CX,cy2,sc2,6)+tks(CX,cy2,sc2,6)+tri(CX,cy2,sc2,[[0,0],[4,0],[0,3]],'#a78bfa','rgba(124,92,252,.15)')+tri(CX,cy2,sc2,[[0,0],[-4,0],[0,3]],'#10b981','rgba(16,185,129,.15)')+dot(CX,cy2,sc2,0,0,'rgba(255,255,255,.4)','A','br')+dot(CX,cy2,sc2,4,0,'#a78bfa','B(4;0)','tr')+dot(CX,cy2,sc2,0,3,'#a78bfa','C','tl')+dot(CX,cy2,sc2,-4,0,'#10b981','B\'(?)','tl'),220,220);})();
+const GEO_M3=(()=>{const sc3=15;return mksvg(grd(CX,CY,sc3,6)+axs(CX,CY,sc3,6)+tks(CX,CY,sc3,6)+seg(CX,CY,sc3,0,0,2,5,'rgba(167,139,250,.3)')+seg(CX,CY,sc3,0,0,5,-2,'rgba(16,185,129,.3)')+`<path d="M ${CX+sc3*2} ${CY} A ${sc3*2} ${sc3*2} 0 0 0 ${CX} ${CY-sc3*2}" stroke="rgba(245,158,11,.4)" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>`+dot(CX,CY,sc3,0,0,'#f59e0b','O','bl')+dot(CX,CY,sc3,2,5,'#a78bfa','M(2;5)','tr')+dot(CX,CY,sc3,5,-2,'#10b981','M\'(?)','br'),220,220);})();
+const GEO_M4=cp(CX,CY,SC,5,`<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs><line x1="${CX+SC}" y1="${CY-2*SC}" x2="${CX-2*SC+2}" y2="${CY-5*SC+2}" stroke="#10b981" stroke-width="1.5" marker-end="url(#a2)"/>`+dot(CX,CY,SC,1,2,'#a78bfa','A(1;2)','tr')+dot(CX,CY,SC,-2,6,'#10b981','A\'(?)','tl'));
+const GEO_M6=cp(CX,CY,SC,5,`<line x1="${CX-5*SC}" y1="${CY+5*SC}" x2="${CX+5*SC}" y2="${CY-5*SC}" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/><text x="${CX+2.8*SC}" y="${CY-3.2*SC}" fill="#f59e0b" font-size="10" font-family="Manrope">y=x</text>`+seg(CX,CY,SC,3,1,1,3,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,3,1,'#a78bfa','P(3;1)','tr')+dot(CX,CY,SC,1,3,'#10b981','P\'(?)','tl'));
+const GEO_M8=cp(CX,CY,SC,5,seg(CX,CY,SC,-3,2,3,-2,'rgba(255,255,255,.13)',true)+dot(CX,CY,SC,0,0,'#f59e0b','O','br')+dot(CX,CY,SC,3,-2,'#a78bfa','A(3;−2)','tr')+dot(CX,CY,SC,-3,2,'#10b981','A\'(?)','tl'));
+const GEO_H1=cp(CX,CY,SC,5,seg(CX,CY,SC,1,2,1,-2,'rgba(245,158,11,.5)',true)+seg(CX,CY,SC,1,-2,2,-3,'rgba(16,185,129,.5)',true)+dot(CX,CY,SC,1,2,'#a78bfa','A(1;2)','tr')+dot(CX,CY,SC,1,-2,'#f59e0b','A\'','tr')+dot(CX,CY,SC,2,-3,'#10b981','A\'\'(?)','br'));
+const GEO_H3=mksvg(`<polygon points="20,115 86,115 20,58" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/><text x="53" y="130" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">6</text><text x="6" y="90" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">8</text><text x="58" y="80" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">10</text><polygon points="125,115 224,115 125,26" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,.15)"/><text x="175" y="130" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">9</text><text x="109" y="73" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">x</text><text x="183" y="66" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope">15</text>`,244,140);
+const GEO_H4=cp(CX,CY,SC,5,`<circle cx="${CX+SC}" cy="${CY-SC}" r="${Math.round(SC*Math.sqrt(2)*2)}" stroke="rgba(245,158,11,.12)" stroke-width="1" fill="none" stroke-dasharray="4,3"/>`+seg(CX,CY,SC,1,1,2,3,'rgba(167,139,250,.4)')+seg(CX,CY,SC,1,1,-1,2,'rgba(16,185,129,.4)')+dot(CX,CY,SC,1,1,'#f59e0b','C(1;1)','br')+dot(CX,CY,SC,2,3,'#a78bfa','A(2;3)','tr')+dot(CX,CY,SC,-1,2,'#10b981','A\'(?)','tl'));
+const GEO_H6=mksvg(`<rect x="20" y="70" width="60" height="40" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/><text x="50" y="98" fill="rgba(255,255,255,.7)" font-size="10" font-family="Manrope" text-anchor="middle">S₁=50</text><text x="50" y="64" fill="rgba(255,255,255,.45)" font-size="9" font-family="Manrope" text-anchor="middle">ш=5</text><rect x="105" y="48" width="120" height="80" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,.15)"/><text x="165" y="93" fill="rgba(255,255,255,.7)" font-size="10" font-family="Manrope" text-anchor="middle">S₂=200</text><text x="165" y="43" fill="rgba(255,255,255,.45)" font-size="9" font-family="Manrope" text-anchor="middle">ш=?</text>`,240,145);
+const GEO_H7=mksvg(`<circle cx="110" cy="110" r="52" stroke="rgba(255,255,255,.07)" fill="none" stroke-dasharray="4,3"/><rect x="72" y="72" width="76" height="76" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/><circle cx="110" cy="110" r="3" fill="#f59e0b"/><line x1="72" y1="110" x2="148" y2="110" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3,2"/><line x1="110" y1="72" x2="110" y2="148" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3,2"/><path d="M 110 60 A 50 50 0 0 1 160 110" stroke="#10b981" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/><text x="152" y="74" fill="#10b981" font-size="10" font-family="Manrope">?°</text>`,220,220);
 
-// ════════════════════════════════════════════
-// 🎲 SVG ДЛЯ АЛГЕБРИ
-// ════════════════════════════════════════════
-const ALG_TREE = (()=>{
-  let s=`<text x="14" y="72" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope" font-weight="bold">Сорочка</text>`;
-  const shirts=['С₁','С₂','С₃'];
-  shirts.forEach((sh,i)=>{const sy=28+i*48;s+=`<circle cx="80" cy="${sy}" r="14" fill="rgba(124,92,252,.2)" stroke="#a78bfa" stroke-width="1.2"/><text x="80" y="${sy+4}" fill="#a78bfa" font-size="9" font-family="Manrope" text-anchor="middle">${sh}</text>`;[0,1].forEach(j=>{const py=sy-12+j*16;s+=`<line x1="94" y1="${sy}" x2="152" y2="${py}" stroke="rgba(255,255,255,.15)" stroke-width=".8"/><circle cx="158" cy="${py}" r="11" fill="rgba(16,185,129,.12)" stroke="#10b981" stroke-width="1"/><text x="158" y="${py+4}" fill="#10b981" font-size="8" font-family="Manrope" text-anchor="middle">Ш${j+1}</text>`;});s+=`<text x="164" y="${sy+4}" fill="rgba(255,255,255,.3)" font-size="10" font-family="Manrope">…</text>`;});
-  s+=`<text x="200" y="66" fill="rgba(255,255,255,.5)" font-size="10" font-family="Manrope" text-anchor="middle">3×4=12</text><text x="200" y="80" fill="rgba(255,255,255,.3)" font-size="8" font-family="Manrope" text-anchor="middle">варіантів</text>`;
-  return mksvg(s,240,152);
-})();
+// ══════════════════════════════════════════════
+// 🎲 SVG ДЛЯ АЛГЕБРИ 9 КЛ
+// ══════════════════════════════════════════════
+const ALG_TREE=(()=>{let s=`<text x="14" y="72" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope" font-weight="bold">Сорочка</text>`;['С₁','С₂','С₃'].forEach((sh,i)=>{const sy=28+i*48;s+=`<circle cx="80" cy="${sy}" r="14" fill="rgba(124,92,252,.2)" stroke="#a78bfa" stroke-width="1.2"/><text x="80" y="${sy+4}" fill="#a78bfa" font-size="9" font-family="Manrope" text-anchor="middle">${sh}</text>`;[0,1].forEach(j=>{const py=sy-12+j*16;s+=`<line x1="94" y1="${sy}" x2="152" y2="${py}" stroke="rgba(255,255,255,.15)" stroke-width=".8"/><circle cx="158" cy="${py}" r="11" fill="rgba(16,185,129,.12)" stroke="#10b981" stroke-width="1"/><text x="158" y="${py+4}" fill="#10b981" font-size="8" font-family="Manrope" text-anchor="middle">Ш${j+1}</text>`;});s+=`<text x="164" y="${sy+4}" fill="rgba(255,255,255,.3)" font-size="10" font-family="Manrope">…</text>`;});s+=`<text x="200" y="66" fill="rgba(255,255,255,.5)" font-size="10" font-family="Manrope" text-anchor="middle">3×4=12</text>`;return mksvg(s,240,152);})();
+const ALG_BAR=(()=>{const gr=[7,8,9,10,11,12],co=[3,5,8,4,6,2];const W=260,H=170,pL=32,pB=30,pT=14,pR=10,cW=W-pL-pR,cH=H-pB-pT,bW=26;const gap=(cW-gr.length*bW)/(gr.length+1);let s='';for(let v=0;v<=8;v+=2){const y=pT+cH-v*(cH/8);s+=`<line x1="${pL}" y1="${y}" x2="${W-pR}" y2="${y}" stroke="rgba(255,255,255,.07)" stroke-width=".5"/><text x="${pL-4}" y="${y+4}" fill="rgba(255,255,255,.28)" font-size="8" font-family="Manrope" text-anchor="end">${v}</text>`;}s+=`<line x1="${pL}" y1="${pT}" x2="${pL}" y2="${pT+cH}" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><line x1="${pL}" y1="${pT+cH}" x2="${W-pR}" y2="${pT+cH}" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><text x="${W/2}" y="${H-2}" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">Оцінка</text>`;gr.forEach((g,i)=>{const x=pL+gap+(bW+gap)*i,bH=co[i]*(cH/8),y=pT+cH-bH,hl=i===3;s+=`<rect x="${x}" y="${y}" width="${bW}" height="${bH}" rx="3" fill="${hl?'#f59e0b':'#a78bfa'}" opacity="${hl?1:.7}"/><text x="${x+bW/2}" y="${pT+cH+13}" fill="rgba(255,255,255,.5)" font-size="9" font-family="Manrope" text-anchor="middle">${g}</text>`;s+=hl?`<text x="${x+bW/2}" y="${y-4}" fill="#f59e0b" font-size="9" font-family="Manrope" text-anchor="middle" font-weight="bold">?</text>`:`<text x="${x+bW/2}" y="${y-4}" fill="rgba(255,255,255,.35)" font-size="8" font-family="Manrope" text-anchor="middle">${co[i]}</text>`;});return mksvg(s,W,H);})();
+const ALG_PIE=(()=>{const cx=88,cy=80,r=60;const sects=[['Автобус',108,'#a78bfa'],['Авто',90,'#10b981'],['Пішки',72,'#f59e0b'],['Велосипед',54,'#22d3ee'],['Інше',36,'#f87171']];function pxy(d){const rd=(d-90)*Math.PI/180;return[cx+r*Math.cos(rd),cy+r*Math.sin(rd)];}let s='',cum=0;sects.forEach(([n,a,c])=>{const[x1,y1]=pxy(cum);cum+=a;const[x2,y2]=pxy(cum);s+=`<path d="M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 ${a>180?1:0},1 ${x2.toFixed(1)},${y2.toFixed(1)} Z" fill="${c}" opacity=".85" stroke="#1a1a2e" stroke-width="1.5"/>`;const mid=cum-a/2,lr=r*.62,lrd=(mid-90)*Math.PI/180;if(a>=54)s+=`<text x="${(cx+lr*Math.cos(lrd)).toFixed(1)}" y="${(cy+lr*Math.sin(lrd)+4).toFixed(1)}" fill="rgba(0,0,0,.8)" font-size="8" font-family="Manrope" text-anchor="middle" font-weight="bold">${Math.round(a/360*100)}%</text>`;});sects.forEach(([n,a,c],i)=>{const ly=16+i*26;s+=`<rect x="188" y="${ly}" width="9" height="9" rx="2" fill="${c}"/><text x="201" y="${ly+8}" fill="rgba(255,255,255,.65)" font-size="8" font-family="Manrope">${n}</text>`;});s+=`<text x="${cx}" y="${cy+r+15}" fill="#a78bfa" font-size="9" font-family="Manrope" text-anchor="middle" font-weight="bold">↑ Автобус: кут=108°</text>`;return mksvg(s,285,175);})();
+const ALG_DICE=(()=>{function die(ox,oy,n){let s=`<rect x="${ox}" y="${oy}" width="42" height="42" rx="7" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>`;const d={1:[[21,21]],2:[[13,13],[29,29]],3:[[13,13],[21,21],[29,29]],4:[[13,13],[29,13],[13,29],[29,29]],5:[[13,13],[29,13],[21,21],[13,29],[29,29]],6:[[13,12],[29,12],[13,21],[29,21],[13,30],[29,30]]};(d[n]||[]).forEach(([dx,dy])=>{s+=`<circle cx="${ox+dx}" cy="${oy+dy}" r="4" fill="#a78bfa"/>`;});return s;}let s=`<text x="130" y="14" fill="rgba(255,255,255,.45)" font-size="10" font-family="Manrope" text-anchor="middle">Пари з сумою 7 (6 з 36):</text>`;[[1,6],[2,5],[3,4]].forEach(([a,b],i)=>{s+=die(10+i*82,25,a)+die(56+i*82,25,b);s+=`<text x="${10+i*82+50}" y="${25+24}" fill="rgba(255,255,255,.35)" font-size="12" font-family="Manrope">+</text><text x="${10+i*82+90}" y="${25+24}" fill="#10b981" font-size="11" font-family="Manrope">=7</text>`;});s+=`<text x="130" y="84" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">… і ще 3 такі пари.</text>`;return mksvg(s,260,92);})();
+const ALG_DATA=(()=>{const vals=[15,22,8,31,17,9,25];let s=`<text x="130" y="14" fill="rgba(255,255,255,.45)" font-size="9" font-family="Manrope" text-anchor="middle">Вибірка:</text>`;vals.forEach((v,i)=>{const x=14+i*34;s+=`<rect x="${x}" y="22" width="32" height="24" rx="4" fill="rgba(124,92,252,.15)" stroke="rgba(124,92,252,.2)" stroke-width=".5"/>`;const c=v===8?'#10b981':v===31?'#ef4444':'rgba(255,255,255,.75)';s+=`<text x="${x+16}" y="${22+15}" fill="${c}" font-size="12" font-family="Manrope" text-anchor="middle" font-weight="${v===8||v===31?'bold':'normal'}">${v}</text>`;});s+=`<text x="18" y="62" fill="#10b981" font-size="9" font-family="Manrope">min=8</text><text x="170" y="62" fill="#ef4444" font-size="9" font-family="Manrope">max=31</text>`;return mksvg(s,260,68);})();
 
-const ALG_BAR = (()=>{
-  const grades=[7,8,9,10,11,12],counts=[3,5,8,4,6,2];
-  const W=260,H=170,pL=32,pB=30,pT=14,pR=10,cW=W-pL-pR,cH=H-pB-pT,maxV=8,bW=26;
-  const gap=(cW-grades.length*bW)/(grades.length+1);
-  let s='';
-  for(let v=0;v<=8;v+=2){const y=pT+cH-v*(cH/maxV);s+=`<line x1="${pL}" y1="${y}" x2="${W-pR}" y2="${y}" stroke="rgba(255,255,255,.07)" stroke-width=".5"/><text x="${pL-4}" y="${y+4}" fill="rgba(255,255,255,.28)" font-size="8" font-family="Manrope" text-anchor="end">${v}</text>`;}
-  s+=`<line x1="${pL}" y1="${pT}" x2="${pL}" y2="${pT+cH}" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><line x1="${pL}" y1="${pT+cH}" x2="${W-pR}" y2="${pT+cH}" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>`;
-  s+=`<text x="${W/2}" y="${H-2}" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">Оцінка</text>`;
-  grades.forEach((g,i)=>{const x=pL+gap+(bW+gap)*i,bH=counts[i]*(cH/maxV),y=pT+cH-bH,hl=i===3;s+=`<rect x="${x}" y="${y}" width="${bW}" height="${bH}" rx="3" fill="${hl?'#f59e0b':'#a78bfa'}" opacity="${hl?1:.7}"/><text x="${x+bW/2}" y="${pT+cH+13}" fill="rgba(255,255,255,.5)" font-size="9" font-family="Manrope" text-anchor="middle">${g}</text>`;s+=hl?`<text x="${x+bW/2}" y="${y-4}" fill="#f59e0b" font-size="9" font-family="Manrope" text-anchor="middle" font-weight="bold">?</text>`:`<text x="${x+bW/2}" y="${y-4}" fill="rgba(255,255,255,.35)" font-size="8" font-family="Manrope" text-anchor="middle">${counts[i]}</text>`;});
-  return mksvg(s,W,H);
-})();
+// ══════════════════════════════════════════════
+// 📚 SVG ДЛЯ МАТЕМАТИКИ 7 КЛ
+// ══════════════════════════════════════════════
+// M8: Прямокутний трикутник 3-4-5
+const M7_RIGHT_A=mksvg(
+  `<polygon points="60,160 160,160 60,70" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.12)"/>` +
+  `<rect x="60" y="150" width="12" height="12" stroke="rgba(255,255,255,.4)" stroke-width="1.2" fill="none"/>` +
+  `<text x="108" y="178" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">4</text>` +
+  `<text x="44" y="118" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">3</text>` +
+  `<text x="122" y="108" fill="#10b981" font-size="13" font-family="Manrope" text-anchor="middle" font-weight="bold">?</text>` +
+  `<text x="110" y="200" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">Знайди гіпотенузу</text>`
+,220,210);
 
-const ALG_PIE = (()=>{
-  const cx=88,cy=80,r=60;
-  const sectors=[['Автобус',108,'#a78bfa'],['Авто',90,'#10b981'],['Пішки',72,'#f59e0b'],['Велосипед',54,'#22d3ee'],['Інше',36,'#f87171']];
-  function pxy(deg){const rad=(deg-90)*Math.PI/180;return[cx+r*Math.cos(rad),cy+r*Math.sin(rad)];}
-  let s='',cum=0;
-  sectors.forEach(([name,ang,col])=>{const[x1,y1]=pxy(cum);cum+=ang;const[x2,y2]=pxy(cum);const lg=ang>180?1:0;s+=`<path d="M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 ${lg},1 ${x2.toFixed(1)},${y2.toFixed(1)} Z" fill="${col}" opacity=".85" stroke="#1a1a2e" stroke-width="1.5"/>`;const mid=cum-ang/2,lr=r*0.62,lrad=(mid-90)*Math.PI/180;if(ang>=54)s+=`<text x="${(cx+lr*Math.cos(lrad)).toFixed(1)}" y="${(cy+lr*Math.sin(lrad)+4).toFixed(1)}" fill="rgba(0,0,0,.8)" font-size="8" font-family="Manrope" text-anchor="middle" font-weight="bold">${Math.round(ang/360*100)}%</text>`;});
-  sectors.forEach(([name,ang,col],i)=>{const ly=16+i*26;s+=`<rect x="188" y="${ly}" width="9" height="9" rx="2" fill="${col}"/><text x="201" y="${ly+8}" fill="rgba(255,255,255,.65)" font-size="8" font-family="Manrope">${name}</text>`;});
-  s+=`<text x="${cx}" y="${cy+r+15}" fill="#a78bfa" font-size="9" font-family="Manrope" text-anchor="middle" font-weight="bold">↑ Автобус: кут=108°</text>`;
-  return mksvg(s,285,175);
-})();
+// M9: Графік y=2x-4
+const M7_FUNC=cp(110,110,20,5,
+  `<line x1="${110-1*20}" y1="${110+6*20}" x2="${110+4*20}" y2="${110-4*20}" stroke="#06b6d4" stroke-width="2"/>` +
+  `<text x="${110+3*20}" y="${110-3.5*20}" fill="#06b6d4" font-size="10" font-family="Manrope">y=2x−4</text>` +
+  dot(110,110,20,2,0,'#f59e0b','(2;0)','tr') +
+  dot(110,110,20,0,-4,'#a78bfa','(0;−4)','tr')
+);
 
-const ALG_DICE = (()=>{
-  function die(ox,oy,n){let s=`<rect x="${ox}" y="${oy}" width="42" height="42" rx="7" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>`;const d={1:[[21,21]],2:[[13,13],[29,29]],3:[[13,13],[21,21],[29,29]],4:[[13,13],[29,13],[13,29],[29,29]],5:[[13,13],[29,13],[21,21],[13,29],[29,29]],6:[[13,12],[29,12],[13,21],[29,21],[13,30],[29,30]]};(d[n]||[]).forEach(([dx,dy])=>{s+=`<circle cx="${ox+dx}" cy="${oy+dy}" r="4" fill="#a78bfa"/>`;});return s;}
-  let s=`<text x="130" y="14" fill="rgba(255,255,255,.45)" font-size="10" font-family="Manrope" text-anchor="middle">Пари з сумою 7 (6 з 36 можливих):</text>`;
-  [[1,6],[2,5],[3,4]].forEach(([a,b],i)=>{s+=die(10+i*82,25,a)+die(56+i*82,25,b);s+=`<text x="${10+i*82+50}" y="${25+24}" fill="rgba(255,255,255,.35)" font-size="12" font-family="Manrope">+</text><text x="${10+i*82+90}" y="${25+24}" fill="#10b981" font-size="11" font-family="Manrope">=7</text>`;});
-  s+=`<text x="130" y="84" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">… і ще 3 такі пари.</text>`;
-  return mksvg(s,260,92);
-})();
+// H5: Трикутник з кутами
+const M7_TRI_ANG=mksvg(
+  `<polygon points="110,30 30,170 190,170" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.12)"/>` +
+  `<path d="M110,30 m-8,16 A18,18 0 0,0 110,46 m-2,0" stroke="#06b6d4" stroke-width="1.2" fill="none"/>` +
+  `<path d="M30,170 m16,-5 A18,18 0 0,0 46,160" stroke="#10b981" stroke-width="1.2" fill="none"/>` +
+  `<path d="M190,170 m-20,0 A18,18 0 0,1 173,156" stroke="#f59e0b" stroke-width="1.2" fill="none"/>` +
+  `<text x="110" y="20" fill="#06b6d4" font-size="11" font-family="Manrope" text-anchor="middle" font-weight="bold">A=50°</text>` +
+  `<text x="10" y="190" fill="#10b981" font-size="11" font-family="Manrope" font-weight="bold">B=70°</text>` +
+  `<text x="175" y="195" fill="#f59e0b" font-size="11" font-family="Manrope" font-weight="bold">C=?</text>`
+,220,210);
 
-const ALG_DATA = (()=>{
-  const vals=[15,22,8,31,17,9,25];let s=`<text x="130" y="14" fill="rgba(255,255,255,.45)" font-size="9" font-family="Manrope" text-anchor="middle">Вибірка:</text>`;
-  vals.forEach((v,i)=>{const x=14+i*34;s+=`<rect x="${x}" y="22" width="32" height="24" rx="4" fill="rgba(124,92,252,.15)" stroke="rgba(124,92,252,.2)" stroke-width=".5"/>`;const c=v===8?'#10b981':v===31?'#ef4444':'rgba(255,255,255,.75)';s+=`<text x="${x+16}" y="${22+15}" fill="${c}" font-size="12" font-family="Manrope" text-anchor="middle" font-weight="${v===8||v===31?'bold':'normal'}">${v}</text>`;});
-  s+=`<text x="18" y="62" fill="#10b981" font-size="9" font-family="Manrope">min=8</text><text x="170" y="62" fill="#ef4444" font-size="9" font-family="Manrope">max=31</text>`;
-  return mksvg(s,260,68);
-})();
+// H7: Прямокутний трикутник 5-12-13
+const M7_RIGHT_B=mksvg(
+  `<polygon points="50,170 170,170 50,50" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.12)"/>` +
+  `<rect x="50" y="158" width="13" height="13" stroke="rgba(255,255,255,.4)" stroke-width="1.2" fill="none"/>` +
+  `<text x="108" y="190" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">?</text>` +
+  `<text x="32" y="115" fill="rgba(255,255,255,.7)" font-size="12" font-family="Manrope" text-anchor="middle">5</text>` +
+  `<text x="125" y="100" fill="#06b6d4" font-size="13" font-family="Manrope" text-anchor="middle" font-weight="bold">13</text>` +
+  `<text x="108" y="205" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">Знайди невідомий катет</text>`
+,220,215);
 
-// ════════════════════════════════════════════
-// 📚 БАНК ПИТАНЬ — ГЕОМЕТРІЯ (28)
-// ════════════════════════════════════════════
-const POOL_GEO = {
+// H9: Кільце R=5, r=3
+const M7_RING=mksvg(
+  `<circle cx="110" cy="100" r="70" stroke="#a78bfa" stroke-width="2" fill="rgba(124,92,252,.15)"/>` +
+  `<circle cx="110" cy="100" r="42" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="var(--card,#1a1a2e)"/>` +
+  `<line x1="110" y1="100" x2="180" y2="100" stroke="#06b6d4" stroke-width="1.5"/>` +
+  `<text x="145" y="94" fill="#06b6d4" font-size="11" font-family="Manrope" text-anchor="middle">R=5</text>` +
+  `<line x1="110" y1="100" x2="152" y2="100" stroke="#f59e0b" stroke-width="1.5"/>` +
+  `<text x="130" y="115" fill="#f59e0b" font-size="11" font-family="Manrope" text-anchor="middle">r=3</text>` +
+  `<text x="110" y="185" fill="rgba(255,255,255,.5)" font-size="9" font-family="Manrope" text-anchor="middle">Знайди площу кільця</text>`
+,220,195);
+
+// H11: Паралельні прямі з січною
+const M7_PAR=mksvg(
+  `<line x1="20" y1="55" x2="200" y2="55" stroke="#a78bfa" stroke-width="2"/>` +
+  `<line x1="20" y1="145" x2="200" y2="145" stroke="#a78bfa" stroke-width="2"/>` +
+  `<text x="205" y="59" fill="#a78bfa" font-size="9" font-family="Manrope">l₁</text>` +
+  `<text x="205" y="149" fill="#a78bfa" font-size="9" font-family="Manrope">l₂</text>` +
+  `<line x1="60" y1="20" x2="160" y2="180" stroke="#06b6d4" stroke-width="1.8"/>` +
+  `<path d="M88,55 A16,16 0 0,1 75,68" stroke="#f59e0b" stroke-width="1.5" fill="none"/>` +
+  `<text x="72" y="44" fill="#f59e0b" font-size="11" font-family="Manrope" font-weight="bold">3x</text>` +
+  `<path d="M105,145 A16,16 0 0,0 122,145" stroke="#10b981" stroke-width="1.5" fill="none"/>` +
+  `<text x="112" y="170" fill="#10b981" font-size="11" font-family="Manrope" font-weight="bold">2x+30°</text>` +
+  `<text x="110" y="200" fill="rgba(255,255,255,.35)" font-size="9" font-family="Manrope" text-anchor="middle">l₁ ∥ l₂, знайди x</text>`
+,230,210);
+
+// ══════════════════════════════════════════════
+// 📚 БАНК ПИТАНЬ — МАТЕМАТИКА 7 КЛ (42 питання)
+// ══════════════════════════════════════════════
+const POOL_7={
 easy:[
-{q:'Яка властивість є спільною для всіх геометричних рухів?',svg:null,opts:['Зберігають відстані між точками і форму фігури','Змінюють площу фігури вдвічі','Змінюють кути фігури','Змінюють форму, але зберігають площу'],correct:0,hint:'Геометричний рух зберігає відстані між будь-якими двома точками. Форма і розміри не змінюються.'},
-{q:'Знайди координати A\', симетричної до A(3; 2) відносно початку координат O(0; 0).',svg:GEO_E2,opts:['A\'(−3; −2)','A\'(3; −2)','A\'(−3; 2)','A\'(2; 3)'],correct:0,hint:'Симетрія відносно O: (x;y)→(−x;−y). Тому A(3;2)→A\'(−3;−2).'},
-{q:'При повороті фігури на 360° навколо будь-якої точки:',svg:null,opts:['Фігура повертається у вихідне положення','Фігура дзеркально відображається','Площа фігури подвоюється','Фігура зміщується вздовж вектора'],correct:0,hint:'360° — повний оберт. Кожна точка повертається на своє початкове місце.'},
-{q:'Коефіцієнт подібності k = 3. Сторона більшого трикутника 6 см. Яка відповідна сторона меншого?',svg:null,opts:['2 см','18 см','9 см','3 см'],correct:0,hint:'k = більша/менша = 3. Менша = 6÷3 = 2 см.'},
-{q:'Знайди B\', симетричну до B(4; −3) відносно осі Ox.',svg:GEO_E5,opts:['B\'(4; 3)','B\'(−4; −3)','B\'(−4; 3)','B\'(3; 4)'],correct:0,hint:'Симетрія відносно Ox: y змінює знак, x залишається. B(4;−3)→B\'(4;3).'},
-{q:'Яке перетворення переміщує кожну точку фігури на однаковий вектор без обертання?',svg:null,opts:['Паралельне перенесення','Поворот','Симетрія відносно точки','Перетворення подібності'],correct:0,hint:'Паралельне перенесення зміщує всі точки на однаковий вектор без зміни орієнтації фігури.'},
-{q:'Якщо коефіцієнт подібності двох фігур k, то відношення їх площ:',svg:null,opts:['k²','k','2k','√k'],correct:0,hint:'Площа — двовимірна величина. При подібності з k лінійні розміри ×k, площа ×k².'},
-{q:'Центральна симетрія відносно точки O рівносильна повороту навколо O на кут:',svg:null,opts:['180°','90°','270°','360°'],correct:0,hint:'Центральна симетрія: O є серединою AA\'. Це рівнозначно повороту на 180°.'},
-{q:'При паралельному перенесенні на вектор (2; 3) точка C(1; 1) переходить в:',svg:GEO_E9,opts:['C\'(3; 4)','C\'(−1; −2)','C\'(2; 3)','C\'(1; 4)'],correct:0,hint:'C\'(x+a;y+b) = C\'(1+2; 1+3) = C\'(3;4).'},
-{q:'Дві фігури рівні, якщо одну можна отримати з іншої за допомогою:',svg:null,opts:['Геометричного руху (переміщення)','Розтягування з k≠1','Зміни масштабу','Деформації'],correct:0,hint:'Рівні фігури збігаються при накладанні, яке виконується геометричним рухом.'},
+{q:'Розв\'яжи рівняння: 2x + 6 = 0',svg:null,opts:['x = −3','x = 3','x = −6','x = 6'],correct:0,hint:'2x = −6, ділимо на 2: x = −3.'},
+{q:'Сума суміжних кутів дорівнює:',svg:null,opts:['180°','90°','360°','270°'],correct:0,hint:'Суміжні кути утворюють розгорнутий кут. Розгорнутий кут = 180°.'},
+{q:'Обчисли: 3²',svg:null,opts:['9','6','8','27'],correct:0,hint:'3² = 3 × 3 = 9.'},
+{q:'Якщо дві прямі перпендикулярні, кут між ними:',svg:null,opts:['90°','180°','45°','60°'],correct:0,hint:'Перпендикулярні прямі утворюють прямий кут = 90°.'},
+{q:'Спрости: 3x + 5x',svg:null,opts:['8x','15x²','8','2x'],correct:0,hint:'Подібні члени додаємо: (3+5)x = 8x.'},
+{q:'Сума кутів трикутника дорівнює:',svg:null,opts:['180°','360°','90°','270°'],correct:0,hint:'Теорема: сума внутрішніх кутів будь-якого трикутника = 180°.'},
+{q:'(a + b)² = ?',svg:null,opts:['a² + 2ab + b²','a² + b²','a² − 2ab + b²','2a + 2b'],correct:0,hint:'Квадрат суми: (a+b)² = a² + 2ab + b².'},
+{q:'Один гострий кут прямокутного трикутника 35°. Знайди другий гострий кут.',svg:null,opts:['55°','45°','65°','145°'],correct:0,hint:'Сума гострих кутів прямокутного трикутника = 90°. 90° − 35° = 55°.'},
+{q:'Знайди y = 2x при x = 3.',svg:null,opts:['6','5','9','3'],correct:0,hint:'y = 2 · 3 = 6.'},
+{q:'Діаметр кола 10 см. Знайди радіус.',svg:null,opts:['5 см','10 см','20 см','2 см'],correct:0,hint:'r = d / 2 = 10 / 2 = 5 см.'},
+{q:'Яке рівняння є лінійним?',svg:null,opts:['3x − 5 = 0','x² = 4','x³ = 8','x² + x = 0'],correct:0,hint:'Лінійне рівняння — ступінь змінної рівно 1. Тільки 3x−5=0 відповідає умові.'},
+{q:'Вертикальні кути рівні між собою. Один вертикальний кут 120°. Знайди суміжний кут.',svg:null,opts:['60°','120°','30°','240°'],correct:0,hint:'Суміжні кути в сумі 180°: 180° − 120° = 60°.'},
 ],
 medium:[
-{q:'Трикутник ABC: A(0;0), B(4;0), C(0;3) відображається відносно осі Oy. Знайди B\'.',svg:GEO_M1,opts:['B\'(−4; 0)','B\'(4; 0)','B\'(0; 4)','B\'(0; −4)'],correct:0,hint:'Oy: x змінює знак. B(4;0)→B\'(−4;0). A і C лежать на Oy — не змінюються.'},
-{q:'Площа трикутника 16 см², k = 3. Знайди площу подібного трикутника.',svg:null,opts:['144 см²','48 см²','9 см²','576 см²'],correct:0,hint:'S₂ = S₁·k² = 16·9 = 144 см².'},
-{q:'Точка M(2; 5) повертається на 90° за год. стрілкою навколо O(0;0). Знайди M\'.',svg:GEO_M3,opts:['M\'(5; −2)','M\'(−5; 2)','M\'(−2; −5)','M\'(2; −5)'],correct:0,hint:'Поворот 90° за год.: (x;y)→(y;−x). M(2;5)→M\'(5;−2).'},
-{q:'При паралельному перенесенні на вектор (−3; 4) точка A(1; 2) переходить в A\'.',svg:GEO_M4,opts:['A\'(−2; 6)','A\'(4; −2)','A\'(−1; 6)','A\'(2; −2)'],correct:0,hint:'A\'(1+(−3); 2+4) = A\'(−2;6).'},
-{q:'Периметр фігури 24 см, k = 2,5. Знайди периметр подібної фігури.',svg:null,opts:['60 см','9,6 см','26,5 см','48 см'],correct:0,hint:'Периметри~k: P₂ = 24·2,5 = 60 см.'},
-{q:'A(2;4) перейшла в A\'(−2;−4) при симетрії відносно точки O. Знайди O.',svg:null,opts:['O(0; 0)','O(2; 2)','O(1; 2)','O(−1; −1)'],correct:0,hint:'O — середина AA\': x=(2+(−2))/2=0, y=(4+(−4))/2=0. O(0;0).'},
-{q:'Знайди P\', симетричну до P(3; 1) відносно прямої y = x.',svg:GEO_M6,opts:['P\'(1; 3)','P\'(−1; −3)','P\'(3; −1)','P\'(−3; 1)'],correct:0,hint:'Симетрія відносно y=x: координати міняються місцями. P(3;1)→P\'(1;3).'},
-{q:'При повороті на 180° навколо O(0;0) точка A(3; −2) переходить в:',svg:GEO_M8,opts:['A\'(−3; 2)','A\'(3; 2)','A\'(−2; 3)','A\'(2; −3)'],correct:0,hint:'180°=(−x;−y). A(3;−2)→A\'(−3;2).'},
-{q:'Площі двох подібних трикутників 25:49. Знайди коефіцієнт подібності.',svg:null,opts:['5/7','25/49','7/5','√5'],correct:0,hint:'k²=25/49 → k=5/7 ≈ 0,71.'},
-{q:'Подібні трикутники мають відповідні сторони 5 см і 15 см. Коефіцієнт подібності від більшого до меншого:',svg:null,opts:['1/3','3','1/5','10'],correct:0,hint:'k = менша/більша = 5/15 = 1/3.'},
+{q:'Розв\'яжи рівняння: 3(x − 2) = 2x + 1',svg:null,opts:['x = 7','x = 5','x = −7','x = 1'],correct:0,hint:'3x − 6 = 2x + 1. Переносимо: 3x − 2x = 1 + 6. x = 7.'},
+{q:'Спрости одночлен: (2a²b) · (3ab²)',svg:null,opts:['6a³b³','5a³b³','6a²b²','6a³b²'],correct:0,hint:'2·3=6, a²·a=a³, b·b²=b³. Відповідь: 6a³b³.'},
+{q:'При перетині паралельних прямих січною відповідні кути:',svg:null,opts:['Рівні','В сумі 180°','В сумі 90°','Довільні'],correct:0,hint:'Ознака паралельності: відповідні кути рівні.'},
+{q:'Розкрий дужки: (x + 3)(x − 3)',svg:null,opts:['x² − 9','x² + 9','x² − 6x + 9','x² + 6x + 9'],correct:0,hint:'Різниця квадратів: (a+b)(a−b) = a²−b². (x+3)(x−3) = x²−9.'},
+{q:'За якою ознакою рівні трикутники, якщо TWO сторони і кут між ними рівні?',svg:null,opts:['Друга ознака (СКС)','Перша ознака (ССС)','Третя ознака (ККС)','Трикутники не рівні'],correct:0,hint:'Дві сторони і КУТ МІЖ НИМИ — це 2-га ознака рівності (Сторона-Кут-Сторона).'},
+{q:'Розклади на множники: x² − 25',svg:null,opts:['(x − 5)(x + 5)','(x + 5)²','(x − 5)²','x(x − 25)'],correct:0,hint:'Різниця квадратів: a²−b² = (a−b)(a+b). x²−25 = (x−5)(x+5).'},
+{q:'У прямокутному трикутнику катети 3 і 4. Знайди гіпотенузу.',svg:M7_RIGHT_A,opts:['5','7','25','√7'],correct:0,hint:'Теорема Піфагора: c² = 3²+4² = 9+16 = 25. c = 5.'},
+{q:'Де графік функції y = 2x − 4 перетинає вісь Ox?',svg:M7_FUNC,opts:['x = 2','x = 4','x = −2','x = −4'],correct:0,hint:'При y=0: 0=2x−4, 2x=4, x=2. Точка (2; 0).'},
+{q:'Площа круга з радіусом 3 см:',svg:null,opts:['9π см²','6π см²','3π см²','18π см²'],correct:0,hint:'S = πr² = π · 3² = 9π см².'},
+{q:'Розв\'яжи систему: y = 2x, x + y = 9',svg:null,opts:['x = 3; y = 6','x = 6; y = 3','x = 4; y = 5','x = 2; y = 7'],correct:0,hint:'Підставляємо: x + 2x = 9, 3x = 9, x = 3. Тоді y = 2·3 = 6.'},
+{q:'Обчисли: 2³ · 2²',svg:null,opts:['32','16','64','8'],correct:0,hint:'При множенні: 2³ · 2² = 2³⁺² = 2⁵ = 32.'},
+{q:'Число збільшили на 15 і отримали 47. Знайди число.',svg:null,opts:['32','62','22','42'],correct:0,hint:'x + 15 = 47. x = 47 − 15 = 32.'},
+{q:'Рівнобедрений трикутник: основа 6, рівні сторони по 5. Знайди периметр.',svg:null,opts:['16','11','21','15'],correct:0,hint:'P = 5 + 5 + 6 = 16.'},
+{q:'Знайди y = 3x + 1 при x = −2.',svg:null,opts:['−5','7','−7','5'],correct:0,hint:'y = 3·(−2) + 1 = −6 + 1 = −5.'},
+{q:'Довжина кола з діаметром 6:',svg:null,opts:['6π','3π','12π','36π'],correct:0,hint:'C = πd = π · 6 = 6π.'},
+{q:'Обчисли 99² за формулою скороченого множення.',svg:null,opts:['9801','9901','9601','9721'],correct:0,hint:'(100−1)² = 10000 − 200 + 1 = 9801.'},
+{q:'Зовнішній кут трикутника дорівнює:',svg:null,opts:['Сумі двох неприлеглих внутрішніх кутів','Різниці двох кутів','Третьому куту','180°'],correct:0,hint:'Теорема про зовнішній кут: він рівний сумі двох неприлеглих до нього кутів.'},
+{q:'Виконай дію: (3x − 2)² =',svg:null,opts:['9x² − 12x + 4','9x² + 4','9x² − 6x + 4','6x² − 4'],correct:0,hint:'(a−b)² = a²−2ab+b². (3x)²−2·3x·2+2² = 9x²−12x+4.'},
 ],
 hard:[
-{q:'A(1;2): спочатку симетрія відносно Ox (→A\'), потім перенесення на (1;−1) (→A\'\'). Знайди A\'\'.',svg:GEO_H1,opts:['A\'\'(2; −3)','A\'\'(0; −1)','A\'\'(2; −1)','A\'\'(−1; 2)'],correct:0,hint:'Крок 1: Ox→A\'(1;−2). Крок 2: (1;−1)→A\'\'(2;−3).'},
-{q:'Площа подібного трикутника в 4 рази більша. Периметр оригіналу 18 см. Знайди периметр подібного.',svg:null,opts:['36 см','72 см','9 см','54 см'],correct:0,hint:'k²=4→k=2. P₂=18·2=36 см.'},
-{q:'Два подібних трикутники. Сторони меншого: 6,8,10. Відповідна до 6 сторона більшого — 9. Знайди x (до 8).',svg:GEO_H3,opts:['12','5,3','6','16'],correct:0,hint:'k=9/6=1,5. x=8·1,5=12.'},
-{q:'A(2;3) повертається на 90° проти год. стрілки навколо C(1;1). Знайди A\'.',svg:GEO_H4,opts:['A\'(−1; 2)','A\'(3; 0)','A\'(0; 3)','A\'(2; −1)'],correct:0,hint:'1) A−C=(1;2). 2) 90° проти год.: (x;y)→(−y;x)→(−2;1). 3) +C=(−1;2).'},
-{q:'Два подібних прямокутники: площі 50 і 200 см². Ширина меншого 5 см. Знайди ширину більшого.',svg:GEO_H6,opts:['10 см','20 см','40 см','8 см'],correct:0,hint:'k²=200/50=4→k=2. Ширина=5·2=10 см.'},
-{q:'Знайди вектор паралельного перенесення, якщо A(−2;5) перейшла в A\'(3;1).',svg:null,opts:['(5; −4)','(−5; 4)','(1; 6)','(−1; −4)'],correct:0,hint:'Вектор = A\'−A = (3−(−2);1−5) = (5;−4).'},
-{q:'При якому найменшому куті повороту (крім 0°) правильний шестикутник суміщається сам з собою?',svg:null,opts:['60°','90°','120°','45°'],correct:0,hint:'Шестикутник: 360°/6=60°.'},
-{q:'При якому куті повороту квадрат суміщається сам з собою (всі варіанти, крім 0° і 360°)?',svg:GEO_H7,opts:['90°, 180°, 270°','45°, 135°, 225°','60°, 120°, 240°','Тільки 180°'],correct:0,hint:'Квадрат: 360°/4=90°. Суміщається при 90°, 180°, 270°.'},
+{q:'Два числа відносяться як 3 : 5, їх сума 40. Знайди менше число.',svg:null,opts:['15','25','24','8'],correct:0,hint:'3k + 5k = 40, 8k = 40, k = 5. Менше = 3·5 = 15.'},
+{q:'Два суміжні кути відносяться як 1 : 3. Знайди більший.',svg:null,opts:['135°','90°','120°','150°'],correct:0,hint:'x + 3x = 180°, 4x = 180°, x = 45°. Більший = 3·45° = 135°.'},
+{q:'Знайди значення виразу (3x − 1)² при x = 2.',svg:null,opts:['25','35','5','23'],correct:0,hint:'3·2 − 1 = 5. 5² = 25.'},
+{q:'Розклади на множники: 2x² − 8x',svg:null,opts:['2x(x − 4)','2(x² − 4x)','x(2x − 8)','2x(x + 4)'],correct:0,hint:'Виносимо спільний множник 2x: 2x(x − 4).'},
+{q:'У трикутнику кут A = 50°, кут B = 70°. Знайди кут C.',svg:M7_TRI_ANG,opts:['60°, трикутник гострокутний','60°, тупокутний','40°, гострокутний','60°, прямокутний'],correct:0,hint:'C = 180°−50°−70° = 60°. Всі кути < 90° → гострокутний.'},
+{q:'Розклади: 4x² − 12x + 9',svg:null,opts:['(2x − 3)²','(2x + 3)²','(4x − 9)(x − 1)','4(x² − 3x)'],correct:0,hint:'Повний квадрат різниці: (2x)²−2·2x·3+3² = (2x−3)².'},
+{q:'У прямокутному трикутнику гіпотенуза 13, один катет 5. Знайди другий катет.',svg:M7_RIGHT_B,opts:['12','8','√194','14'],correct:0,hint:'b² = 13²−5² = 169−25 = 144. b = 12. (Трикутник 5−12−13)'},
+{q:'Пряма y = kx + b проходить через точки (0; 3) і (2; 7). Знайди k.',svg:null,opts:['2','4','3','1'],correct:0,hint:'k = (7−3)/(2−0) = 4/2 = 2.'},
+{q:'Знайди площу кільця із зовнішнім радіусом R = 5 і внутрішнім r = 3.',svg:M7_RING,opts:['16π','8π','25π','34π'],correct:0,hint:'S = π(R²−r²) = π(25−9) = 16π.'},
+{q:'Розв\'яжи систему рівнянь: 2x + 3y = 12, x − y = 1',svg:null,opts:['x = 3; y = 2','x = 5; y = 1','x = 2; y = 3','x = 4; y = 4/3'],correct:0,hint:'З 2-го: x = y+1. Підставляємо: 2(y+1)+3y = 12, 5y = 10, y = 2, x = 3.'},
+{q:'Паралельні прямі перетинає січна. Односторонні кути 3x і (2x + 30°). Знайди x.',svg:M7_PAR,opts:['30°','150°','10°','25°'],correct:0,hint:'Односторонні кути в сумі 180°: 3x + 2x + 30 = 180, 5x = 150, x = 30°.'},
+{q:'Перший робітник виконує роботу за 6 год, другий — за 4 год. За скільки годин виконають разом?',svg:null,opts:['2,4 год','5 год','3 год','10 год'],correct:0,hint:'За 1 год разом: 1/6 + 1/4 = 5/12. Час = 12/5 = 2,4 год.'},
 ],
 };
 
-// ════════════════════════════════════════════
-// 📚 БАНК ПИТАНЬ — АЛГЕБРА (28)
-// ════════════════════════════════════════════
-const POOL_ALG = {
+// ══════════════════════════════════════════════
+// 📚 БАНК ПИТАНЬ — ГЕОМЕТРІЯ 9 КЛ (28)
+// ══════════════════════════════════════════════
+const POOL_GEO={
 easy:[
-{q:'Скільки різних варіантів вбрання можна скласти з 3 сорочок і 4 пар штанів?',svg:ALG_TREE,opts:['12','7','24','3'],correct:0,hint:'Правило добутку: 3×4 = 12.'},
-{q:'Скільки способів розставити 4 різні книги на полиці?',svg:null,opts:['24','12','16','4'],correct:0,hint:'Перестановки: P₄ = 4! = 24.'},
-{q:'З пункту A до B є 3 автобусних і 2 маршрути метро. Скільки всього способів доїхати?',svg:null,opts:['5','6','3','2'],correct:0,hint:'Правило суми: вибираємо АБО автобус АБО метро: 3+2=5.'},
-{q:'Кидають монету. Яка ймовірність випадіння герба?',svg:null,opts:['0,5','1','0,25','0'],correct:0,hint:'2 рівноможливих наслідки, герб — один. P=1/2=0,5.'},
-{q:'Кидають кубик. Яка ймовірність випадіння числа 6?',svg:null,opts:['1/6','1/2','1/3','1'],correct:0,hint:'6 рівноможливих наслідків, число 6 — один. P=1/6≈0,17.'},
-{q:'Знайди середнє арифметичне: 4, 6, 8, 10, 12.',svg:null,opts:['8','9','10','7'],correct:0,hint:'(4+6+8+10+12)/5 = 40/5 = 8.'},
-{q:'Знайди моду ряду: 3, 5, 3, 7, 3, 5, 8.',svg:null,opts:['3','5','7','8'],correct:0,hint:'Мода — найчастіше число. Число 3 зустрічається 3 рази.'},
-{q:'На стовпчастій діаграмі показано результати КР. Скільки учнів отримали оцінку 10?',svg:ALG_BAR,opts:['4','8','6','3'],correct:0,hint:'Стовпчик оцінки 10 (виділений жовтим) відповідає 4 учням.'},
-{q:'Скільки слів (не обов\'язково осмислених) можна скласти з літер слова «МАК»?',svg:null,opts:['6','3','9','12'],correct:0,hint:'3 різні літери: P₃ = 3! = 6.'},
-{q:'В урні 4 червоні і 4 сині кульки. Яка ймовірність витягти червону?',svg:null,opts:['0,5','0,25','0,75','1'],correct:0,hint:'P = 4/8 = 1/2 = 0,5.'},
+{q:'Яка властивість є спільною для всіх геометричних рухів?',svg:null,opts:['Зберігають відстані і форму фігури','Змінюють площу вдвічі','Змінюють кути','Змінюють форму, але зберігають площу'],correct:0,hint:'Геометричний рух зберігає відстані між будь-якими двома точками.'},
+{q:'Знайди A\', симетричну до A(3; 2) відносно O(0; 0).',svg:GEO_E2,opts:['A\'(−3; −2)','A\'(3; −2)','A\'(−3; 2)','A\'(2; 3)'],correct:0,hint:'Симетрія відносно O: (x;y)→(−x;−y).'},
+{q:'При повороті на 360° фігура:',svg:null,opts:['Повертається у вихідне положення','Відображається дзеркально','Площа збільшується','Зміщується вздовж вектора'],correct:0,hint:'360° — повний оберт, фігура повертається на місце.'},
+{q:'k = 3, сторона більшого трикутника 6 см. Яка відповідна сторона меншого?',svg:null,opts:['2 см','18 см','9 см','3 см'],correct:0,hint:'k = більша / менша. Менша = 6 ÷ 3 = 2 см.'},
+{q:'Знайди B\', симетричну до B(4; −3) відносно осі Ox.',svg:GEO_E5,opts:['B\'(4; 3)','B\'(−4; −3)','B\'(−4; 3)','B\'(3; 4)'],correct:0,hint:'Симетрія відносно Ox: y змінює знак. B(4;−3)→B\'(4;3).'},
+{q:'Яке перетворення переміщує кожну точку на однаковий вектор без обертання?',svg:null,opts:['Паралельне перенесення','Поворот','Симетрія відносно точки','Подібність'],correct:0,hint:'Паралельне перенесення — всі точки зміщуються на однаковий вектор.'},
+{q:'Якщо коефіцієнт подібності k, то відношення площ:',svg:null,opts:['k²','k','2k','√k'],correct:0,hint:'Площа × k².'},
+{q:'Центральна симетрія відносно O = поворот на:',svg:null,opts:['180°','90°','270°','360°'],correct:0,hint:'O є серединою AA\' — це поворот на 180°.'},
+{q:'Вектор (2;3), C(1;1). Де C\'?',svg:GEO_E9,opts:['C\'(3; 4)','C\'(−1; −2)','C\'(2; 3)','C\'(1; 4)'],correct:0,hint:'C\'(1+2; 1+3) = C\'(3;4).'},
+{q:'Рівні фігури — це фігури, що збігаються при:',svg:null,opts:['Геометричному русі','Розтягуванні k≠1','Зміні масштабу','Деформації'],correct:0,hint:'Рівні фігури збігаються при накладанні = геометричному русі.'},
 ],
 medium:[
-{q:'Скільки різних розміщень з 5 елементів по 2 існує? Порядок важливий.',svg:null,opts:['20','10','25','15'],correct:0,hint:'A₅² = 5!/(5−2)! = 5·4 = 20.'},
-{q:'Скільки способів вибрати 2 учні з 6 для олімпіади? Порядок не важливий.',svg:null,opts:['15','30','12','6'],correct:0,hint:'C₆² = 6!/(2!·4!) = 15.'},
-{q:'В урні 3 червоні, 5 синіх і 2 зелені кульки. Яка ймовірність витягти червону?',svg:null,opts:['0,3','0,5','0,2','0,35'],correct:0,hint:'Всього 10, червоних 3. P=3/10=0,3.'},
-{q:'Стрілець зробив 50 пострілів і влучив 35 разів. Знайди відносну частоту влучань.',svg:null,opts:['0,7','0,35','35','0,5'],correct:0,hint:'Відносна частота = 35/50 = 0,7.'},
-{q:'Скільки 3-значних чисел можна скласти з цифр 1,2,3,4,5 (без повторень)?',svg:null,opts:['60','125','15','20'],correct:0,hint:'A₅³ = 5·4·3 = 60.'},
-{q:'Знайди медіану ряду: 2, 5, 7, 9, 11, 14, 18.',svg:null,opts:['9','7','11','10'],correct:0,hint:'7 чисел → 4-й елемент = 9.'},
-{q:'Яка частка учнів їде автобусом, якщо відповідний кут кругової діаграми 108°?',svg:ALG_PIE,opts:['30%','108%','25%','36%'],correct:0,hint:'108°/360° = 0,3 = 30%.'},
-{q:'Яка ймовірність, що при киданні кубика випаде парне число?',svg:null,opts:['1/2','1/3','2/3','1/6'],correct:0,hint:'Парні: 2,4,6 — три з шести. P=3/6=1/2.'},
-{q:'Ймовірність дощу 0,35. Яка ймовірність, що дощу НЕ буде?',svg:null,opts:['0,65','0,35','0,5','0,7'],correct:0,hint:'P(не дощ) = 1−0,35 = 0,65.'},
-{q:'Скільки способів вибрати 3 книги з 8?',svg:null,opts:['56','336','24','28'],correct:0,hint:'C₈³ = (8·7·6)/(3·2·1) = 56.'},
+{q:'ABC: A(0;0), B(4;0), C(0;3). Симетрія відносно Oy. Знайди B\'.',svg:GEO_M1,opts:['B\'(−4; 0)','B\'(4; 0)','B\'(0; 4)','B\'(0; −4)'],correct:0,hint:'Oy: x змінює знак. B(4;0)→B\'(−4;0).'},
+{q:'S₁=16 см², k=3. Знайди S₂.',svg:null,opts:['144 см²','48 см²','9 см²','576 см²'],correct:0,hint:'S₂ = 16 · 3² = 144 см².'},
+{q:'M(2;5) повертається на 90° за год. стрілкою навколо O. Знайди M\'.',svg:GEO_M3,opts:['M\'(5; −2)','M\'(−5; 2)','M\'(−2; −5)','M\'(2; −5)'],correct:0,hint:'90° за год.: (x;y)→(y;−x). M(2;5)→M\'(5;−2).'},
+{q:'Вектор (−3;4), A(1;2). Знайди A\'.',svg:GEO_M4,opts:['A\'(−2; 6)','A\'(4; −2)','A\'(−1; 6)','A\'(2; −2)'],correct:0,hint:'A\'(1+(−3); 2+4) = A\'(−2;6).'},
+{q:'P₁=24 см, k=2,5. Знайди P₂.',svg:null,opts:['60 см','9,6 см','26,5 см','48 см'],correct:0,hint:'P₂ = 24 · 2,5 = 60 см.'},
+{q:'A(2;4)→A\'(−2;−4). Знайди центр симетрії O.',svg:null,opts:['O(0; 0)','O(2; 2)','O(1; 2)','O(−1; −1)'],correct:0,hint:'O — середина AA\': (0;0).'},
+{q:'P(3;1), симетрія відносно y=x. Знайди P\'.',svg:GEO_M6,opts:['P\'(1; 3)','P\'(−1; −3)','P\'(3; −1)','P\'(−3; 1)'],correct:0,hint:'Симетрія y=x: координати міняються. P(3;1)→P\'(1;3).'},
+{q:'Поворот 180° навколо O(0;0). A(3;−2)→?',svg:GEO_M8,opts:['A\'(−3; 2)','A\'(3; 2)','A\'(−2; 3)','A\'(2; −3)'],correct:0,hint:'(x;y)→(−x;−y). A(3;−2)→A\'(−3;2).'},
+{q:'Площі подібних трикутників 25:49. Знайди k.',svg:null,opts:['5/7','25/49','7/5','√5'],correct:0,hint:'k² = 25/49, k = 5/7.'},
+{q:'Відповідні сторони 5 і 15. k від більшого до меншого:',svg:null,opts:['1/3','3','1/5','10'],correct:0,hint:'k = 5/15 = 1/3.'},
 ],
 hard:[
-{q:'З 10 учнів вибирають 4. Скільки способів, якщо Іваненко обов\'язково у групі?',svg:null,opts:['84','210','126','36'],correct:0,hint:'Іваненко вже включена, вибираємо 3 з решти 9: C₉³=84.'},
-{q:'Скільки різних п\'ятизначних чисел можна скласти з цифр 1,2,3,4,5 (всі різні)?',svg:null,opts:['120','100','60','25'],correct:0,hint:'P₅ = 5! = 120.'},
-{q:'Кидають два кубики. Яка ймовірність, що сума очок дорівнює 7?',svg:ALG_DICE,opts:['1/6','7/36','1/12','5/36'],correct:0,hint:'6 сприятливих пар з 36. P=6/36=1/6.'},
-{q:'З 52 карт витягують одну. Яка ймовірність, що це туз або король?',svg:null,opts:['2/13','1/13','1/26','1/6'],correct:0,hint:'4 тузи + 4 королі = 8 карт. P=8/52=2/13.'},
-{q:'Середнє 5 чисел = 12. До вибірки додають число 18. Яке нове середнє?',svg:null,opts:['13','15','12','14'],correct:0,hint:'Сума 5 чисел=60. (60+18)/6 = 78/6 = 13.'},
-{q:'У класі 20 учнів: 12 займаються спортом, 8 — музикою, 5 — обома. Скільки займаються хоча б одним?',svg:null,opts:['15','20','25','10'],correct:0,hint:'|A∪B|=12+8−5=15.'},
-{q:'Стрілець влучає з P=0,8. Яка ймовірність двох промахів підряд (незалежні постріли)?',svg:null,opts:['0,04','0,16','0,36','0,2'],correct:0,hint:'P(промах)=0,2. P(два промахи)=0,2·0,2=0,04.'},
-{q:'Знайди розмах вибірки: 15, 22, 8, 31, 17, 9, 25.',svg:ALG_DATA,opts:['23','15','31','22'],correct:0,hint:'Розмах = max−min = 31−8 = 23.'},
+{q:'A(1;2): симетрія Ox → A\', перенесення (1;−1) → A\'\'. Знайди A\'\'.',svg:GEO_H1,opts:['A\'\'(2; −3)','A\'\'(0; −1)','A\'\'(2; −1)','A\'\'(−1; 2)'],correct:0,hint:'A\'(1;−2)→A\'\'(2;−3).'},
+{q:'Площа в 4 рази більша, P₁=18 см. Знайди P₂.',svg:null,opts:['36 см','72 см','9 см','54 см'],correct:0,hint:'k²=4→k=2. P₂=18·2=36.'},
+{q:'Менший трикутник: 6,8,10. Відповідна до 6 — 9. Знайди x (до 8).',svg:GEO_H3,opts:['12','5,3','6','16'],correct:0,hint:'k=9/6=1,5. x=8·1,5=12.'},
+{q:'A(2;3), поворот 90° проти год. навколо C(1;1). Знайди A\'.',svg:GEO_H4,opts:['A\'(−1; 2)','A\'(3; 0)','A\'(0; 3)','A\'(2; −1)'],correct:0,hint:'A−C=(1;2)→(−2;1)+C=(−1;2).'},
+{q:'S₁=50, S₂=200, ш₁=5. Знайди ш₂.',svg:GEO_H6,opts:['10 см','20 см','40 см','8 см'],correct:0,hint:'k²=4→k=2. 5·2=10.'},
+{q:'A(−2;5)→A\'(3;1). Знайди вектор перенесення.',svg:null,opts:['(5; −4)','(−5; 4)','(1; 6)','(−1; −4)'],correct:0,hint:'A\'−A=(5;−4).'},
+{q:'Найменший кут повороту правильного шестикутника (крім 0°):',svg:null,opts:['60°','90°','120°','45°'],correct:0,hint:'360°/6=60°.'},
+{q:'Кути повороту квадрата (крім 0° і 360°):',svg:GEO_H7,opts:['90°, 180°, 270°','45°, 135°, 225°','60°, 120°, 240°','Тільки 180°'],correct:0,hint:'360°/4=90°. Суміщається при 90°, 180°, 270°.'},
 ],
 };
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// 📚 БАНК ПИТАНЬ — АЛГЕБРА 9 КЛ (28)
+// ══════════════════════════════════════════════
+const POOL_ALG={
+easy:[
+{q:'Скільки варіантів вбрання з 3 сорочок і 4 штанів?',svg:ALG_TREE,opts:['12','7','24','3'],correct:0,hint:'Правило добутку: 3×4=12.'},
+{q:'Скільки способів розставити 4 книги на полиці?',svg:null,opts:['24','12','16','4'],correct:0,hint:'P₄=4!=24.'},
+{q:'3 автобусних і 2 маршрути метро. Скільки способів доїхати?',svg:null,opts:['5','6','3','2'],correct:0,hint:'Правило суми: 3+2=5.'},
+{q:'Монета. Ймовірність герба:',svg:null,opts:['0,5','1','0,25','0'],correct:0,hint:'P=1/2=0,5.'},
+{q:'Кубик. Ймовірність числа 6:',svg:null,opts:['1/6','1/2','1/3','1'],correct:0,hint:'P=1/6.'},
+{q:'Середнє арифметичне: 4, 6, 8, 10, 12.',svg:null,opts:['8','9','10','7'],correct:0,hint:'(4+6+8+10+12)/5=40/5=8.'},
+{q:'Мода ряду: 3, 5, 3, 7, 3, 5, 8.',svg:null,opts:['3','5','7','8'],correct:0,hint:'3 зустрічається 3 рази — найчастіше.'},
+{q:'Скільки учнів отримали оцінку 10?',svg:ALG_BAR,opts:['4','8','6','3'],correct:0,hint:'Стовпчик 10 (жовтий) = 4 учні.'},
+{q:'Скільки слів із «МАК»?',svg:null,opts:['6','3','9','12'],correct:0,hint:'P₃=3!=6.'},
+{q:'Урна: 4 червоні, 4 сині. P(червона):',svg:null,opts:['0,5','0,25','0,75','1'],correct:0,hint:'P=4/8=1/2=0,5.'},
+],
+medium:[
+{q:'Скільки розміщень A₅²?',svg:null,opts:['20','10','25','15'],correct:0,hint:'A₅²=5·4=20.'},
+{q:'Скільки способів вибрати 2 з 6? (C₆²)',svg:null,opts:['15','30','12','6'],correct:0,hint:'C₆²=15.'},
+{q:'Урна: 3 червоні, 5 сині, 2 зелені. P(червона):',svg:null,opts:['0,3','0,5','0,2','0,35'],correct:0,hint:'3/10=0,3.'},
+{q:'50 пострілів, 35 влучань. Відносна частота:',svg:null,opts:['0,7','0,35','35','0,5'],correct:0,hint:'35/50=0,7.'},
+{q:'3-значні числа з {1,2,3,4,5} без повторень:',svg:null,opts:['60','125','15','20'],correct:0,hint:'A₅³=5·4·3=60.'},
+{q:'Медіана: 2, 5, 7, 9, 11, 14, 18.',svg:null,opts:['9','7','11','10'],correct:0,hint:'7 чисел, 4-й елемент = 9.'},
+{q:'Кут сектора автобус 108°. Яка частка?',svg:ALG_PIE,opts:['30%','108%','25%','36%'],correct:0,hint:'108°/360°=0,3=30%.'},
+{q:'Кубик. P(парне число):',svg:null,opts:['1/2','1/3','2/3','1/6'],correct:0,hint:'3/6=1/2.'},
+{q:'P(дощ)=0,35. P(без дощу):',svg:null,opts:['0,65','0,35','0,5','0,7'],correct:0,hint:'1−0,35=0,65.'},
+{q:'C₈³ = ?',svg:null,opts:['56','336','24','28'],correct:0,hint:'(8·7·6)/(3·2·1)=56.'},
+],
+hard:[
+{q:'10 учнів, 4 у конкурс, Іваненко обов\'язково. Скільки способів?',svg:null,opts:['84','210','126','36'],correct:0,hint:'C₉³=84.'},
+{q:'П\'ятизначні числа з {1,2,3,4,5}, всі різні:',svg:null,opts:['120','100','60','25'],correct:0,hint:'5!=120.'},
+{q:'Два кубики. P(сума=7):',svg:ALG_DICE,opts:['1/6','7/36','1/12','5/36'],correct:0,hint:'6/36=1/6.'},
+{q:'З 52 карт. P(туз або король):',svg:null,opts:['2/13','1/13','1/26','1/6'],correct:0,hint:'8/52=2/13.'},
+{q:'Середнє 5 чисел=12. Додають 18. Нове середнє:',svg:null,opts:['13','15','12','14'],correct:0,hint:'(60+18)/6=13.'},
+{q:'20 учнів: 12 спорт, 8 музика, 5 обидва. Хоча б одним:',svg:null,opts:['15','20','25','10'],correct:0,hint:'12+8−5=15.'},
+{q:'P(влучити)=0,8. P(два промахи підряд):',svg:null,opts:['0,04','0,16','0,36','0,2'],correct:0,hint:'0,2·0,2=0,04.'},
+{q:'Розмах: 15,22,8,31,17,9,25.',svg:ALG_DATA,opts:['23','15','31','22'],correct:0,hint:'31−8=23.'},
+],
+};
+
+// ══════════════════════════════════════════════
 // 🎲 ВИБІР ПИТАНЬ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function shuffle(a){return[...a].sort(()=>Math.random()-.5)}
+function getPool(k){return{math7:POOL_7,geo:POOL_GEO,alg:POOL_ALG}[k]}
 function selectQ(testKey){
-  const cfg=TEST_CFG[testKey], pool=testKey==='geo'?POOL_GEO:POOL_ALG;
+  const cfg=TEST_CFG[testKey],pool=getPool(testKey);
   const[ne,nm,nh]=cfg.pick;
-  return shuffle([
-    ...shuffle(pool.easy).slice(0,ne),
-    ...shuffle(pool.medium).slice(0,nm),
-    ...shuffle(pool.hard).slice(0,nh),
-  ]).map(q=>({...q,opts:shuffle(q.opts.map((o,i)=>({t:o,ok:i===q.correct})))}));
+  return shuffle([...shuffle(pool.easy).slice(0,ne),...shuffle(pool.medium).slice(0,nm),...shuffle(pool.hard).slice(0,nh)])
+    .map(q=>({...q,opts:shuffle(q.opts.map((o,i)=>({t:o,ok:i===q.correct})))}));
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // 🛠 УТИЛІТИ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 const $=id=>document.getElementById(id);
 const app=$('app');
 let S={};
 function nowStr(){return new Date().toLocaleString('uk-UA')}
-// ✅ ВИПРАВЛЕННЯ 2: час у вигляді "Xхв Yс"
 function fmtTime(sec){const m=Math.floor(sec/60),s=sec%60;return m>0?`${m}хв ${s}с`:`${s}с`;}
 function gradeInfo(p){
-  if(p>=92)return{l:'12',c:'#a78bfa'};
-  if(p>=75)return{l:'10–11',c:'#10b981'};
-  if(p>=58)return{l:'7–9',c:'#22d3ee'};
-  if(p>=42)return{l:'5–6',c:'#f59e0b'};
+  if(p>=92)return{l:'12',c:'#a78bfa'};if(p>=75)return{l:'10–11',c:'#10b981'};
+  if(p>=58)return{l:'7–9',c:'#22d3ee'};if(p>=42)return{l:'5–6',c:'#f59e0b'};
   return{l:'1–4',c:'#ef4444'};
 }
 function toast(msg,sub='',dur=3000){
   $('tm').textContent=msg;$('ts').textContent=sub;
-  const t=$('toast');t.classList.add('show');
-  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),dur);
+  const t=$('toast');t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),dur);
 }
 async function sendToSheets(data){
   return new Promise(res=>{
@@ -350,9 +415,43 @@ async function sendToSheets(data){
   });
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// 🎉 КОНФЕТІ
+// ══════════════════════════════════════════════
+function launchConfetti(count=80){
+  const c=$('confetti');c.innerHTML='';
+  const colors=['#a78bfa','#10b981','#f59e0b','#06b6d4','#f87171','#fff'];
+  for(let i=0;i<count;i++){
+    const el=document.createElement('div');el.className='cf';
+    const col=colors[Math.floor(Math.random()*colors.length)];
+    const size=5+Math.random()*8;
+    const left=Math.random()*100;
+    const delay=Math.random()*1.2;
+    const dur=2+Math.random()*2;
+    el.style.cssText=`left:${left}%;width:${size}px;height:${size}px;background:${col};border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${dur}s;animation-delay:${delay}s;opacity:1`;
+    c.appendChild(el);
+  }
+  setTimeout(()=>c.innerHTML='',5000);
+}
+
+// ══════════════════════════════════════════════
+// 🔢 АНІМАЦІЯ РАХУНКУ
+// ══════════════════════════════════════════════
+function animateScore(target,total,color){
+  const el=$('score-anim');if(!el)return;
+  let cur=0;
+  const step=()=>{
+    cur=Math.min(cur+1,target);
+    el.innerHTML=`${cur}<span style="font-size:.4em;opacity:.5"> з ${total}</span>`;
+    el.style.color=cur===target?color:'rgba(255,255,255,.6)';
+    if(cur<target)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+// ══════════════════════════════════════════════
 // 🔒 АНТИШАХРАЙ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 let _L=[];
 function addL(t,e,fn){t.addEventListener(e,fn);_L.push({t,e,fn})}
 function removeL(){_L.forEach(({t,e,fn})=>t.removeEventListener(e,fn));_L=[]}
@@ -370,7 +469,7 @@ function setupAC(){
   });
   addL(document,'contextmenu',e=>e.preventDefault());
   document.body.style.userSelect='none';document.body.style.webkitUserSelect='none';
-  if(navigator.mediaDevices&&navigator.mediaDevices.getDisplayMedia)
+  if(navigator.mediaDevices?.getDisplayMedia)
     navigator.mediaDevices.getDisplayMedia=async()=>{viol('ss','🚨 Захоплення екрану заблоковано!');throw new Error('blocked')};
 }
 function onFsChg(){const isFs=!!(document.fullscreenElement||document.webkitFullscreenElement);if(!isFs&&S.phase==='quiz'){viol('fs','🚨 Вихід з повноекранного режиму!');setTimeout(reqFs,600)}}
@@ -380,67 +479,92 @@ function viol(type,msg){
   S.v[type]=(S.v[type]||0)+1;S.v.total++;
   const left=MAX_VIOL-S.v.total;
   toast(msg,left>0?`Попереджень залишилось: ${left}`:'Тест буде завершено!');
-  const vb=document.getElementById('vbadge');
-  if(vb){vb.textContent=`⚠️ ${S.v.total}/${MAX_VIOL}`;vb.style.display='inline'}
+  const vb=$('vbadge');if(vb){vb.textContent=`⚠️ ${S.v.total}/${MAX_VIOL}`;vb.style.display='inline'}
   if(S.v.total>=MAX_VIOL)finish(true);
 }
 
-// ════════════════════════════════════════════
-// 🏠 ГОЛОВНА — ВИБІР ТЕСТУ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// 🏠 ГОЛОВНА — ВИБІР КЛАСУ
+// ══════════════════════════════════════════════
 function renderHome(){
   S={phase:'home'};
   app.innerHTML=`
   <div class="card">
-    <div class="badge">✦ 9 клас · Перевірка знань</div>
-    <h1>Оберіть<br>контрольну</h1>
-    <p class="sub">Натисни на потрібну контрольну роботу</p>
-    <div class="test-grid">
-      <button class="test-card geo" onclick="renderIntro('geo')">
-        <div class="tc-icon">📐</div>
-        <div class="tc-title">Геометрія</div>
-        <div class="tc-sub">Геометричні перетворення</div>
-        <div class="tc-info">12 питань · 45 хвилин</div>
+    <div class="badge">✦ Перевірка знань</div>
+    <h1>Оберіть<br>свій клас</h1>
+    <p class="sub">Натисни на свій клас, щоб розпочати</p>
+    <div class="sel-grid">
+      <button class="sel-card g7" onclick="renderGrade7()">
+        <span class="sel-icon">7️⃣</span>
+        <div class="sel-title">7 клас</div>
+        <div class="sel-sub">Математика · Семестрова</div>
+        <div class="sel-info">24 питання · 45 хвилин</div>
       </button>
-      <button class="test-card alg" onclick="renderIntro('alg')">
-        <div class="tc-icon">🎲</div>
-        <div class="tc-title">Алгебра</div>
-        <div class="tc-sub">Комбінаторика і ймовірність</div>
-        <div class="tc-info">12 питань · 45 хвилин</div>
+      <button class="sel-card gg" onclick="renderGrade9()">
+        <span class="sel-icon">9️⃣</span>
+        <div class="sel-title">9 клас</div>
+        <div class="sel-sub">Геометрія або Алгебра</div>
+        <div class="sel-info">12 питань · 45 хвилин</div>
       </button>
     </div>
     <button class="btn btn-g" style="font-size:11px" onclick="renderTLogin()">🔐 Я вчитель — переглянути результати</button>
   </div>`;
 }
 
-// ════════════════════════════════════════════
-// 📋 ФОРМА — ІМ'Я
-// ════════════════════════════════════════════
+// ── 7 клас → одразу форма
+function renderGrade7(){renderIntro('math7')}
+
+// ── 9 клас → вибір предмету
+function renderGrade9(){
+  app.innerHTML=`
+  <div class="card">
+    <div class="badge">✦ 9 клас</div>
+    <h1>Оберіть<br>контрольну</h1>
+    <p class="sub">Натисни на потрібну контрольну роботу</p>
+    <div class="sel-grid">
+      <button class="sel-card gg" onclick="renderIntro('geo')">
+        <span class="sel-icon">📐</span>
+        <div class="sel-title">Геометрія</div>
+        <div class="sel-sub">Геометричні перетворення</div>
+        <div class="sel-info">12 питань · 45 хвилин</div>
+      </button>
+      <button class="sel-card ga" onclick="renderIntro('alg')">
+        <span class="sel-icon">🎲</span>
+        <div class="sel-title">Алгебра</div>
+        <div class="sel-sub">Комбінаторика і ймовірність</div>
+        <div class="sel-info">12 питань · 45 хвилин</div>
+      </button>
+    </div>
+    <button class="btn btn-g" style="margin-top:5px;font-size:11px" onclick="renderHome()">← Назад до вибору класу</button>
+  </div>`;
+}
+
+// ── Форма імені
 function renderIntro(testKey){
   const cfg=TEST_CFG[testKey];
   const tot=cfg.pick.reduce((a,b)=>a+b,0);
-  const mins=Math.floor(TIME_LIMIT/60);
+  const back=testKey==='math7'?'renderHome':'renderGrade9';
   app.innerHTML=`
   <div class="card">
-    <div class="badge">${cfg.icon} ${cfg.subject}</div>
-    <h1>${cfg.titleFull}</h1>
-    <p class="sub">${cfg.topic} · ${tot} питань · ${mins} хвилин</p>
+    <div class="badge ${testKey==='math7'?'c7':testKey==='alg'?'c9a':''}">${cfg.icon} ${cfg.grade} · ${cfg.subject}</div>
+    <h1>${cfg.title}</h1>
+    <p class="sub">${cfg.topic} · ${tot} питань · 45 хвилин</p>
     <div class="ig"><label>Прізвище</label><input id="is" type="text" placeholder="Шевченко" autocomplete="off"/></div>
     <div class="ig"><label>Ім'я</label><input id="in" type="text" placeholder="Тарас" autocomplete="off"/></div>
     <p class="err" id="er" style="display:none">⚠️ Введи прізвище та ім'я!</p>
     <div class="rbox">
       <div class="rtitle">📋 Правила</div>
       <ul class="rules">
-        <li>⏱ Таймер запускається одразу (${mins} хв)</li>
+        <li>⏱ Таймер запускається одразу (45 хв)</li>
         <li>🔒 Тест відкриється на весь екран</li>
         <li>👁 ${MAX_VIOL} порушень = автозавершення</li>
-        <li>🔀 У кожного учня свій унікальний набір питань</li>
+        <li>🔀 У кожного учня свій унікальний набір</li>
         <li>📵 Скріншоти і перемикання фіксуються</li>
-        <li>↩️ Повернутись до попереднього питання неможливо</li>
+        <li>↩️ Повернутись до питання неможливо</li>
       </ul>
     </div>
-    <button class="btn ${testKey==='geo'?'btn-p':'btn-alg'}" onclick="startQuiz('${testKey}')">Розпочати контрольну →</button>
-    <button class="btn btn-g" style="margin-top:5px;font-size:11px" onclick="renderHome()">← Назад до вибору</button>
+    <button class="btn ${cfg.btnCls}" onclick="startQuiz('${testKey}')">Розпочати →</button>
+    <button class="btn btn-g" style="margin-top:5px;font-size:11px" onclick="${back}()">← Назад</button>
   </div>`;
   $('is').addEventListener('keydown',e=>e.key==='Enter'&&$('in').focus());
   $('in').addEventListener('keydown',e=>e.key==='Enter'&&startQuiz(testKey));
@@ -453,9 +577,9 @@ function startQuiz(testKey){
   setupAC();reqFs();startTimer();renderQ();
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // ⏱ ТАЙМЕР
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function startTimer(){
   clearInterval(S.tInt);
   S.tInt=setInterval(()=>{
@@ -467,13 +591,13 @@ function startTimer(){
   },1000);
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // 📝 РЕНДЕР ПИТАННЯ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function getLevel(q,testKey){
-  const pool=testKey==='geo'?POOL_GEO:POOL_ALG;
-  if(pool.easy.find(x=>x.q===q.q))return'easy';
-  if(pool.medium.find(x=>x.q===q.q))return'medium';
+  const p=getPool(testKey);
+  if(p.easy.find(x=>x.q===q.q))return'easy';
+  if(p.medium.find(x=>x.q===q.q))return'medium';
   return'hard';
 }
 const lvlCls={easy:'l1',medium:'l2',hard:'l3'};
@@ -482,8 +606,7 @@ const lvlLbl={easy:'Базовий',medium:'Середній',hard:'Достат
 function renderQ(){
   const q=S.questions[S.cur];
   const pct=Math.round(S.cur/S.questions.length*100);
-  const vt=S.v.total;
-  const lv=getLevel(q,S.testKey);
+  const vt=S.v.total,lv=getLevel(q,S.testKey);
   app.innerHTML=`
   <div class="card">
     <div class="qhead">
@@ -496,7 +619,7 @@ function renderQ(){
     <div class="bar"><div class="barf" style="width:${pct}%"></div></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <span class="stag">👤 ${S.name}</span>
-      <span class="ltag ${lvlCls[lv]}">${lvlLbl[lv]} рівень</span>
+      <span class="ltag ${lvlCls[lv]}">${lvlLbl[lv]}</span>
     </div>
     <p class="qtext">${q.q}</p>
     ${q.svg||''}
@@ -505,26 +628,24 @@ function renderQ(){
         <span class="ol">${String.fromCharCode(65+i)}</span><span>${o.t}</span>
       </button>`).join('')}
     </div>
-    <button class="btn ${S.testKey==='geo'?'btn-p':'btn-alg'}" id="confirm-btn" onclick="confirmAns()" ${S.sel===null||S.conf?'disabled':''}>
-      ${S.conf?'✓ Зараховано — переходимо далі...':'Підтвердити відповідь →'}
+    <button class="btn ${TEST_CFG[S.testKey].btnCls}" id="confirm-btn" onclick="confirmAns()" ${S.sel===null||S.conf?'disabled':''}>
+      ${S.conf?'✓ Зараховано — далі...':'Підтвердити відповідь →'}
     </button>
     ${S.conf?`<div class="hint">💡 ${q.hint}</div>`:''}
   </div>`;
 }
 
-// ✅ ВИПРАВЛЕННЯ 3: тільки DOM-маніпуляція — без перерендеру → немає стрибків
+// ✅ DOM-only вибір — без стрибків
 function selOpt(i){
   if(S.conf)return;
   S.sel=i;
   document.querySelectorAll('#opts-wrap .opt').forEach((btn,idx)=>{
-    const active=idx===i;
-    btn.classList.toggle('sel',active);
+    const a=idx===i;btn.classList.toggle('sel',a);
     const ol=btn.querySelector('.ol');
-    ol.style.background=active?'var(--accent)':'rgba(124,92,252,.2)';
-    ol.style.color=active?'#fff':'var(--a2)';
+    ol.style.background=a?'var(--accent)':'rgba(124,92,252,.2)';
+    ol.style.color=a?'#fff':'var(--a2)';
   });
-  const cb=$('confirm-btn');
-  if(cb)cb.disabled=false;
+  const cb=$('confirm-btn');if(cb)cb.disabled=false;
 }
 
 function confirmAns(){
@@ -539,7 +660,7 @@ function confirmAns(){
     if(q.opts[idx].ok){btn.classList.add('ok');ol.style.cssText='background:var(--green);color:#fff'}
     else if(idx===S.sel&&!correct){btn.classList.add('no');ol.style.cssText='background:var(--red);color:#fff'}
   });
-  const cb=$('confirm-btn');if(cb)cb.textContent='✓ Зараховано — переходимо далі...';
+  const cb=$('confirm-btn');if(cb)cb.textContent='✓ Зараховано — переходимо...';
   const wrap=$('opts-wrap');
   if(wrap){const h=document.createElement('div');h.className='hint';h.textContent='💡 '+q.hint;wrap.after(h);}
   setTimeout(()=>{
@@ -548,9 +669,9 @@ function confirmAns(){
   },1600);
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // 🏁 ЗАВЕРШЕННЯ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 async function finish(terminated){
   if(S.done)return;S.done=true;S.phase='result';
   clearInterval(S.tInt);removeL();
@@ -558,7 +679,6 @@ async function finish(terminated){
   const pct=Math.round(S.score/S.questions.length*100);
   const g=gradeInfo(pct);
   const cfg=TEST_CFG[S.testKey];
-  // ✅ ВИПРАВЛЕННЯ 1: "з" замість "/" — Google Sheets не перетворює на дату
   const data={
     subject:cfg.subject,
     name:S.name,
@@ -568,29 +688,29 @@ async function finish(terminated){
     timeSpent:fmtTime(elapsed),
     timestamp:nowStr()
   };
-  // Локальне збереження
-  try{const k=`kr9-${S.testKey}`;const ex=JSON.parse(localStorage.getItem(k)||'[]');ex.push(data);localStorage.setItem(k,JSON.stringify(ex))}catch{}
-  renderResult(data,terminated,g,'sending');
+  try{const ex=JSON.parse(localStorage.getItem(cfg.storKey)||'[]');ex.push(data);localStorage.setItem(cfg.storKey,JSON.stringify(ex))}catch{}
+  renderResult(data,terminated,g,S.score,S.questions.length,cfg);
+  if(pct>=75&&!terminated)setTimeout(()=>launchConfetti(pct>=92?120:70),600);
   const ok=await sendToSheets(data);
   const st=$('send-st');
   if(st){st.className='sstatus '+(ok?'ok':'fail');st.textContent=ok?'✅ Результат записано в Google Таблицю!':'⚠️ Збережено локально. Перевір інтернет.'}
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // 🏆 РЕЗУЛЬТАТ
-// ════════════════════════════════════════════
-function renderResult(data,terminated,g,ss){
+// ══════════════════════════════════════════════
+function renderResult(data,terminated,g,score,total,cfg){
   const vt=data.violations||0;
   const icon=terminated?'🚫':data.percent>=92?'🏆':data.percent>=75?'🎉':data.percent>=42?'📖':'💪';
-  const tot=S.questions?S.questions.length:12;
-  const cfg=TEST_CFG[S.testKey||'geo'];
   app.innerHTML=`
   <div class="card">
     <div class="ricon">${icon}</div>
-    <h2 style="text-align:center">${terminated?'Тест завершено достроково':cfg.titleFull+' завершена'}</h2>
-    <div style="text-align:center;margin:4px 0 10px"><span class="badge">${cfg.icon} ${cfg.subject}</span></div>
+    <h2 style="text-align:center">${terminated?'Тест завершено достроково':cfg.title+' завершена'}</h2>
+    <div style="text-align:center;margin:4px 0 10px">
+      <span class="badge ${cfg.key==='math7'?'c7':cfg.key==='alg'?'c9a':''}">${cfg.icon} ${cfg.grade} · ${cfg.subject}</span>
+    </div>
     ${terminated?`<p class="err" style="text-align:center;margin:4px 0">Завершено через ${MAX_VIOL} порушень</p>`:''}
-    <div class="rbig" style="color:${g.c}">${S.score}<span style="font-size:.4em;opacity:.55"> з ${tot}</span></div>
+    <div class="rbig" id="score-anim" style="color:rgba(255,255,255,.4)">0<span style="font-size:.4em;opacity:.5"> з ${total}</span></div>
     <div class="rlbl" style="color:${g.c}">Орієнтовна оцінка: ${g.l}</div>
     <div class="bar"><div class="barf" style="width:${data.percent}%;background:${terminated?'var(--red)':g.c}"></div></div>
     <div class="repbox">
@@ -605,11 +725,13 @@ function renderResult(data,terminated,g,ss){
     <div class="sstatus sending" id="send-st">⏳ Відправляємо результат...</div>
     <button class="btn btn-g" style="margin-top:10px;font-size:12px" onclick="renderHome()">← На початок</button>
   </div>`;
+  // Анімація рахунку
+  setTimeout(()=>animateScore(score,total,g.c),300);
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // 🔐 ВХІД ВЧИТЕЛЯ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function renderTLogin(){
   app.innerHTML=`
   <div class="card">
@@ -623,57 +745,60 @@ function renderTLogin(){
   </div>`;
   $('tp').addEventListener('keydown',e=>e.key==='Enter'&&checkPass());
 }
-function checkPass(){if($('tp').value===TEACHER_PASS)renderTeacher('geo');else $('te').style.display='block'}
+function checkPass(){if($('tp').value===TEACHER_PASS)renderTeacher('math7');else $('te').style.display='block'}
 
-// ════════════════════════════════════════════
-// 📊 ПАНЕЛЬ ВЧИТЕЛЯ (два списки)
-// ════════════════════════════════════════════
-let _allResults=[];
+// ══════════════════════════════════════════════
+// 📊 ПАНЕЛЬ ВЧИТЕЛЯ (3 таби)
+// ══════════════════════════════════════════════
+let _allRes={},_source='sheets';
 
 async function renderTeacher(tab){
-  tab=tab||'geo';
+  tab=tab||'math7';
   app.innerHTML=`<div class="card" style="text-align:center;padding:50px 20px"><div style="font-size:36px;margin-bottom:12px">⏳</div><p style="color:var(--muted);font-size:13px">Завантажуємо результати...</p></div>`;
-  // Завантажуємо з Google Sheets (усі)
-  let allRes=[],source='sheets';
+  let allRes=[],src='sheets';
   try{
     const resp=await fetch(WEBHOOK+'?action=list');
     const json=await resp.json();
-    if(json.success&&Array.isArray(json.results)) allRes=json.results;
+    if(json.success&&Array.isArray(json.results))allRes=json.results;
   }catch{
-    source='local';
-    const g=JSON.parse(localStorage.getItem('kr9-geo')||'[]');
-    const a=JSON.parse(localStorage.getItem('kr9-alg')||'[]');
-    allRes=[...g,...a];
+    src='local';
+    const a=JSON.parse(localStorage.getItem('kr7-math')||'[]');
+    const b=JSON.parse(localStorage.getItem('kr9-geo')||'[]');
+    const c=JSON.parse(localStorage.getItem('kr9-alg')||'[]');
+    allRes=[...a,...b,...c];
   }
-  _allResults=allRes;
-  renderTeacherTab(tab,allRes,source);
+  // Розбиваємо по предметах
+  _allRes={
+    math7:allRes.filter(r=>(r.subject||'').includes('Математика')),
+    geo:  allRes.filter(r=>(r.subject||'').includes('Геометрія')),
+    alg:  allRes.filter(r=>(r.subject||'').includes('Алгебра')),
+  };
+  _source=src;
+  renderTeacherTab(tab);
 }
 
-function renderTeacherTab(tab,allRes,source){
-  // Фільтруємо за предметом
-  const subjectMap={geo:'Геометрія',alg:'Алгебра'};
-  const res=allRes.filter(r=>(r.subject||'').includes(subjectMap[tab]||''));
+function renderTeacherTab(tab){
+  const res=_allRes[tab]||[];
   const tot=res.length,avg=tot?Math.round(res.reduce((s,r)=>s+(r.percent||0),0)/tot):0;
   const terms=res.filter(r=>r.terminated).length,viols=res.filter(r=>(r.violations||0)>0).length;
   const sorted=[...res].sort((a,b)=>(b.percent||0)-(a.percent||0));
-  const srcLabel=source==='sheets'
+  const srcLbl=_source==='sheets'
     ?`<span style="font-size:10px;color:var(--green)">🟢 Google Sheets</span>`
     :`<span style="font-size:10px;color:var(--yellow)">🟡 Локальні дані</span>`;
-  const geoActive=tab==='geo';
-
   app.innerHTML=`
   <div class="card" style="max-width:580px">
     <div class="tbh">
-      <div><div class="badge">🔐 Вчитель</div><h2 style="margin-top:4px">Результати</h2>${srcLabel}</div>
+      <div><div class="badge">🔐 Вчитель</div><h2 style="margin-top:4px">Результати</h2>${srcLbl}</div>
       <div style="display:flex;gap:5px">
         <button class="btn btn-g" style="width:auto;padding:7px 9px;font-size:15px;margin-top:0" onclick="renderTeacher('${tab}')">🔄</button>
         <button class="btn btn-g" style="width:auto;padding:7px 10px;font-size:11px;margin-top:0" onclick="renderHome()">← Вийти</button>
       </div>
     </div>
-    <!-- ТАБИ -->
+    <!-- 3 ТАБИ -->
     <div class="tab-row">
-      <button class="tab geo ${geoActive?'active':''}" onclick="switchTab('geo')">📐 Геометрія</button>
-      <button class="tab alg ${!geoActive?'active':''}" onclick="switchTab('alg')">🎲 Алгебра</button>
+      <button class="tab t7 ${tab==='math7'?'active':''}" onclick="switchTab('math7')">📚 7 кл. Математика</button>
+      <button class="tab tg ${tab==='geo'?'active':''}" onclick="switchTab('geo')">📐 9 кл. Геометрія</button>
+      <button class="tab ta ${tab==='alg'?'active':''}" onclick="switchTab('alg')">🎲 9 кл. Алгебра</button>
     </div>
     <!-- СТАТИСТИКА -->
     ${tot>0?`<div class="srow">
@@ -683,37 +808,32 @@ function renderTeacherTab(tab,allRes,source){
       <div class="ms"><div class="msv">${viols}</div><div class="msl">З порушеннями</div></div>
     </div>`:''}
     <!-- СПИСОК -->
-    <div id="results-list">
-      ${tot===0
-        ?`<div class="empty">📭 Поки немає результатів з ${geoActive?'геометрії':'алгебри'}</div>`
-        :sorted.map(r=>{
-          const g=gradeInfo(r.percent||0),vt=r.violations||0;
-          return`<div class="rrow ${r.terminated?'fail':vt>0?'warn':''}">
-            <div class="rrtop">
-              <div><div class="rrn">${r.name}</div><div class="rrt">${r.timestamp||''}</div></div>
-              <div><div class="rrs" style="color:${g.c}">${r.score} (${r.percent}%)</div><div class="rrg">~${g.l}</div></div>
-            </div>
-            <div class="tags">
-              ${r.terminated?`<span class="tag tdng">🚫 Дострокове</span>`:''}
-              ${vt>0&&!r.terminated?`<span class="tag twarn">⚠️ ${vt} порушень</span>`:''}
-              ${vt===0?`<span class="tag tok">✅ Чисто</span>`:''}
-              ${r.timeSpent?`<span class="tag" style="background:rgba(255,255,255,.05);color:var(--muted)">⏱ ${r.timeSpent}</span>`:''}
-            </div>
-          </div>`;
-        }).join('')}
-    </div>
+    ${tot===0
+      ?`<div class="empty">📭 Поки немає результатів</div>`
+      :sorted.map(r=>{
+        const g=gradeInfo(r.percent||0),vt=r.violations||0;
+        return`<div class="rrow ${r.terminated?'fail':vt>0?'warn':''}">
+          <div class="rrtop">
+            <div><div class="rrn">${r.name}</div><div class="rrt">${r.timestamp||''}</div></div>
+            <div><div class="rrs" style="color:${g.c}">${r.score} (${r.percent}%)</div><div class="rrg">~${g.l}</div></div>
+          </div>
+          <div class="tags">
+            ${r.terminated?`<span class="tag tdng">🚫 Дострокове</span>`:''}
+            ${vt>0&&!r.terminated?`<span class="tag twarn">⚠️ ${vt} порушень</span>`:''}
+            ${vt===0?`<span class="tag tok">✅ Чисто</span>`:''}
+            ${r.timeSpent?`<span class="tag" style="background:rgba(255,255,255,.05);color:var(--muted)">⏱ ${r.timeSpent}</span>`:''}
+          </div>
+        </div>`;
+      }).join('')}
     ${tot>0?`<button class="btn btn-p" id="cbtn" style="margin-top:10px" onclick="copySheets('${tab}')">📋 Скопіювати для Google Sheets</button>`:''}
   </div>`;
-  window._currentTab=tab;window._currentSource=source;
+  window._currentTab=tab;
 }
 
-function switchTab(tab){
-  renderTeacherTab(tab,_allResults,window._currentSource||'sheets');
-}
+function switchTab(tab){renderTeacherTab(tab)}
 
 function copySheets(tab){
-  const subjectMap={geo:'Геометрія',alg:'Алгебра'};
-  const res=_allResults.filter(r=>(r.subject||'').includes(subjectMap[tab]||''));
+  const res=_allRes[tab]||[];
   const h="Предмет\tПрізвище та ім'я\tБал\t%\tОцінка\tПорушень\tДострокове\tЧас\tДата";
   const rows=[...res].sort((a,b)=>(a.name||'').localeCompare(b.name||''))
     .map(r=>`${r.subject||''}\t${r.name}\t${r.score}\t${r.percent}%\t${r.grade}\t${r.violations}\t${r.terminated?'Так':'Ні'}\t${r.timeSpent||''}\t${r.timestamp||''}`)
@@ -723,9 +843,9 @@ function copySheets(tab){
   }).catch(()=>alert('Спробуй на ПК'));
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // 🚀 СТАРТ
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════════
 renderHome();
 </script>
 </body>
