@@ -129,7 +129,7 @@ svg text{-webkit-user-select:none;user-select:none}
 // ══════════════════════════════════════════════
 // ⚙️ КОНФІГУРАЦІЯ
 // ══════════════════════════════════════════════
-const WEBHOOK='https://script.google.com/macros/s/AKfycbzMUQjuFYo1MteznR1HkKQQco0ml51GJBOneng13j7a1Gbbf2QCYMpv8w5UA1bzCLgU4Q/exec';
+const WEBHOOK='https://script.google.com/macros/s/AKfycbxmF1vlQf2vN0XHVNfu53YajMYWSvAZNK-hoUWxvoKVwhDEwmOLz4kOpmjgvdTHDSGvhA/exec';
 const TEACHER_PASS='teacher2025';
 const MAX_VIOL=10;
 const TIME_LIMIT=45*60;
@@ -755,25 +755,41 @@ let _allRes={},_source='sheets';
 async function renderTeacher(tab){
   tab=tab||'math7';
   app.innerHTML=`<div class="card" style="text-align:center;padding:50px 20px"><div style="font-size:36px;margin-bottom:12px">⏳</div><p style="color:var(--muted);font-size:13px">Завантажуємо результати...</p></div>`;
-  let allRes=[],src='sheets';
+
+  // ── 1. Завжди читаємо localStorage — тут subject завжди є
+  const loc7  =JSON.parse(localStorage.getItem('kr7-math')||'[]').map(r=>({...r,subject:'Математика'}));
+  const locGeo=JSON.parse(localStorage.getItem('kr9-geo')||'[]').map(r=>({...r,subject:'Геометрія'}));
+  const locAlg=JSON.parse(localStorage.getItem('kr9-alg')||'[]').map(r=>({...r,subject:'Алгебра'}));
+  const localAll=[...loc7,...locGeo,...locAlg];
+  // Індекс за ключем name|timestamp для збагачення Sheets-даних
+  const localIdx=new Map(localAll.map(r=>[`${r.name}|${r.timestamp}`,r]));
+
+  // ── 2. Пробуємо Google Sheets
+  let sheetsRes=[];
   try{
     const resp=await fetch(WEBHOOK+'?action=list');
     const json=await resp.json();
-    if(json.success&&Array.isArray(json.results))allRes=json.results;
-  }catch{
-    src='local';
-    const a=JSON.parse(localStorage.getItem('kr7-math')||'[]');
-    const b=JSON.parse(localStorage.getItem('kr9-geo')||'[]');
-    const c=JSON.parse(localStorage.getItem('kr9-alg')||'[]');
-    allRes=[...a,...b,...c];
-  }
-  // Розбиваємо по предметах
+    if(json.success&&Array.isArray(json.results)) sheetsRes=json.results;
+  }catch{}
+
+  // ── 3. Збагачуємо Sheets-записи subject з localStorage якщо бракує
+  const enriched=sheetsRes.map(r=>{
+    if(r.subject&&r.subject.length>1) return r;
+    const loc=localIdx.get(`${r.name}|${r.timestamp}`);
+    return loc?{...r,subject:loc.subject}:r;
+  });
+
+  // ── 4. Мержимо і дедублікуємо (пріоритет Sheets, доповнення з local)
+  const seen=new Set(enriched.map(r=>`${r.name}|${r.timestamp}`));
+  const extra=localAll.filter(r=>!seen.has(`${r.name}|${r.timestamp}`));
+  const combined=[...enriched,...extra];
+
+  _source=sheetsRes.length>0?'sheets':'local';
   _allRes={
-    math7:allRes.filter(r=>(r.subject||'').includes('Математика')),
-    geo:  allRes.filter(r=>(r.subject||'').includes('Геометрія')),
-    alg:  allRes.filter(r=>(r.subject||'').includes('Алгебра')),
+    math7:combined.filter(r=>(r.subject||'').includes('Математика')),
+    geo:  combined.filter(r=>(r.subject||'').includes('Геометрія')),
+    alg:  combined.filter(r=>(r.subject||'').includes('Алгебра')),
   };
-  _source=src;
   renderTeacherTab(tab);
 }
 
