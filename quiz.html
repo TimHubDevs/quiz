@@ -119,6 +119,12 @@ h2{font-family:'Unbounded',sans-serif;font-size:clamp(15px,4vw,20px);font-weight
 .cf{position:absolute;top:-10px;width:8px;height:8px;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
 svg text{-webkit-user-select:none;user-select:none}
+/* ── Maintenance ── */
+#maintenance{position:fixed;inset:0;z-index:99999;background:rgba(10,10,20,.97);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;padding:24px}
+#maintenance h2{font-family:'Unbounded',sans-serif;font-size:clamp(18px,5vw,26px);font-weight:900;color:#fff}
+#maintenance p{color:var(--muted);font-size:13px;max-width:320px;line-height:1.6}
+.spin{font-size:40px;animation:spinning 2s linear infinite}
+@keyframes spinning{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -129,6 +135,7 @@ svg text{-webkit-user-select:none;user-select:none}
 // ══════════════════════════════════════════════
 // ⚙️ КОНФІГУРАЦІЯ
 // ══════════════════════════════════════════════
+const MAINTENANCE_MODE = true; // 🔧 false = сайт відкритий
 const WEBHOOK='https://script.google.com/macros/s/AKfycbxmF1vlQf2vN0XHVNfu53YajMYWSvAZNK-hoUWxvoKVwhDEwmOLz4kOpmjgvdTHDSGvhA/exec';
 const TEACHER_PASS='teacher2025';
 const MAX_VIOL=10;
@@ -863,6 +870,24 @@ function copySheets(tab){
 // 🚀 СТАРТ
 // ══════════════════════════════════════════════
 renderHome();
+
+// ── Maintenance overlay ──
+(function(){
+  const DEV_KEY = 'quiz_dev_bypass';
+  const isBypassed = localStorage.getItem(DEV_KEY) === '1';
+  
+  if(MAINTENANCE_MODE && !isBypassed){
+    const el = document.createElement('div');
+    el.id = 'maintenance';
+    el.innerHTML = `
+      <div class="spin">⚙️</div>
+      <h2>Технічне оновлення</h2>
+      <p>Сайт тимчасово недоступний.<br>Зачекайте, будь ласка — скоро повернемось!</p>
+      <p style="font-size:11px;color:rgba(255,255,255,.2);margin-top:10px">© Перевірка знань</p>
+    `;
+    document.body.appendChild(el);
+  }
+})();
 </script>
 </body>
 </html>
