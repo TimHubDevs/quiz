@@ -26,6 +26,7 @@ h2{font-family:'Unbounded',sans-serif;font-size:clamp(15px,4vw,20px);font-weight
 .sel-card.g7{--clr:#06b6d4}.sel-card.g7:hover{border-color:var(--cyan);background:rgba(6,182,212,.1);transform:translateY(-4px);box-shadow:0 16px 40px rgba(6,182,212,.2)}
 .sel-card.gg{--clr:#7c5cfc}.sel-card.gg:hover{border-color:var(--accent);background:rgba(124,92,252,.12);transform:translateY(-4px);box-shadow:0 16px 40px rgba(124,92,252,.25)}
 .sel-card.ga{--clr:#10b981}.sel-card.ga:hover{border-color:var(--green);background:rgba(16,185,129,.1);transform:translateY(-4px);box-shadow:0 16px 40px rgba(16,185,129,.2)}
+.sel-card.gy{--clr:#f59e0b}.sel-card.gy:hover{border-color:var(--yellow);background:rgba(245,158,11,.1);transform:translateY(-4px);box-shadow:0 16px 40px rgba(245,158,11,.2)}
 .sel-icon{font-size:36px;margin-bottom:10px;display:block}
 .sel-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;margin-bottom:4px}
 .sel-sub{font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.45}
@@ -1126,6 +1127,12 @@ function renderHome(){
         <div class="sel-sub">Геометрія або Алгебра</div>
         <div class="sel-info">12 питань · 45 хвилин</div>
       </button>
+      <button class="sel-card gy" onclick="renderGradeDiag()">
+        <span class="sel-icon">🧪</span>
+        <div class="sel-title">Вхідна діагностика</div>
+        <div class="sel-sub">8→9 клас · Математика або Програмування</div>
+        <div class="sel-info">12 питань · 45 хвилин</div>
+      </button>
     </div>
     <button class="btn btn-g" style="font-size:11px" onclick="renderTLogin()">🔐 Я вчитель — переглянути результати</button>
   </div>`;
@@ -1153,6 +1160,31 @@ function renderGrade9(){
         <div class="sel-title">Алгебра</div>
         <div class="sel-sub">Комбінаторика і ймовірність</div>
         <div class="sel-info">12 питань · 45 хвилин</div>
+      </button>
+    </div>
+    <button class="btn btn-g" style="margin-top:5px;font-size:11px" onclick="renderHome()">← Назад до вибору класу</button>
+  </div>`;
+}
+
+// ── Вхідна діагностика → вибір предмету
+function renderGradeDiag(){
+  app.innerHTML=`
+  <div class="card">
+    <div class="badge">✦ Вхідна діагностика</div>
+    <h1>Оберіть<br>предмет</h1>
+    <p class="sub">Натисни на потрібну діагностику</p>
+    <div class="sel-grid">
+      <button class="sel-card gy" onclick="renderIntro('diagMath')">
+        <span class="sel-icon">🧪</span>
+        <div class="sel-title">Математика</div>
+        <div class="sel-sub">Базові теми 8 класу</div>
+        <div class="sel-info">12 питань · 45 хвилин</div>
+      </button>
+      <button class="sel-card g7" onclick="renderIntro('diagProg')">
+        <span class="sel-icon">💻</span>
+        <div class="sel-title">Програмування</div>
+        <div class="sel-sub">Алгоритмічне мислення</div>
+        <div class="sel-info">6 питань · 45 хвилин</div>
       </button>
     </div>
     <button class="btn btn-g" style="margin-top:5px;font-size:11px" onclick="renderHome()">← Назад до вибору класу</button>
